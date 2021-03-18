@@ -12,10 +12,9 @@ class ShowController extends Controller
 {
     public function show($siswa_id)
     {
-        $nilai = Nilai::where('siswa_id', $siswa_id)->get();
-        // dd($nilai);
-
         try{
+            $nilai = Nilai::where('siswa_id', $siswa_id)->get();
+            // dd($nilai);
             $absen = Absen::where('siswa_id', $siswa_id)->firstorFail();
             // $siswa = Siswa::where('siswa_id', $siswa_id)->first();
             $upd = Upd::where('siswa_id', $siswa_id)->firstorFail();
@@ -30,6 +29,7 @@ class ShowController extends Controller
     public function raport($siswa_id)
     {
         try{
+            $nilai = Nilai::where('siswa_id', $siswa_id)->get();
             $absen = Absen::where('siswa_id', $siswa_id)->firstorFail();
             // $siswa = Siswa::where('siswa_id', $siswa_id)->first();
             $upd = Upd::where('siswa_id', $siswa_id)->firstorFail();
