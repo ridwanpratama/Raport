@@ -61,6 +61,7 @@
                                         <th>UH 7</th>
                                         <th>UH 8</th>
                                         <th>PAT</th>
+                                        
                                         <th><a href="javascript:;'" class="btn btn-info addRow">+</a></th>
                                     </tr>
                                 </thead>
@@ -86,7 +87,7 @@
                                         <td><input type="text" name="uh7[]" id="nilai" class="form-control"></td>
                                         <td><input type="text" name="uh8[]" id="nilai" class="form-control"></td>
                                         <td><input type="text" name="pat[]" id="nilai" class="form-control"></td>
-                                        <td><a href="javascript:;'" class="btn btn-danger deleteRow">-</a></td>
+                                        {{-- <td><a href="javascript:;'" class="btn btn-danger deleteRow">-</a></td> --}}
                                     </tr>
                                 </tbody>
                             </table>

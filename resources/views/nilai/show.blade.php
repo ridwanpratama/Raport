@@ -14,7 +14,11 @@
           
            <div class="card my-3">
             <div class="card-body">
-                {{-- <p>Detail nilai dari siswa {{ $nilai->siswa->nama_siswa }}</p> --}}
+                <p>Nama Siswa: {{ $siswa->nama_siswa }}</p>
+                <p>NIS: {{ $siswa->nis }}</p>
+                <p>Rombel: {{ $siswa->rombel }}</p>
+                <p>Rayon: {{ $siswa->rayon->nama_rayon }}</p>
+                <p>Jurusan: {{ $siswa->jurusan->nama_jurusan }}</p>
                 <p>Nilai UPD: {{ $upd->nilai_upd }}</p>
                 <p>Jumlah Sakit: {{ $absen->sakit }}</p>
                 <p>Jumlah izin: {{ $absen->izin }}</p>
@@ -22,7 +26,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nama Siswa</th>
                             <th>Mapel</th>
                             <th>UH1</th>
                             <th>UH2</th>
@@ -35,7 +38,6 @@
                     <tbody>
                         @foreach ($nilai as $item)
                         <tr>
-                            <td>{{ $item->siswa->nama_siswa }}</td>
                             <td>{{ $item->mapel->nama_mapel }}</td>
                             <td>{{ $item->uh1 }}</td>
                             <td>{{ $item->uh2 }}</td>
