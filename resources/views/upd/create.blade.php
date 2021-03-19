@@ -18,7 +18,7 @@
                             <select class="form-control" id="siswa_id" name="siswa_id">
                                 <option value="0">--Pilih Siswa--</option>
                                 @foreach (App\Siswa::all() as $siswa)
-                                    <option value="{{ $siswa->id }}">{{ $siswa->nama_siswa }}</option>
+                                    <option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
                                 @endforeach
                             </select>
                         </div>

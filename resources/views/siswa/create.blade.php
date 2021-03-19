@@ -15,7 +15,7 @@
                         <label class="col-md-3 col-form-label">NIS</label>
                         <div class="col-md-9">
                             <input class="form-control @error('nis') is-invalid @enderror" id="nis" type="number" name="nis"
-                                placeholder="@error('nis') {{ $message }} @enderror" value="{{ old('nis')}}">
+                                placeholder="@error('nis') {{ $message }} @enderror">
                         </div>
                     </div>
 
@@ -29,17 +29,33 @@
 
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">Rombel</label>
-                        <div class="col-md-9">
-                            <input class="form-control @error('rombel') is-invalid @enderror" id="rombel" type="text" name="rombel"
-                                placeholder="@error('rombel') {{ $message }} @enderror" value="{{ old('rombel') }}">
+                        <div class="col-md-5">
+                            <select class="form-control @error('tingkat') is-invalid @enderror" id="tingkat" type="text" name="tingkat"
+                            placeholder="@error('tingkat') {{ $message }} @enderror">
+                                <option value disable>--Pilih Tingkat--</option>
+                                    <option value="X">X</option>
+                                    <option value="XI">XI</option>
+                                    <option value="XII">XII</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control @error('rombel') is-invalid @enderror" id="rombel" type="text" name="rombel"
+                            placeholder="@error('rombel') {{ $message }} @enderror">
+                                <option value disable>--Pilih Rombel--</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="select1">Rayon</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="rayon_id" name="rayon_id">
-                                <option value="0">--Pilih Rayon--</option>
+                            <select class="form-control @error('rayon_id') is-invalid @enderror" id="rayon_id" type="text" name="rayon_id"
+                            placeholder="@error('rayon_id') {{ $message }} @enderror">
+                                <option value disable>--Pilih Rayon--</option>
                                 @foreach (App\Rayon::all() as $rayon)
                                     <option value="{{ $rayon->id }}">{{ $rayon->nama_rayon }}</option>
                                 @endforeach
@@ -50,7 +66,8 @@
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="select1">Jurusan</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="jurusan_id" name="jurusan_id">
+                            <select class="form-control @error('rayon_id') is-invalid @enderror" id="jurusan_id" type="text" name="jurusan_id"
+                            placeholder="@error('rayon_id') {{ $message }} @enderror">
                                 <option value="0">--Pilih Jurusan--</option>
                                 @foreach (App\Jurusan::all() as $jurusan)
                                     <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>

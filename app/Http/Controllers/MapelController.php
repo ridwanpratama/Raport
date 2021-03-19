@@ -28,6 +28,14 @@ class MapelController extends Controller
         return view('mapel.create');
     }
 
+    public function validation(Request $request)
+    {
+        $validation = $request->validate([
+            'nama_mapel' => 'required|unique:mapel,nama_mapel',
+            'guru_id' => 'required'
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,10 +44,7 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama_mapel' => 'required',
-            'guru_id' => 'required'
-        ]);
+        $this->validation($request);
 
         Mapel::create([
             'nama_mapel' => $request->get('nama_mapel'),
@@ -82,6 +87,7 @@ class MapelController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validation($request);
         $data_mapel = Mapel::find($id);
         $data_mapel->update([
             'nama_mapel' => $request->get('nama_mapel'),

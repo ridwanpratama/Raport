@@ -14,11 +14,9 @@ class SiswaController extends Controller
             'nis' => 'required|unique:siswa,nis',
             'nama_siswa' => 'required',
             'rombel' => 'required',
-        ],
-        [
-            'nis.required' => 'Field ini harus diisi!',
-            'nama_siswa.required' => 'Field harus diisi!',
-            'rombel.required' => 'Field harus diisi!'
+            'tingkat' => 'required',
+            'rayon_id' => 'required',
+            'jurusan_id' => 'required',
         ]);
     }
 
@@ -40,6 +38,7 @@ class SiswaController extends Controller
         Siswa::create([
             'nis' => $request->nis,
             'nama_siswa' => $request->nama_siswa,
+            'tingkat' => $request->tingkat,
             'rombel' => $request->rombel,
             'rayon_id' => $request->rayon_id,
             'jurusan_id' => $request->jurusan_id
@@ -60,6 +59,7 @@ class SiswaController extends Controller
         $siswa->update([
             'nis' => $request->get('nis'),
             'nama_siswa' => $request->get('nama_siswa'),
+            'tingkat' => $request->get('tingkat'),
             'rombel' => $request->get('rombel'),
             'rayon_id' => $request->get('rayon_id'),
             'jurusan_id' => $request->get('jurusan_id')

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class NilaiController extends Controller
 {
+
     public function index()
     {
         $nilai = DB::table('nilai_mapel')->distinct()->pluck('siswa_id');
@@ -30,9 +31,6 @@ class NilaiController extends Controller
         // dd($request->all());
 
         $siswa_id = $request->siswa_id;
-        $rombel = $request->rombel;
-        $rayon_id = $request->rayon_id;
-        $jurusan_id = $request->jurusan_id;
         $mapel_id = $request->mapel_id;
         $uh1 = $request->uh1;
         $uh2 = $request->uh2;
@@ -46,14 +44,24 @@ class NilaiController extends Controller
         $uh7 = $request->uh7;
         $uh8 = $request->uh8;
         $pat = $request->pat;
+        
+        $uh1k = $request->uh1k;
+        $uh2k = $request->uh2k;
+        $pts_ganjilk = $request->pts_ganjilk;
+        $uh3k = $request->uh3k;
+        $uh4k = $request->uh4k;
+        $pas_ganjilk = $request->pas_ganjilk;
+        $uh5k = $request->uh5k;
+        $uh6k = $request->uh6k;
+        $pts_genapk = $request->pts_genapk;
+        $uh7k = $request->uh7k;
+        $uh8k = $request->uh8k;
+        $patk = $request->patk;
        
 
         foreach($mapel_id as $key => $mapel)
         {
             $input['siswa_id'] = $siswa_id;
-            $input['rombel'] = $rombel;
-            $input['rayon_id'] = $rayon_id;
-            $input['jurusan_id'] = $jurusan_id;
             $input['mapel_id'] = $mapel;
             $input['uh1'] = $uh1[$key];
             $input['uh2'] = $uh2[$key];
@@ -68,10 +76,28 @@ class NilaiController extends Controller
             $input['uh8'] = $uh8[$key];
             $input['pat'] = $pat[$key];
 
+            $input['uh1k'] = $uh1k[$key];
+            $input['uh2k'] = $uh2k[$key];
+            $input['pts_ganjilk'] = $pts_ganjilk[$key];
+            $input['uh3k'] = $uh3k[$key];
+            $input['uh4k'] = $uh4k[$key];
+            $input['pas_ganjilk'] = $pas_ganjilk[$key];
+            $input['uh5k'] = $uh5k[$key];
+            $input['uh6k'] = $uh6k[$key];
+            $input['pts_genapk'] = $pts_genapk[$key];
+            $input['uh7k'] = $uh7k[$key];
+            $input['uh8k'] = $uh8k[$key];
+            $input['patk'] = $patk[$key];
+
             $jumlah = $uh1[$key] + $uh2[$key] + $pts_ganjil[$key] + $uh3[$key] + $uh4[$key] + $pas_ganjil[$key] + $uh5[$key] + $uh6[$key] + $pts_genap[$key] + $uh7[$key] + $uh8[$key] + $pat[$key];
+
+            $jumlahk = $uh1k[$key] + $uh2k[$key] + $pts_ganjilk[$key] + $uh3k[$key] + $uh4k[$key] + $pas_ganjilk[$key] + $uh5k[$key] + $uh6k[$key] + $pts_genapk[$key] + $uh7k[$key] + $uh8k[$key] + $patk[$key];
+    
             $rata_rata[] = $jumlah / 12;
+            $rata_ratak[] = $jumlahk / 12;
             
             $input['rata_rata'] = $rata_rata[$key];
+            $input['rata_ratak'] = $rata_ratak[$key];
 
             if($rata_rata[$key] <= 75){
                 $predikat = "Belum Kompeten";
@@ -79,7 +105,14 @@ class NilaiController extends Controller
                 $predikat = "Kompeten";
             }
 
+            if($rata_ratak[$key] <= 75){
+                $predikatk = "Belum Kompeten";
+            }else{
+                $predikatk = "Kompeten";
+            }
+
             $input['predikat'] = $predikat;
+            $input['predikatk'] = $predikatk;
 
             Nilai::create($input);
 

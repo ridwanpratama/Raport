@@ -20,6 +20,7 @@
                     <th>#</th>
                     <th>NIS Siswa</th>
                     <th>Nama Siswa</th>
+                    <th>Tingkat</th>
                     <th>Rombel</th>
                     <th>Rayon</th>
                     <th>Jurusan</th>
@@ -32,9 +33,10 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->siswa->nis }}</td>
                     <td>{{ $item->siswa->nama_siswa }}</td>
+                    <td>{{ $item->siswa->tingkat }}</td>
                     <td>{{ $item->siswa->rombel }}</td>
-                    <td>{{ $item->rayon_id }}</td>
-                    <td>{{ $item->jurusan_id }}</td>
+                    <td>{{ $item->siswa->rayon->nama_rayon }}</td>
+                    <td>{{ $item->siswa->jurusan->nama_jurusan }}</td>
                     <td>
                         <form action="{{route('nilai.destroy',[$item->id])}}" method="post">
                             @csrf

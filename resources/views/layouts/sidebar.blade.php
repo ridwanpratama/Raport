@@ -18,7 +18,7 @@
             <li class="menu-header">Data Akademik</li>
 
             <li
-                class="nav-item dropdown {{ Request::is('siswa', 'siswa/create', 'mapel', 'mapel/create', 'guru', 'guru/create', 'jurusan', 'jurusan/create', 'absen', 'absen/create') ? 'sidebar-item active' : '' }}">
+                class="nav-item dropdown {{ Request::is('siswa', 'siswa/create', 'mapel', 'mapel/create', 'guru', 'guru/create', 'jurusan', 'jurusan/create') ? 'sidebar-item active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-database"></i><span>Data Master</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li
@@ -49,19 +49,13 @@
                         </a>
                     </li>
 
-                    <li
-                        class="nav-item dropdown {{ Request::is('absen', 'absen/create') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('absen.index') }}" class="nav-link">
-                            <span>Data Absen</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
 
             <li class="menu-header">Data Non Akademik</li>
 
             <li
-                class="nav-item dropdown {{ Request::is('rayon', 'rayon/create', 'upd', 'upd/create', 'detail', 'detail/create', 'user', 'user/create') ? 'sidebar-item active' : '' }}">
+                class="nav-item dropdown {{ Request::is('rayon', 'rayon/create', 'detail', 'detail/create', 'user', 'user/create') ? 'sidebar-item active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-server"></i><span>Data Master</span></a>
                 <ul class="dropdown-menu">
                     <li
@@ -78,12 +72,7 @@
                         </a>
                     </li>
 
-                    <li
-                        class="nav-item dropdown {{ Request::is('upd', 'upd/create') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('upd.index') }}" class="nav-link">
-                            <span>Data Nilai UPD</span>
-                        </a>
-                    </li>
+                    
 
                     <li
                         class="nav-item dropdown {{ Request::is('user', 'user/create') ? 'sidebar-item active' : '' }}">
@@ -96,13 +85,26 @@
 
             <li class="menu-header">Kelola Nilai</li>
 
-            <li class="nav-item dropdown {{ Request::is('nilai', 'nilai/create', 'raport') ? 'sidebar-item active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('nilai', 'nilai/create', 'raport', 'absen', 'absen/create', 'upd', 'upd/create') ? 'sidebar-item active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-edit"></i><span>Kelola Nilai</span></a>
                 <ul class="dropdown-menu" style="display: none;">
 
+                    <li
+                        class="nav-item dropdown {{ Request::is('absen', 'absen/create') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('absen.index') }}" class="nav-link">
+                            <span>Data Absen</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown {{ Request::is('upd', 'upd/create') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('upd.index') }}" class="nav-link">
+                            <span>Data Nilai UPD</span>
+                        </a>
+                    </li>
+
                     <li class="nav-item dropdown {{ Request::is('nilai/create') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('nilai.create') }}" class="nav-link">
-                            <span>Input Nilai</span>
+                            <span>Input Nilai Mapel</span>
                         </a>
                     </li>
 

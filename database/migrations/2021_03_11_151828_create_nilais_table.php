@@ -31,9 +31,22 @@ class CreateNilaisTable extends Migration
             $table->integer('pat');
             $table->integer('rata_rata');
             $table->string('predikat');
-            $table->string('rayon_id');
-            $table->string('jurusan_id');
-            $table->string('rombel');
+
+            $table->integer('uh1k');
+            $table->integer('uh2k');
+            $table->integer('pts_ganjilk');
+            $table->integer('uh3k');
+            $table->integer('uh4k');
+            $table->integer('pas_ganjilk');
+            $table->integer('uh5k');
+            $table->integer('uh6k');
+            $table->integer('pts_genapk');
+            $table->integer('uh7k');
+            $table->integer('uh8k');
+            $table->integer('patk');
+            $table->integer('rata_ratak');
+            $table->string('predikatk');
+
             $table->timestamps();
 
             $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');

@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('data_nilai/{siswa_id}', 'ShowController@show')->name('nilai_show');
     Route::get('raport/{siswa_id}', 'ShowController@raport')->name('raport_show');
+
     Route::resource('siswa', 'SiswaController');
     Route::resource('guru', 'GuruController');
     Route::resource('absen', 'AbsenController');

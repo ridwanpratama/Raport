@@ -15,15 +15,16 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">Nama Mata Pelajaran</label>
                             <div class="col-md-9">
-                                <input class="form-control" id="nama_mapel" type="text" name="nama_mapel"
-                                    placeholder="Masukkan nama mata pelajaran">
+                                <input class="form-control  @error('nama_mapel') is-invalid @enderror" id="nama_mapel" type="text" name="nama_mapel"
+                                placeholder="@error('nama_mapel') {{ $message }} @enderror">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="select1">Guru</label>
                             <div class="col-md-9">
-                                <select class="form-control" id="guru_id" name="guru_id">
-                                    <option value="0">--Pilih Guru--</option>
+                                <select class="form-control @error('guru_id') is-invalid @enderror" id="guru_id" type="text" name="guru_id"
+                                placeholder="@error('tingkat') {{ $message }} @enderror">
+                                    <option value disable>--Pilih Guru--</option>
                                     @foreach (App\Guru::all() as $guru)
                                         <option value="{{ $guru->id }}">{{ $guru->nama_guru }}</option>
                                     @endforeach

@@ -15,9 +15,7 @@ class ShowController extends Controller
         try{
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
             $nilai = Nilai::where('siswa_id', $siswa_id)->get();
-            // dd($nilai);
             $absen = Absen::where('siswa_id', $siswa_id)->firstorFail();
-            
             $upd = Upd::where('siswa_id', $siswa_id)->firstorFail();
         }catch(\Exception $exception){
             return redirect()->route('nilai.index')->with('toast_error', 'Data belum lengkap!');
@@ -33,7 +31,6 @@ class ShowController extends Controller
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
             $nilai = Nilai::where('siswa_id', $siswa_id)->get();
             $absen = Absen::where('siswa_id', $siswa_id)->firstorFail();
-            // $siswa = Siswa::where('siswa_id', $siswa_id)->first();
             $upd = Upd::where('siswa_id', $siswa_id)->firstorFail();
         }catch(\Exception $exception){
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');

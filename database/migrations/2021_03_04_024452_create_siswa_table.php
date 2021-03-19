@@ -17,6 +17,7 @@ class CreateSiswaTable extends Migration
             $table->id();
             $table->string('nis');
             $table->string('nama_siswa');
+            $table->string('tingkat');
             $table->string('rombel');
             $table->unsignedBigInteger('rayon_id');
             $table->unsignedBigInteger('jurusan_id');

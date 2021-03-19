@@ -19,7 +19,7 @@
                 <tr>
                     <th>#</th>
                     <th>Nama Rayon</th>
-                    <th>Nama Guru</th>
+                    <th>Nama Guru Pembimbing</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
