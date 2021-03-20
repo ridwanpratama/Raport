@@ -52,7 +52,7 @@
                         </tr>
                     </thead>
                         <tr>
-                            <td rowspan="7">{{ $item->mapel->nama_mapel }}</td>
+                            <td rowspan="7">{{ $item->mapel->nama_mapel }}, Predikat: {{ $item->ket }}</td>
                             <td>{{ $item->uh1 }}</td>
                             <td>{{ $item->uh2 }}</td>
                             <td>{{ $item->pts_ganjil }}</td>
@@ -117,6 +117,41 @@
                         </tr>
                         @endforeach
                 </table>
+
+                <table class="table table-bordered" style="margin-top: 50px;">
+                    <thead>
+                        <tr>
+                            <th>Jumlah Absen</th>
+                            <th>Alpha</th>
+                            <th>Sakit</th>
+                            <th>Izin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ $absen->alpha + $absen->sakit + $absen->izin }}</td>
+                            <td>{{ $absen->alpha }}</td>
+                            <td>{{ $absen->sakit }}</td>
+                            <td>{{ $absen->izin }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>UPD</th>
+                            <th>Nilai UPD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ $upd->detail->nama_upd }}</td>
+                            <td>{{ $upd->nilai_upd }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
            </div>
         </div>

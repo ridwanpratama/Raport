@@ -102,4 +102,5 @@ class GuruController extends Controller
 
         return redirect()->route('guru.index')->with('toast_warning', 'Data berhasil dihapus!');
     }
+
 }

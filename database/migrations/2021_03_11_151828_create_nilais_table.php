@@ -47,6 +47,7 @@ class CreateNilaisTable extends Migration
             $table->integer('rata_ratak');
             $table->string('predikatk');
 
+            $table->string('ket');
             $table->timestamps();
 
             $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');

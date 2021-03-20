@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Tambah Data Mapel')
+@section('title', 'Tambah Data Guru')
 @section('pagetitle')
     <h1>Tambah Data Mapel</h1>
 @endsection

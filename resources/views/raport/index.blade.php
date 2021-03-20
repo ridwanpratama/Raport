@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Data Nilai')
+@section('title', 'Data Raport')
 @section('third_party_stylesheets')
 <link rel="stylesheet" type="text/css" href="{{ asset('https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css') }}">
 <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css') }}">
@@ -38,14 +38,8 @@
                     <td>{{ $item->siswa->rayon->nama_rayon }}</td>
                     <td>{{ $item->siswa->jurusan->nama_jurusan }}</td>
                     <td>
-                        <form action="{{route('nilai.destroy',[$item->id])}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">Hapus</button>
-                            <a href="{{route('raport_show',$item->siswa_id)}}" class="btn btn-info btn-sm">Lihat</a>
+                        <a href="{{route('raport_show',$item->siswa_id)}}" class="btn btn-info btn-sm">Lihat</a>
                         </td>
-                            
-                        </form>
                     </td>
                 </tr>
                 @endforeach

@@ -15,14 +15,15 @@
                 </a>
             </li>
 
+            @if (auth()->user()->level=="admin")
             <li class="menu-header">Data Akademik</li>
 
             <li
-                class="nav-item dropdown {{ Request::is('siswa', 'siswa/create', 'mapel', 'mapel/create', 'guru', 'guru/create', 'jurusan', 'jurusan/create') ? 'sidebar-item active' : '' }}">
+                class="nav-item dropdown {{ Request::is('siswa', 'siswa/create', 'mapel', 'mapel/create', 'guru', 'guru/create', 'jurusan', 'jurusan/create', 'siswa/trash') ? 'sidebar-item active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-database"></i><span>Data Master</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li
-                        class="nav-item dropdown {{ Request::is('siswa', 'siswa/create') ? 'sidebar-item active' : 'siswa.index' }}">
+                        class="nav-item dropdown {{ Request::is('siswa', 'siswa/create', 'siswa/trash') ? 'sidebar-item active' : 'siswa.index' }}">
                         <a href="{{ route('siswa.index') }}" class="nav-link">
                             <span>Data Siswa</span>
                         </a>
@@ -51,9 +52,10 @@
 
                 </ul>
             </li>
+            @endif
 
+            @if (auth()->user()->level=="admin")
             <li class="menu-header">Data Non Akademik</li>
-
             <li
                 class="nav-item dropdown {{ Request::is('rayon', 'rayon/create', 'detail', 'detail/create', 'user', 'user/create') ? 'sidebar-item active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-server"></i><span>Data Master</span></a>
@@ -64,15 +66,13 @@
                             <span>Data Rayon</span>
                         </a>
                     </li>
-
+                
                     <li
                         class="nav-item dropdown {{ Request::is('detail', 'detail/create') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('detail.index') }}" class="nav-link">
                             <span>Data UPD</span>
                         </a>
                     </li>
-
-                    
 
                     <li
                         class="nav-item dropdown {{ Request::is('user', 'user/create') ? 'sidebar-item active' : '' }}">
@@ -82,6 +82,7 @@
                     </li>
                 </ul>
             </li>
+            @endif
 
             <li class="menu-header">Kelola Nilai</li>
 

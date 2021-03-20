@@ -25,7 +25,7 @@
                     </div>
                     
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="select1">Nama Siswa</label>
+                        <label class="col-md-3 col-form-label" for="select1">Pilih UPD</label>
                         <div class="col-md-9">
                             <select class="form-control" id="detail_upd_id" name="detail_upd_id">
                                 <option value="0">--Pilih UPD--</option>

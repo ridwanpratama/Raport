@@ -12,6 +12,7 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
            <a href="{{ route('siswa.create') }}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Tambah Data</a>
+           <a href="{{ route('trash.siswa') }}" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i>Recycle Bin</a>
            <div class="card my-3">
                <div class="card-body">
            <table id="table" class="table table-striped table-bordered table-md">
@@ -41,7 +42,7 @@
                         <form action="{{route('siswa.destroy',[$item->id])}}" method="post">
                             {{csrf_field()}}
                             {{method_field('DELETE')}}
-                            <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus siswa: {{$item->nama_siswa}}')">Hapus</button>
+                            <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus siswa: {{$item->nama_siswa}} ? Data akan masuk ke recycle bin ')">Hapus</button>
                             <a href="{{route('siswa.edit',[$item->id])}}" class="btn btn-warning btn-sm">Ubah</a>
                         </td>
                             
