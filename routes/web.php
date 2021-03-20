@@ -28,7 +28,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('upd', 'UpdController');
     Route::resource('nilai', 'NilaiController');
     Route::resource('raport', 'RaportController');
-
 });
 
 Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
