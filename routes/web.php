@@ -24,6 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('data_nilai/{siswa_id}', 'ShowController@show')->name('nilai_show');
     Route::get('raport/{siswa_id}', 'ShowController@raport')->name('raport_show');
+    Route::get('nilai/export/', 'ShowController@exportNilai')->name('export_nilai');
+
     Route::resource('absen', 'AbsenController');
     Route::resource('upd', 'UpdController');
     Route::resource('nilai', 'NilaiController');

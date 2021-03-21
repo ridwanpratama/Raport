@@ -4,6 +4,20 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css') }}">
 <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css') }}">
 @endsection
+@push('page_css')
+    <style>
+        .ddtf-processed th.option-except > select{
+            display:none;
+        }
+        .ddtf-processed th.option-except > div{
+            display:block !important;
+        }
+        select {
+            border: none;
+            background-color: transparent;
+        }
+    </style>
+@endpush
 @section('pagetitle')
     <h1>Data Siswa</h1>
 @endsection
@@ -18,14 +32,14 @@
            <table id="table" class="table table-striped table-bordered table-md">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>NIS</th>
-                    <th>Nama Siswa</th>
+                    <th class="option-except">#</th>
+                    <th class="option-except">NIS</th>
+                    <th class="option-except">Nama Siswa</th>
                     <th>Tingkat</th>
                     <th>Rombel</th>
                     <th>Rayon</th>
                     <th>Jurusan</th>
-                    <th>Action</th>
+                    <th class="option-except">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,11 +76,14 @@
 @section('third_party_scripts')
 <script type="text/javascript" charset="utf8" src="{{ asset('https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/js/ddtf.js') }}"></script>
+
 @endsection
 @push('page_scripts')
     <script>
         $(document).ready( function () {
             $('#table').DataTable();
+            $('#table').ddTableFilter();
         } );
     </script>
 @endpush

@@ -31,7 +31,7 @@ class MapelController extends Controller
     public function validation(Request $request)
     {
         $validation = $request->validate([
-            'nama_mapel' => 'required|unique:mapel,nama_mapel',
+            'nama_mapel' => 'required',
             'guru_id' => 'required'
         ]);
     }

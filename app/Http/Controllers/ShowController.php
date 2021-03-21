@@ -6,7 +6,9 @@ use App\Upd;
 use App\Absen;
 use App\Nilai;
 use App\Siswa;
+use App\Exports\NilaiExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ShowController extends Controller
 {
@@ -37,6 +39,12 @@ class ShowController extends Controller
         }
 
         return view('raport.show', compact('nilai','siswa','absen', 'upd'));
+    }
+
+    public function exportNilai() 
+    {
+        $nama_file = 'nilai_'.date('Y-m-d_H-i-s').'.xlsx';
+        return Excel::download(new NilaiExport, $nama_file);
     }
 
 }
