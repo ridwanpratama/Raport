@@ -11,8 +11,8 @@
 <div class="section-body">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
-           <a href="{{ route('guru.create') }}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Tambah Data</a>
-           <a href="{{ route('trash.guru') }}" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i>Recycle Bin</a>
+           <a href="{{ route('restore.guru') }}" class="btn btn-icon icon-left btn-success" onclick="return confirm('Apakah anda yakin ingin merestore semua data?')"><i class="far fa-edit"></i>Restore All</a>
+           <a href="{{ route('deleteall.guru') }}" class="btn btn-icon icon-left btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus permanen semua data?')"><i class="fas fa-trash"></i>Delete All</a>
            <div class="card my-3">
                <div class="card-body">
            <table id="table" class="table table-striped table-bordered table-md">
@@ -22,30 +22,23 @@
                     <th>Nama Guru</th>
                     <th>Jenis Kelamin</th>
                     <th>Nomor Telepon</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                 </tr>
             </thead>
-                <tbody>
-                    <tr>
-                        @foreach($teacher as $guru)
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $guru->nama_guru }}</td>
-                        <td>{{ $guru->jk }}</td>
-                        <td>{{ $guru->no_telp }}</td>
-                        <td><a href="">
-                  <form action="{{route('guru.destroy',[$guru->id])}}" method="post">
-                  {{csrf_field()}}
-                  {{method_field('DELETE')}}
-                  <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data guru: {{$guru->nama_guru}} ')">Hapus</button>
-                  <a href="{{route('guru.edit',[$guru->id])}}" class="btn btn-warning btn-sm">Ubah</a>
-              </td>
-
-              </form>
-
-                    </tr>
-                    @endforeach
-                </tbody>
-
+            <tbody>
+                @foreach ($guru as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->nama_guru }}</td>
+                    <td>{{ $item->jk }}</td>
+                    <td>{{ $item->no_telp }}</td>
+                    <td>
+                        <a href="{{route('delete.guru',[$item->id])}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus permanen guru: {{$item->nama_guru}}?')">Delete</a>
+                        <a href="{{route('trashguru.restore',[$item->id])}}" class="btn btn-success btn-sm">Restore</a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
            </table>
                </div>
            </div>

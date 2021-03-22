@@ -33,11 +33,26 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
+    //Soft Deletes CRUD Siswa
     Route::get('siswa/trash', 'TrashController@siswa')->name('trash.siswa');
     Route::get('siswa/restore/{id}', 'TrashController@restoresiswa')->name('trash.restore');
     Route::get('siswa/restore_all', 'TrashController@restore_allsiswa')->name('restore.siswa');
     Route::get('siswa/delete/{id}', 'TrashController@delete_siswa')->name('delete.siswa');
     Route::get('siswa/deleteall', 'TrashController@delete_all_siswa')->name('deleteall.siswa');
+
+    //Soft Deletes CRUD Rayon
+    Route::get('rayon/trash', 'TrashController@rayon')->name('trash.rayon');
+    Route::get('rayon/restore/{id}', 'TrashController@restorerayon')->name('trashrayon.restore');
+    Route::get('rayon/restore_all', 'TrashController@restore_allrayon')->name('restore.rayon');
+    Route::get('rayon/delete/{id}', 'TrashController@delete_rayon')->name('delete.rayon');
+    Route::get('rayon/deleteall', 'TrashController@delete_all_rayon')->name('deleteall.rayon');
+
+    //Soft Deletes CRUD Guru
+    Route::get('guru/trash', 'TrashController@guru')->name('trash.guru');
+    Route::get('guru/restore/{id}', 'TrashController@restoreguru')->name('trashguru.restore');
+    Route::get('guru/restore_all', 'TrashController@restore_allguru')->name('restore.guru');
+    Route::get('guru/delete/{id}', 'TrashController@delete_guru')->name('delete.guru');
+    Route::get('guru/deleteall', 'TrashController@delete_all_guru')->name('deleteall.guru');
 
     Route::resource('siswa', 'SiswaController');
     Route::resource('guru', 'GuruController');
