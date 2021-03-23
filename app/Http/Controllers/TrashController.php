@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Detail;
 use App\Guru;
 use App\Siswa;
 use App\Rayon;
@@ -120,5 +121,43 @@ class TrashController extends Controller
         $guru->forceDelete();
 
         return redirect('/guru/trash');
+    }
+
+    public function detail()
+    {
+        $detail = Detail::onlyTrashed()->get();
+        return view('detail.trash', ['detail' => $detail]);
+    }
+
+    public function restoredetail($id)
+    {
+        $detail = Detail::onlyTrashed()->where('id', $id);
+        $detail->restore();
+
+        return redirect('detail/trash');
+    }
+
+    public function restore_alldetail()
+    {
+        $detail = Detail::onlyTrashed();
+        $detail->restore();
+
+        return redirect('detail/trash');
+    }
+
+    public function delete_detail($id)
+    {
+        $detail = Detail::onlyTrashed()->where('id', $id);
+        $detail->forceDelete();
+
+        return redirect('/detail/trash');
+    }
+
+    public function delete_all_detail()
+    {
+        $detail = Detail::onlyTrashed();
+        $detail->forceDelete();
+
+        return redirect('/detail/trash');
     }
 }
