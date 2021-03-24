@@ -13,8 +13,7 @@ class SiswaController extends Controller
         $validation = $request->validate([
             'nis' => 'required|unique:siswa,nis',
             'nama_siswa' => 'required',
-            'rombel' => 'required',
-            'tingkat' => 'required',
+            'rombel_id' => 'required',
             'rayon_id' => 'required',
             'jurusan_id' => 'required',
         ]);
@@ -38,8 +37,7 @@ class SiswaController extends Controller
         Siswa::create([
             'nis' => $request->nis,
             'nama_siswa' => $request->nama_siswa,
-            'tingkat' => $request->tingkat,
-            'rombel' => $request->rombel,
+            'rombel_id' => $request->rombel_id,
             'rayon_id' => $request->rayon_id,
             'jurusan_id' => $request->jurusan_id
         ]);
@@ -59,10 +57,9 @@ class SiswaController extends Controller
         $siswa->update([
             'nis' => $request->get('nis'),
             'nama_siswa' => $request->get('nama_siswa'),
-            'tingkat' => $request->get('tingkat'),
-            'rombel' => $request->get('rombel'),
             'rayon_id' => $request->get('rayon_id'),
-            'jurusan_id' => $request->get('jurusan_id')
+            'jurusan_id' => $request->get('jurusan_id'),
+            'rombel_id' => $request->get('rombel_id')
         ]);
 
         return redirect()->route('siswa.index')->with('toast_success', 'Data berhasil diupdate!');

@@ -26,8 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('raport/{siswa_id}', 'ShowController@raport')->name('raport_show');
     Route::get('nilai/export/', 'ShowController@exportNilai')->name('export_nilai');
 
-    Route::view('/tes', 'nilai.tes');
-    Route::view('/tes2', 'nilai.tes2');
+    Route::get('nilai/rombel/', 'NilaiController@rombel')->name('list_rombel');
+    Route::get('nilai/input/{id}', 'NilaiController@input')->name('input_nilai');
 
     Route::resource('absen', 'AbsenController');
     Route::resource('upd', 'UpdController');
@@ -78,4 +78,5 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
     Route::resource('detail', 'DetailController');
     Route::resource('user', 'UserController');
     Route::resource('jurusan', 'JurusanController');
+    Route::resource('rombel', 'RombelController');
 });

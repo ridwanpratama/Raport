@@ -29,24 +29,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label">Rombel</label>
-                        <div class="col-md-5">
-                            <select class="form-control @error('tingkat') is-invalid @enderror" id="tingkat" type="text" name="tingkat"
-                            placeholder="@error('tingkat') {{ $message }} @enderror">
-                                <option value="{{ $siswa->tingkat }}">{{$siswa->tingkat}}</option>
-                                    <option value="X">X</option>
-                                    <option value="XI">XI</option>
-                                    <option value="XII">XII</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <select class="form-control @error('rombel') is-invalid @enderror" id="rombel" type="text" name="rombel"
-                            placeholder="@error('rombel') {{ $message }} @enderror">
-                                <option value="{{ $siswa->rombel }}">{{$siswa->rombel}}</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                        <label class="col-md-3 col-form-label" for="select1">Rombel</label>
+                        <div class="col-md-9">
+                            <select class="form-control" id="rombel_id" name="rombel_id">
+                                <option value="{{ $siswa->rombel_id }}">{{ $siswa->rombel->nama_rombel }}</option>
+                                @foreach (App\Rombel::all() as $rombel)
+                                    <option value="{{ $rombel->id }}">{{ $rombel->nama_rombel }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

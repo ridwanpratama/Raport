@@ -6,6 +6,7 @@ use App\Upd;
 use App\Absen;
 use App\Nilai;
 use App\Siswa;
+use App\Rombel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -147,6 +148,20 @@ class NilaiController extends Controller
         $nilai = Nilai::find($id);
         $nilai->delete();
         return redirect('nilai')->with('toast_danger', 'Data berhasil dihapus!');
+    }
+
+    public function rombel()
+    {
+        $rombel = Rombel::all();
+ 
+        return view('nilai.rombel', compact('rombel'));
+    }
+
+    public function input($id)
+    {
+        $siswa = Siswa::where('rombel_id', $id)->get();
+        
+        return view('nilai.input', compact('siswa'));
     }
  
 }

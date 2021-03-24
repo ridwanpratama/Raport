@@ -10,7 +10,7 @@ class Siswa extends Model
     use SoftDeletes;
 
     protected $table = "siswa";
-    protected $fillable = ['nis', 'nama_siswa', 'tingkat', 'rombel', 'rayon_id', 'jurusan_id'];
+    protected $guarded = [];
     protected $dates = ['deleted_at'];
 
     public function jurusan()
@@ -29,6 +29,10 @@ class Siswa extends Model
 
     public function nilai(){
     	return $this->hasMany('App\Nilai');
+    }
+
+    public function rombel(){
+    	return $this->belongsTo('App\Rombel');
     }
 
 }
