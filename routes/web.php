@@ -26,6 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('raport/{siswa_id}', 'ShowController@raport')->name('raport_show');
     Route::get('nilai/export/', 'ShowController@exportNilai')->name('export_nilai');
 
+    Route::view('/tes', 'nilai.tes');
+    Route::view('/tes2', 'nilai.tes2');
+
     Route::resource('absen', 'AbsenController');
     Route::resource('upd', 'UpdController');
     Route::resource('nilai', 'NilaiController');

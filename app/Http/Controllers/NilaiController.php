@@ -92,7 +92,7 @@ class NilaiController extends Controller
             $jumlah = $uh1[$key] + $uh2[$key] + $pts_ganjil[$key] + $uh3[$key] + $uh4[$key] + $pas_ganjil[$key] + $uh5[$key] + $uh6[$key] + $pts_genap[$key] + $uh7[$key] + $uh8[$key] + $pat[$key];
 
             $jumlahk = $uh1k[$key] + $uh2k[$key] + $pts_ganjilk[$key] + $uh3k[$key] + $uh4k[$key] + $pas_ganjilk[$key] + $uh5k[$key] + $uh6k[$key] + $pts_genapk[$key] + $uh7k[$key] + $uh8k[$key] + $patk[$key];
-
+            
             $rata1 = $jumlah / 12;
             $rata2= $jumlahk / 12;
     
