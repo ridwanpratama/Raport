@@ -11,8 +11,8 @@
 <div class="section-body">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
-           <a href="{{ route('jurusan.create') }}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Tambah Data</a>
-           <a href="{{ route('trash.jurusan') }}" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i>Recycle Bin</a>
+           <a href="{{ route('restore.jurusan') }}" class="btn btn-icon icon-left btn-success" onclick="return confirm('Apakah anda yakin ingin merestore semua data?')"><i class="far fa-edit"></i>Restore All</a>
+           <a href="{{ route('deleteall.jurusan') }}" class="btn btn-icon icon-left btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus permanen semua data?')"><i class="fas fa-trash"></i>Delete All</a>
            <div class="card my-3">
                <div class="card-body">
            <table id="table" class="table table-striped table-bordered table-md">
@@ -20,29 +20,21 @@
                 <tr>
                     <th>#</th>
                     <th>Nama Jurusan</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                 </tr>
             </thead>
-                <tbody>
-                    <tr>
-                        <?php $i=1; ?>
-                        @foreach($data_jurusan as $jurusan)
-                        <td>{{ $i++ }}</td>
-                        <td>{{ $jurusan->nama_jurusan }}</td>
-                        <td><a href="">
-              <form action="{{route('jurusan.destroy',[$jurusan->id])}}" method="post">
-                  {{csrf_field()}}
-                  {{method_field('DELETE')}}
-                  <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data jurusan: {{$jurusan->nama_jurusan}} ')">Hapus</button>
-                  <a href="{{route('jurusan.edit',[$jurusan->id])}}" class="btn btn-warning btn-sm">Ubah</a>
-              </td>
-                  
-              </form>
-                        
-                    </tr>
-                    
+            <tbody>
+                @foreach ($jurusan as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->nama_jurusan }}</td>
+                    <td>
+                        <a href="{{route('delete.rayon',[$item->id])}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus permanen jurusan: {{$item->nama_jurusan}}?')">Delete</a>
+                        <a href="{{route('trashjurusan.restore',[$item->id])}}" class="btn btn-success btn-sm">Restore</a>
+                    </td>
+                </tr>
                 @endforeach
-                </tbody>
+            </tbody>
            </table>
                </div>
            </div>

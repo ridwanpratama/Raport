@@ -6,6 +6,7 @@ use App\Detail;
 use App\Guru;
 use App\Siswa;
 use App\Rayon;
+use App\Jurusan;
 use Illuminate\Http\Request;
 
 class TrashController extends Controller
@@ -83,6 +84,44 @@ class TrashController extends Controller
         $rayon->forceDelete();
 
         return redirect('/rayon/trash');
+    }
+
+    public function jurusan()
+    {
+        $jurusan = Jurusan::onlyTrashed()->get();
+        return view('jurusan.trash', ['jurusan' => $jurusan]);
+    }
+
+    public function restorejurusan($id)
+    {
+        $jurusan = Jurusan::onlyTrashed()->where('id', $id);
+        $jurusan->restore();
+
+
+    	return redirect('jurusan/trash');
+    }
+
+    public function restore_alljurusan()
+    {
+        $jurusan = Jurusan::onlyTrashed();
+        $jurusan->restore();
+
+        return redirect('jurusan/trash');
+    }
+
+    public function delete_jurusan($id){
+        $jurusan = Jurusan::onlyTrashed()->where('id', $id);
+        $jurusan->forceDelete();
+
+        return redirect('/jurusan/trash');
+    }
+
+    public function delete_all_jurusan()
+    {
+        $jurusan = Jurusan::onlyTrashed();
+        $jurusan->forceDelete();
+
+        return redirect('/jurusan/trash');
     }
 
     public function guru()

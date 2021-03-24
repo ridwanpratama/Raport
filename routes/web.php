@@ -47,6 +47,13 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
     Route::get('rayon/delete/{id}', 'TrashController@delete_rayon')->name('delete.rayon');
     Route::get('rayon/deleteall', 'TrashController@delete_all_rayon')->name('deleteall.rayon');
 
+    //Soft Deletes CRUD Jurusan
+    Route::get('jurusan/trash', 'TrashController@jurusan')->name('trash.jurusan');
+    Route::get('jurusan/restore/{id}', 'TrashController@restorejurusan')->name('trashjurusan.restore');
+    Route::get('jurusan/restore_all', 'TrashController@restore_alljurusan')->name('restore.jurusan');
+    Route::get('jurusan/delete/{id}', 'TrashController@delete_jurusan')->name('delete.jurusan');
+    Route::get('jurusan/deleteall', 'TrashController@delete_all_jurusan')->name('deleteall.jurusan');
+
     //Soft Deletes CRUD Guru
     Route::get('guru/trash', 'TrashController@guru')->name('trash.guru');
     Route::get('guru/restore/{id}', 'TrashController@restoreguru')->name('trashguru.restore');
