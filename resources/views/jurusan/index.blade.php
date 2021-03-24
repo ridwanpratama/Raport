@@ -12,6 +12,7 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
            <a href="{{ route('jurusan.create') }}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Tambah Data</a>
+           <a href="{{ route('trash.jurusan') }}" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i>Recycle Bin</a>
            <div class="card my-3">
                <div class="card-body">
            <table id="table" class="table table-striped table-bordered table-md">

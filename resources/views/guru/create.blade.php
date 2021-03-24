@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Tambah Data Guru')
 @section('pagetitle')
-    <h1>Tambah Data Mapel</h1>
+    <h1>Tambah Data Guru</h1>
 @endsection
 @section('content')
 <div class="section-body">
@@ -21,12 +21,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label">Guru</label>
+                            <label class="col-md-3 col-form-label">Jenis Kelamin</label>
                             <div class="col-md-9">
                                 <select class="form-control" id="jk" name="jk">
                                     <option>--Pilih Jenis Kelamin--</option>
                                         <option value="Laki-laki">Laki-laki</option>
-                                        <option value="Laki-laki">Perempuan</option>
+                                        <option value="Perempuan">Perempuan</option>
                                 </select>
                             </div>
                         </div>

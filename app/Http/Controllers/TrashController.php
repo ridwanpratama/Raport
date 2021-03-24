@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Detail;
+use App\Guru;
 use App\Siswa;
+use App\Rayon;
+use App\Jurusan;
 use Illuminate\Http\Request;
 
 class TrashController extends Controller
@@ -24,7 +28,7 @@ class TrashController extends Controller
     {
         $siswa = Siswa::onlyTrashed();
         $siswa->restore();
-    
+
         return redirect('siswa/trash');
     }
 
@@ -32,7 +36,7 @@ class TrashController extends Controller
     {
     	$siswa = Siswa::onlyTrashed()->where('id',$id);
     	$siswa->forceDelete();
- 
+
     	return redirect('/siswa/trash');
     }
 
@@ -40,7 +44,159 @@ class TrashController extends Controller
     {
     	$siswa = Siswa::onlyTrashed();
     	$siswa->forceDelete();
- 
+
     	return redirect('/siswa/trash');
+    }
+
+    public function rayon()
+    {
+        $rayon = Rayon::onlyTrashed()->get();
+        return view('rayon.trash', ['rayon' => $rayon]);
+    }
+
+    public function restorerayon($id)
+    {
+        $rayon = Rayon::onlyTrashed()->where('id', $id);
+        $rayon->restore();
+
+
+    	return redirect('rayon/trash');
+    }
+
+    public function restore_allrayon()
+    {
+        $rayon = Rayon::onlyTrashed();
+        $rayon->restore();
+
+        return redirect('rayon/trash');
+    }
+
+    public function delete_rayon($id){
+        $rayon = Rayon::onlyTrashed()->where('id', $id);
+        $rayon->forceDelete();
+
+        return redirect('/rayon/trash');
+    }
+
+    public function delete_all_rayon()
+    {
+        $rayon = Rayon::onlyTrashed();
+        $rayon->forceDelete();
+
+        return redirect('/rayon/trash');
+    }
+
+    public function jurusan()
+    {
+        $jurusan = Jurusan::onlyTrashed()->get();
+        return view('jurusan.trash', ['jurusan' => $jurusan]);
+    }
+
+    public function restorejurusan($id)
+    {
+        $jurusan = Jurusan::onlyTrashed()->where('id', $id);
+        $jurusan->restore();
+
+
+    	return redirect('jurusan/trash');
+    }
+
+    public function restore_alljurusan()
+    {
+        $jurusan = Jurusan::onlyTrashed();
+        $jurusan->restore();
+
+        return redirect('jurusan/trash');
+    }
+
+    public function delete_jurusan($id){
+        $jurusan = Jurusan::onlyTrashed()->where('id', $id);
+        $jurusan->forceDelete();
+
+        return redirect('/jurusan/trash');
+    }
+
+    public function delete_all_jurusan()
+    {
+        $jurusan = Jurusan::onlyTrashed();
+        $jurusan->forceDelete();
+
+        return redirect('/jurusan/trash');
+    }
+
+    public function guru()
+    {
+        $guru = Guru::onlyTrashed()->get();
+        return view('guru.trash', ['guru'  => $guru]);
+    }
+
+    public function restoreguru($id)
+    {
+        $guru = Guru::onlyTrashed()->where('id', $id);
+        $guru->restore();
+
+        return redirect('guru/trash');
+    }
+
+    public function restore_allguru()
+    {
+        $guru = Guru::onlyTrashed();
+        $guru->restore();
+
+        return redirect('guru/trash');
+    }
+
+    public function delete_guru($id)
+    {
+        $guru = Guru::onlyTrashed()->where('id', $id);
+        $guru->forceDelete();
+
+        return redirect('/guru/trash');
+    }
+
+    public function delete_all_guru()
+    {
+        $guru = Guru::onlyTrashed();
+        $guru->forceDelete();
+
+        return redirect('/guru/trash');
+    }
+
+    public function detail()
+    {
+        $detail = Detail::onlyTrashed()->get();
+        return view('detail.trash', ['detail' => $detail]);
+    }
+
+    public function restoredetail($id)
+    {
+        $detail = Detail::onlyTrashed()->where('id', $id);
+        $detail->restore();
+
+        return redirect('detail/trash');
+    }
+
+    public function restore_alldetail()
+    {
+        $detail = Detail::onlyTrashed();
+        $detail->restore();
+
+        return redirect('detail/trash');
+    }
+
+    public function delete_detail($id)
+    {
+        $detail = Detail::onlyTrashed()->where('id', $id);
+        $detail->forceDelete();
+
+        return redirect('/detail/trash');
+    }
+
+    public function delete_all_detail()
+    {
+        $detail = Detail::onlyTrashed();
+        $detail->forceDelete();
+
+        return redirect('/detail/trash');
     }
 }

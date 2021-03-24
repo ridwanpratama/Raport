@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label">Guru</label>
+                        <label class="col-md-3 col-form-label">Jenis Kelamin</label>
                         <div class="col-md-9">
                             <select class="form-control" id="jk" name="jk">
                                 <option value="{{ $guru->jk }}">{{$guru->jk}}</option>
