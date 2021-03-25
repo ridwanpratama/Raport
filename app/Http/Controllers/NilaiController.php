@@ -64,83 +64,86 @@ class NilaiController extends Controller
         {
             $input['siswa_id'] = $siswa_id;
             $input['mapel_id'] = $mapel;
-            $input['uh1'] = $uh1[$key];
-            $input['uh2'] = $uh2[$key];
-            $input['pts_ganjil'] = $pts_ganjil[$key];
-            $input['uh3'] = $uh3[$key];
-            $input['uh4'] = $uh4[$key];
-            $input['pas_ganjil'] = $pas_ganjil[$key];
-            $input['uh5'] = $uh5[$key];
-            $input['uh6'] = $uh6[$key];
-            $input['pts_genap'] = $pts_genap[$key];
-            $input['uh7'] = $uh7[$key];
-            $input['uh8'] = $uh8[$key];
+            $input['uh1'] = (array_key_exists($key,$uh1)) ? $uh1[$key] : null;
+            $input['uh2'] = (array_key_exists($key,$uh2)) ? $uh2[$key] : null;
+            $input['pts_ganjil'] = (array_key_exists($key,$pts_ganjil)) ? $pts_ganjil[$key] : null;
+            $input['uh3'] = (array_key_exists($key,$uh3)) ? $uh3[$key] : null;
+            $input['uh4'] =(array_key_exists($key,$uh4)) ? $uh4[$key] : null;
+            $input['pas_ganjil'] = (array_key_exists($pas_ganjil,$pas_ganjil)) ? $pas_ganjil[$key] : null;
+            $input['uh5'] = (array_key_exists($key,$uh5)) ? $uh5[$key] : null;
+            $input['uh6'] = (array_key_exists($key,$uh6)) ? $uh6[$key] : null;
+            $input['pts_genap'] = (array_key_exists($key,$pts_genap)) ? $pts_genap[$key] : null;
+            $input['uh7'] = (array_key_exists($key,$uh7)) ? $uh7[$key] : null;
+            $input['uh8'] = (array_key_exists($key,$uh8)) ? $uh8[$key] : null;
             $input['pat'] = $pat[$key];
 
-            $input['uh1k'] = $uh1k[$key];
-            $input['uh2k'] = $uh2k[$key];
+            $input['uh1k'] = (array_key_exists($key,$uh1k)) ? $uh1k[$key] : null;
+            $input['uh2k'] = (array_key_exists($key,$uh2k)) ? $uh2k[$key] : null;
             $input['pts_ganjilk'] = $pts_ganjilk[$key];
-            $input['uh3k'] = $uh3k[$key];
-            $input['uh4k'] = $uh4k[$key];
-            $input['pas_ganjilk'] = $pas_ganjilk[$key];
-            $input['uh5k'] = $uh5k[$key];
-            $input['uh6k'] = $uh6k[$key];
-            $input['pts_genapk'] = $pts_genapk[$key];
-            $input['uh7k'] = $uh7k[$key];
-            $input['uh8k'] = $uh8k[$key];
-            $input['patk'] = $patk[$key];
+            $input['uh3k'] = (array_key_exists($key,$uh3k)) ? $uh3k[$key] : null;
+            $input['uh4k'] = (array_key_exists($key,$uh4k)) ? $uh4k[$key] : null;
+            $input['pas_ganjilk'] = (array_key_exists($key,$pas_ganjilk)) ? $pas_ganjilk[$key] : null;
+            $input['uh5k'] = (array_key_exists($key,$uh5k)) ? $uh5k[$key] : null;
+            $input['uh6k'] = (array_key_exists($key,$uh6k)) ? $uh6k[$key] : null;
+            $input['pts_genapk'] = (array_key_exists($key,$pts_genapk)) ? $pts_genapk[$key] : null;
+            $input['uh7k'] = (array_key_exists($key,$uh7k)) ? $uh7k[$key] : null;
+            $input['uh8k'] = (array_key_exists($key,$uh8k)) ? $uh8k[$key] : null;
+            $input['patk'] = (array_key_exists($key,$patk)) ? $patk[$key] : null;
 
-            $jumlah = $uh1[$key] + $uh2[$key] + $pts_ganjil[$key] + $uh3[$key] + $uh4[$key] + $pas_ganjil[$key] + $uh5[$key] + $uh6[$key] + $pts_genap[$key] + $uh7[$key] + $uh8[$key] + $pat[$key];
+            // $jumlah = $uh1[$key] + $uh2[$key] + $pts_ganjil[$key] + $uh3[$key] + $uh4[$key] + $pas_ganjil[$key] + $uh5[$key] + $uh6[$key] + $pts_genap[$key] + $uh7[$key] + $uh8[$key] + $pat[$key];
 
-            $jumlahk = $uh1k[$key] + $uh2k[$key] + $pts_ganjilk[$key] + $uh3k[$key] + $uh4k[$key] + $pas_ganjilk[$key] + $uh5k[$key] + $uh6k[$key] + $pts_genapk[$key] + $uh7k[$key] + $uh8k[$key] + $patk[$key];
+            // $jumlahk = $uh1k[$key] + $uh2k[$key] + $pts_ganjilk[$key] + $uh3k[$key] + $uh4k[$key] + $pas_ganjilk[$key] + $uh5k[$key] + $uh6k[$key] + $pts_genapk[$key] + $uh7k[$key] + $uh8k[$key] + $patk[$key];
             
-            $rata1 = $jumlah / 12;
-            $rata2= $jumlahk / 12;
+            // $rata1 = $jumlah / 12;
+            // $rata2= $jumlahk / 12;
     
-            $rata_rata[] = $jumlah / 12;
-            $rata_ratak[] = $jumlahk / 12;
+            // $rata_rata[] = $jumlah / 12;
+            // $rata_ratak[] = $jumlahk / 12;
             
-            $input['rata_rata'] = $rata_rata[$key];
-            $input['rata_ratak'] = $rata_ratak[$key];
+            // $input['rata_rata'] = $rata_rata[$key];
+            // $input['rata_ratak'] = $rata_ratak[$key];
 
-            if($rata_rata[$key] <= 75){
-                $predikat = "Belum Kompeten";
-            }else{
-                $predikat = "Kompeten";
-            }
+            // if($rata_rata[$key] <= 75){
+            //     $predikat = "Belum Kompeten";
+            // }else{
+            //     $predikat = "Kompeten";
+            // }
 
-            if($rata_ratak[$key] <= 75){
-                $predikatk = "Belum Kompeten";
-            }else{
-                $predikatk = "Kompeten";
-            }
+            // if($rata_ratak[$key] <= 75){
+            //     $predikatk = "Belum Kompeten";
+            // }else{
+            //     $predikatk = "Kompeten";
+            // }
 
-            $input['predikat'] = $predikat;
-            $input['predikatk'] = $predikatk;
+            // $input['predikat'] = $predikat;
+            // $input['predikatk'] = $predikatk;
 
-            $total[] = ($rata1 + $rata2) / 2;
+            // $total[] = ($rata1 + $rata2) / 2;
             
-            if($total[$key] > 89){
-                $ket = "A";
-            }else if($total[$key] > 79){
-                $ket = "B";
-            }else if($total[$key] > 69){
-                $ket = "C";
-            }else if($total[$key] > 59){
-                $ket = "D";
-            }else{
-                $ket = "E";
-            }
+            // if($total[$key] > 89){
+            //     $ket = "A";
+            // }else if($total[$key] > 79){
+            //     $ket = "B";
+            // }else if($total[$key] > 69){
+            //     $ket = "C";
+            // }else if($total[$key] > 59){
+            //     $ket = "D";
+            // }else{
+            //     $ket = "E";
+            // }
 
-            // dd($ket);
+            // // dd($ket);
 
-            $input['ket'] = $ket;
+            // $input['ket'] = $ket;
 
             Nilai::create($input);
 
+           
+            return redirect()->route('list_rombel')->with('success', 'Data berhasil disimpan!');
+
         }
 
-        return redirect()->route('nilai.create')->with('success', 'Data berhasil disimpan!');
+        
     }
 
     public function destroy($id)

@@ -45,7 +45,7 @@ class CreateNilaisTable extends Migration
             $table->integer('uh8k')->nullable();
             $table->integer('patk')->nullable();
             $table->integer('rata_ratak')->nullable();
-            $table->string('predikatk');
+            $table->string('predikatk')->nullable();
 
             $table->string('ket')->nullable();
             $table->timestamps();
