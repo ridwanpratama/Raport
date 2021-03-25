@@ -64,31 +64,31 @@ class NilaiController extends Controller
         {
             $input['siswa_id'] = $siswa_id;
             $input['mapel_id'] = $mapel;
-            $input['uh1'] = (array_key_exists($key,$uh1)) ? $uh1[$key] : null;
-            $input['uh2'] = (array_key_exists($key,$uh2)) ? $uh2[$key] : null;
-            $input['pts_ganjil'] = (array_key_exists($key,$pts_ganjil)) ? $pts_ganjil[$key] : null;
-            $input['uh3'] = (array_key_exists($key,$uh3)) ? $uh3[$key] : null;
-            $input['uh4'] =(array_key_exists($key,$uh4)) ? $uh4[$key] : null;
-            $input['pas_ganjil'] = (array_key_exists($pas_ganjil,$pas_ganjil)) ? $pas_ganjil[$key] : null;
-            $input['uh5'] = (array_key_exists($key,$uh5)) ? $uh5[$key] : null;
-            $input['uh6'] = (array_key_exists($key,$uh6)) ? $uh6[$key] : null;
-            $input['pts_genap'] = (array_key_exists($key,$pts_genap)) ? $pts_genap[$key] : null;
-            $input['uh7'] = (array_key_exists($key,$uh7)) ? $uh7[$key] : null;
-            $input['uh8'] = (array_key_exists($key,$uh8)) ? $uh8[$key] : null;
-            $input['pat'] = $pat[$key];
+            $input['uh1'] = $uh1[$key] ?? null;
+            $input['uh2'] = $uh2[$key] ?? null;
+            $input['pts_ganjil'] = $pts_ganjil[$key] ?? null;
+            $input['uh3'] = $uh3[$key] ?? null;
+            $input['uh4'] = $uh4[$key] ?? null;
+            $input['pas_ganjil'] = $pas_ganjil[$key] ?? null;
+            $input['uh5'] = $uh5[$key] ?? null;
+            $input['uh6'] = $uh6[$key] ?? null;
+            $input['pts_genap'] = $pts_genap[$key] ?? null;
+            $input['uh7'] = $uh7[$key] ?? null;
+            $input['uh8'] = $uh8[$key] ?? null;
+            $input['pat'] = $pat[$key] ?? null;
 
-            $input['uh1k'] = (array_key_exists($key,$uh1k)) ? $uh1k[$key] : null;
-            $input['uh2k'] = (array_key_exists($key,$uh2k)) ? $uh2k[$key] : null;
-            $input['pts_ganjilk'] = $pts_ganjilk[$key];
-            $input['uh3k'] = (array_key_exists($key,$uh3k)) ? $uh3k[$key] : null;
-            $input['uh4k'] = (array_key_exists($key,$uh4k)) ? $uh4k[$key] : null;
-            $input['pas_ganjilk'] = (array_key_exists($key,$pas_ganjilk)) ? $pas_ganjilk[$key] : null;
-            $input['uh5k'] = (array_key_exists($key,$uh5k)) ? $uh5k[$key] : null;
-            $input['uh6k'] = (array_key_exists($key,$uh6k)) ? $uh6k[$key] : null;
-            $input['pts_genapk'] = (array_key_exists($key,$pts_genapk)) ? $pts_genapk[$key] : null;
-            $input['uh7k'] = (array_key_exists($key,$uh7k)) ? $uh7k[$key] : null;
-            $input['uh8k'] = (array_key_exists($key,$uh8k)) ? $uh8k[$key] : null;
-            $input['patk'] = (array_key_exists($key,$patk)) ? $patk[$key] : null;
+            $input['uh1k'] = $uh1k[$key] ?? null;
+            $input['uh2k'] = $uh2k[$key] ?? null;
+            $input['pts_ganjilk'] = $pts_ganjilk[$key] ?? null;
+            $input['uh3k'] = $uh3k[$key] ?? null;
+            $input['uh4k'] = $uh4k[$key] ?? null;
+            $input['pas_ganjilk'] = $pas_ganjilk[$key] ?? null;
+            $input['uh5k'] = $uh5k[$key] ?? null;
+            $input['uh6k'] = $uh6k[$key] ?? null;
+            $input['pts_genapk'] = $pts_genapk[$key] ?? null;
+            $input['uh7k'] =$uh7k[$key] ?? null;
+            $input['uh8k'] = $uh8k[$key] ?? null;
+            $input['patk'] = $patk[$key] ?? null;
 
             // $jumlah = $uh1[$key] + $uh2[$key] + $pts_ganjil[$key] + $uh3[$key] + $uh4[$key] + $pas_ganjil[$key] + $uh5[$key] + $uh6[$key] + $pts_genap[$key] + $uh7[$key] + $uh8[$key] + $pat[$key];
 
@@ -136,6 +136,7 @@ class NilaiController extends Controller
 
             // $input['ket'] = $ket;
 
+            dd($input);
             Nilai::create($input);
 
            

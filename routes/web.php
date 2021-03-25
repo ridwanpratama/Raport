@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('nilai/rombel/', 'NilaiController@rombel')->name('list_rombel');
     Route::get('nilai/input/{id}', 'NilaiController@input')->name('input_nilai');
+    Route::post('nilai/input/', 'NilaiController@store')->name('store_nilai');
 
     Route::resource('absen', 'AbsenController');
     Route::resource('upd', 'UpdController');
