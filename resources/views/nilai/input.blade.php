@@ -59,8 +59,8 @@
                     <input type="hidden" name="siswa_id" value="{{ $item->id }}"></td>
                   <td>{{ $item->nis }}</td>
                   <td>{{ $item->rayon->nama_rayon }}</td>
-                  <td><input data-tag="pengetahuanInput" type="text" name="nilai"></td>
-                  <td><input data-tag="keterampilanInput" type="text" name="nilai"></td>
+                  <td><input class="form-control" data-tag="pengetahuanInput" type="text" name="nilai"></td>
+                  <td><input class="form-control" data-tag="keterampilanInput" type="text" name="nilai"></td>
                 </tr>
               </tbody>
               @endforeach
