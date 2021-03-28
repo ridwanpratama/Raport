@@ -22,7 +22,6 @@
                                     <th>#</th>
                                     <th>NIS Siswa</th>
                                     <th>Nama Siswa</th>
-                                    <th>Tingkat</th>
                                     <th>Rombel</th>
                                     <th>Rayon</th>
                                     <th>Sakit</th>
@@ -37,8 +36,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->siswa->nis }}</td>
                                         <td>{{ $item->siswa->nama_siswa }}</td>
-                                        <td>{{ $item->siswa->tingkat }}</td>
-                                        <td>{{ $item->siswa->rombel }}</td>
+                                        <td>{{ $item->siswa->rombel->nama_rombel }}</td>
                                         <td>{{ $item->siswa->rayon->nama_rayon }}</td>
                                         <td>{{ $item->sakit }}</td>
                                         <td>{{ $item->izin }}</td>

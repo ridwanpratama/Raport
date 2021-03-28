@@ -18,7 +18,7 @@
             <button class="btn btn-danger" id="lessMapel">-</button>
 
             <div id="baseForm" class="mt-4">
-              <select class="form-control my-2" id="mapelSelect" name="mapel_id[]" required>
+              <select class="form-control my-2" id="mapelSelect" required>
                 <option value disable>--Pilih Mapel--</option>
                 @foreach (App\Mapel::all() as $mapel)
                 <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
@@ -56,8 +56,9 @@
                 <tbody>
                   <tr>
                     <td>{{ $item->nama_siswa }}
-                      <input type="hidden" name="siswa_id" value="{{ $item->id }}">
+                      <input type="hidden" name="siswa_id[]" value="{{ $item->id }}">
                     </td>
+                    <input type="hidden" name="mapel_id[]" value=""></td>
                     <td>{{ $item->nis }}</td>
                     <td>{{ $item->rayon->nama_rayon }}</td>
                     <td><input class="form-control" data-tag="pengetahuanInput" type="text" name="nilai"></td>

@@ -21,7 +21,6 @@
                                 <tr>
                                     <th>Nama Siswa:</th>
                                     <th>NIS</th>
-                                    <th>Tingkat</th>
                                     <th>Rombel</th>
                                     <th>Rayon</th>
                                     <th>Jurusan</th>
@@ -31,8 +30,7 @@
                                 <tr>
                                     <td>{{ $siswa->nama_siswa }}</td>
                                     <td>{{ $siswa->nis }}</td>
-                                    <td>{{ $siswa->tingkat }}</td>
-                                    <td>{{ $siswa->rombel }}</td>
+                                    <td>{{ $siswa->rombel->nama_rombel }}</td>
                                     <td>{{ $siswa->rayon->nama_rayon }}</td>
                                     <td>{{ $siswa->jurusan->nama_jurusan }}</td>
                                 </tr>
