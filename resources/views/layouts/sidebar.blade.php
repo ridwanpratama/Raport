@@ -93,7 +93,7 @@
 
             <li class="menu-header">Kelola Nilai</li>
 
-            <li class="nav-item dropdown {{ Request::is('nilai', 'nilai/create', 'raport', 'absen', 'absen/create', 'upd', 'upd/create', 'nilai/rombel') ? 'sidebar-item active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('nilai', 'nilai/create', 'raport', 'absen', 'absen/create', 'upd', 'upd/create', 'nilai/rombel', 'nilai/jurusan') ? 'sidebar-item active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-edit"></i><span>Kelola Nilai</span></a>
                 <ul class="dropdown-menu" style="display: none;">
 
@@ -110,11 +110,11 @@
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown {{ Request::is('nilai/create') ? 'sidebar-item active' : '' }}">
+                    {{-- <li class="nav-item dropdown {{ Request::is('nilai/create') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('nilai.create') }}" class="nav-link">
                             <span>Input Nilai Mapel</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item dropdown {{ Request::is('nilai') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('nilai.index') }}" class="nav-link">
@@ -128,9 +128,9 @@
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown {{ Request::is('list_rombel') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('list_rombel') }}" class="nav-link">
-                            <span>Nilai Rombel</span>
+                    <li class="nav-item dropdown {{ Request::is('nilai/jurusan') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('list_jurusan') }}" class="nav-link">
+                            <span>Input Nilai</span>
                         </a>
                     </li>
 

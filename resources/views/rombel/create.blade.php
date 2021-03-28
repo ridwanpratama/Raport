@@ -20,6 +20,19 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Jurusan</label>
+                        <div class="col-md-9">
+                            <select class="form-control @error('jurusan_id') is-invalid @enderror" type="text" name="jurusan_id"
+                            placeholder="@error('jurusan_id') {{ $message }} @enderror">
+                                <option value disable>--Pilih Jurusan--</option>
+                                @foreach (App\Jurusan::all() as $jurusan)
+                                    <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Simpan Data</button>
                         <button class="btn btn-secondary" type="reset">Reset</button>

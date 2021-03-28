@@ -25,7 +25,7 @@ function init(parentNode) {
 
   nilaiSelect.addEventListener('change', ({ target: { value } }) => {
     keterampilanInputs.forEach(input =>
-      input.setAttribute('name', `${value}[]`)
+      input.setAttribute('name', `${value}k[]`)
     )
     pengetahuanInputs.forEach(input => input.setAttribute('name', `${value}[]`))
   })

@@ -19,4 +19,8 @@ class Jurusan extends Model
     public function nilai(){
     	return $this->hasMany('App\Nilai');
     }
+
+    public function rombel(){
+    	return $this->hasMany('App\Rombel');
+    }
 }

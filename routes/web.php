@@ -26,7 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('raport/{siswa_id}', 'ShowController@raport')->name('raport_show');
     Route::get('nilai/export/', 'ShowController@exportNilai')->name('export_nilai');
 
-    Route::get('nilai/rombel/', 'NilaiController@rombel')->name('list_rombel');
+    Route::get('nilai/rombel/{id}', 'NilaiController@rombel')->name('list_rombel');
+    Route::get('nilai/jurusan/', 'NilaiController@jurusan')->name('list_jurusan');
+
     Route::get('nilai/input/{id}', 'NilaiController@input')->name('input_nilai');
     Route::post('nilai/input/', 'NilaiController@store')->name('store_nilai');
 

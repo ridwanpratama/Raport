@@ -10,7 +10,8 @@ class RombelController extends Controller
     public function validation(Request $request)
     {
         $validation = $request->validate([
-            'nama_rombel' => 'required'
+            'nama_rombel' => 'required',
+            'jurusan_id' => 'required'
         ]);
     }
 
@@ -31,6 +32,7 @@ class RombelController extends Controller
 
         Rombel::create([
             'nama_rombel' => $request->nama_rombel,
+            'jurusan_id' => $request->jurusan_id,
         ]);
 
         return redirect('rombel')->with('toast_success', 'Data berhasil disimpan!');
@@ -46,7 +48,8 @@ class RombelController extends Controller
     {
         $rombel = Rombel::find($id);
         $rombel->update([
-            'nama_rombel' => $request->get('nama_rombel')
+            'nama_rombel' => $request->get('nama_rombel'),
+            'jurusan_id' => $request->get('jurusan_id')
         ]);
 
         return redirect()->route('rombel.index')->with('toast_success', 'Data berhasil diupdate!');

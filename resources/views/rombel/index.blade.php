@@ -19,6 +19,7 @@
                 <tr>
                     <th>#</th>
                     <th>Rombel</th>
+                    <th>Jurusan</th>
                     <th class="option-except">Action</th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->nama_rombel }}</td>
+                    <td>{{ $item->jurusan->nama_jurusan }}</td>
                     <td>
                         <form action="{{route('rombel.destroy',[$item->id])}}" method="post">
                             {{csrf_field()}}

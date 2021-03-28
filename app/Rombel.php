@@ -13,4 +13,9 @@ class Rombel extends Model
     {
 	    return $this->hasMany('App\Siswa');
     }
+
+    public function jurusan()
+    {
+	    return $this->belongsTo('App\Jurusan');
+    }
 }
