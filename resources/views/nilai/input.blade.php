@@ -13,9 +13,9 @@
       <div class="card">
         <form action="{{ route('store_nilai') }}" method="POST">
           @csrf
-        <div class="card-body" id="formsParent">
-          <button class="btn btn-info" id="moreMapel">+</button>
-          <button class="btn btn-danger" id="lessMapel">-</button>
+          <div class="card-body" id="formsParent">
+            <button class="btn btn-info" id="moreMapel">+</button>
+            <button class="btn btn-danger" id="lessMapel">-</button>
 
           <div id="baseForm" class="mt-4">
             <select class="form-control my-2" id="mapelSelect" required>
@@ -25,32 +25,32 @@
               @endforeach
             </select>
 
-            <select id="nilaiSelect" class="form-control my-2" id="jenis_nilai" name="jenis_nilai[]" required>
-              <option value disable>--Pilih Jenis Nilai--</option>
-              <option value="uh1">UH 1</option>
-              <option value="uh2">UH 2</option>
-              <option value="pts_ganjil">PTS Ganjil</option>
-              <option value="uh3">UH 3</option>
-              <option value="uh4">UH 4</option>
-              <option value="pas_ganjil">PAS Ganjil</option>
-              <option value="uh5">UH 5</option>
-              <option value="uh6">UH 6</option>
-              <option value="pts_genap">PTS Genap</option>
-              <option value="uh7">UH 7</option>
-              <option value="uh8">UH 8</option>
-              <option value="pat">PAT</option>
-            </select>
+              <select id="nilaiSelect" class="form-control my-2" name="jenis_nilai[]" required>
+                <option value disable>--Pilih Jenis Nilai--</option>
+                <option value="uh1">UH 1</option>
+                <option value="uh2">UH 2</option>
+                <option value="pts_ganjil">PTS Ganjil</option>
+                <option value="uh3">UH 3</option>
+                <option value="uh4">UH 4</option>
+                <option value="pas_ganjil">PAS Ganjil</option>
+                <option value="uh5">UH 5</option>
+                <option value="uh6">UH 6</option>
+                <option value="pts_genap">PTS Genap</option>
+                <option value="uh7">UH 7</option>
+                <option value="uh8">UH 8</option>
+                <option value="pat">PAT</option>
+              </select>
 
-            <table class="table table-sm">
-              <thead>
-                <tr>
-                  <th>Nama Siswa</th>
-                  <th>NIS</th>
-                  <th>Rayon</th>
-                  <th>Nilai Pengetahuan</th>
-                  <th>Nilai Keterampilan</th>
-                </tr>
-              </thead>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Nama Siswa</th>
+                    <th>NIS</th>
+                    <th>Rayon</th>
+                    <th>Nilai Pengetahuan</th>
+                    <th>Nilai Keterampilan</th>
+                  </tr>
+                </thead>
 
               @foreach ($siswa as $item)
               <tbody>
@@ -66,14 +66,14 @@
               </tbody>
               @endforeach
 
-            </table>
-          </div>
+              </table>
+            </div>
 
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-sm btn-primary" type="submit"> Simpan Data</button>
-        </div>
-      </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-sm btn-primary" type="submit"> Simpan Data</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
