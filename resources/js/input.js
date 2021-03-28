@@ -10,14 +10,20 @@ moreMapel.addEventListener('click', () => {
 })
 
 lessMapel.addEventListener('click', () => {
-  if (formsParent.children.length > 2)
-    formsParent.removeChild(formsParent.lastElementChild)
+  const {
+    children: { length },
+    lastElementChild
+  } = formsParent
+
+  if (length > 2) formsParent.removeChild(lastElementChild)
 })
 
 function init(parentNode) {
   const nilaiSelect = parentNode.querySelector('#nilaiSelect')
   const mapelSelect = parentNode.querySelector('#mapelSelect')
-  const hiddenMapelInput = parentNode.querySelector('input[name="mapel_id[]"]')
+  const hiddenMapelInputs = parentNode.querySelectorAll(
+    'input[name="mapel_id[]"]'
+  )
   const pengetahuanInputs = parentNode.querySelectorAll(
     'input[data-tag="pengetahuanInput"]'
   )
@@ -33,10 +39,8 @@ function init(parentNode) {
   })
 
   mapelSelect.addEventListener('change', ({ target: { value } }) => {
-    hiddenMapelInput.value = value
+    hiddenMapelInputs.forEach(input => (input.value = value))
   })
-
-  console.log({ hiddenMapelInput })
 }
 
 init(baseForm)
