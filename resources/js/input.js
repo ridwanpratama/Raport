@@ -35,6 +35,8 @@ function init(parentNode) {
   mapelSelect.addEventListener('change', ({ target: { value } }) => {
     hiddenMapelInput.value = value
   })
+
+  console.log({ hiddenMapelInput })
 }
 
 init(baseForm)
