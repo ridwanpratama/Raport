@@ -58,7 +58,7 @@
                     <td>{{ $item->nama_siswa }}
                       <input type="hidden" name="siswa_id[]" value="{{ $item->id }}">
                     </td>
-                    <input type="hidden" name="mapel_id[]" value=""></td>
+                    <input type="hidden" name="mapel_id[]" value="placeholder"></td>
                     <td>{{ $item->nis }}</td>
                     <td>{{ $item->rayon->nama_rayon }}</td>
                     <td><input class="form-control" data-tag="pengetahuanInput" type="text" name="nilai"></td>
