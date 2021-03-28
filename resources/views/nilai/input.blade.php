@@ -17,13 +17,13 @@
             <button class="btn btn-info" id="moreMapel">+</button>
             <button class="btn btn-danger" id="lessMapel">-</button>
 
-          <div id="baseForm" class="mt-4">
-            <select class="form-control my-2" id="mapelSelect" required>
-              <option value disable>--Pilih Mapel--</option>
-              @foreach (App\Mapel::all() as $mapel)
-              <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
-              @endforeach
-            </select>
+            <div id="baseForm" class="mt-4">
+              <select class="form-control my-2" id="mapelSelect" required>
+                <option value disable>--Pilih Mapel--</option>
+                @foreach (App\Mapel::all() as $mapel)
+                <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
+                @endforeach
+              </select>
 
               <select id="nilaiSelect" class="form-control my-2" name="jenis_nilai[]" required>
                 <option value disable>--Pilih Jenis Nilai--</option>
@@ -52,26 +52,27 @@
                   </tr>
                 </thead>
 
-              @foreach ($siswa as $item)
-              <tbody>
-                <tr>
-                  <td>{{ $item->nama_siswa }}
-                    <input type="hidden" name="siswa_id[]" value="{{ $item->id }}"></td>
+                @foreach ($siswa as $item)
+                <tbody>
+                  <tr>
+                    <td>{{ $item->nama_siswa }}
+                      <input type="hidden" name="siswa_id[]" value="{{ $item->id }}">
+                    </td>
                     <input type="hidden" name="mapel_id[]" value=""></td>
-                  <td>{{ $item->nis }}</td>
-                  <td>{{ $item->rayon->nama_rayon }}</td>
-                  <td><input class="form-control" data-tag="pengetahuanInput" type="text" name="nilai"></td>
-                  <td><input class="form-control" data-tag="keterampilanInput" type="text" name="nilai"></td>
-                </tr>
-              </tbody>
-              @endforeach
+                    <td>{{ $item->nis }}</td>
+                    <td>{{ $item->rayon->nama_rayon }}</td>
+                    <td><input class="form-control" data-tag="pengetahuanInput" type="text" name="nilai"></td>
+                    <td><input class="form-control" data-tag="keterampilanInput" type="text" name="nilai"></td>
+                  </tr>
+                </tbody>
+                @endforeach
 
               </table>
             </div>
 
           </div>
           <div class="card-footer">
-            <button class="btn btn-sm btn-primary" type="submit"> Simpan Data</button>
+            <button class="btn btn-sm btn-primary" type="submit">Simpan Data</button>
           </div>
         </form>
       </div>

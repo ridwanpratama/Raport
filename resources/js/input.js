@@ -16,6 +16,8 @@ lessMapel.addEventListener('click', () => {
 
 function init(parentNode) {
   const nilaiSelect = parentNode.querySelector('#nilaiSelect')
+  const mapelSelect = parentNode.querySelector('#mapelSelect')
+  const hiddenMapelInput = parentNode.querySelector('input[name="mapel_id[]"]')
   const pengetahuanInputs = parentNode.querySelectorAll(
     'input[data-tag="pengetahuanInput"]'
   )
@@ -28,6 +30,10 @@ function init(parentNode) {
       input.setAttribute('name', `${value}k[]`)
     )
     pengetahuanInputs.forEach(input => input.setAttribute('name', `${value}[]`))
+  })
+
+  mapelSelect.addEventListener('change', ({ target: { value } }) => {
+    hiddenMapelInput.value = value
   })
 }
 
