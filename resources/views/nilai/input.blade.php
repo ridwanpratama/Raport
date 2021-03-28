@@ -72,7 +72,7 @@
 
           </div>
           <div class="card-footer">
-            <button class="btn btn-sm btn-primary" type="submit"> Simpan Data</button>
+            <button class="btn btn-sm btn-primary" type="submit">Simpan Data</button>
           </div>
         </form>
       </div>
