@@ -19,27 +19,21 @@ lessMapel.addEventListener('click', () => {
 })
 
 function init(parentNode) {
-  const nilaiSelect = parentNode.querySelector('#nilaiSelect')
+  const jenisNilaiSelect = parentNode.querySelector('#jenisNilaiSelect')
   const mapelSelect = parentNode.querySelector('#mapelSelect')
   const hiddenMapelInputs = parentNode.querySelectorAll(
     'input[name="mapel_id[]"]'
   )
-  const pengetahuanInputs = parentNode.querySelectorAll(
-    'input[data-tag="pengetahuanInput"]'
+  const hiddenJenisNilaiInputs = parentNode.querySelectorAll(
+    'input[name="jenis_nilai_id[]"]'
   )
-  const keterampilanInputs = parentNode.querySelectorAll(
-    'input[data-tag="keterampilanInput"]'
-  )
-
-  nilaiSelect.addEventListener('change', ({ target: { value } }) => {
-    keterampilanInputs.forEach(input =>
-      input.setAttribute('name', `${value}k[]`)
-    )
-    pengetahuanInputs.forEach(input => input.setAttribute('name', `${value}[]`))
-  })
 
   mapelSelect.addEventListener('change', ({ target: { value } }) => {
     hiddenMapelInputs.forEach(input => (input.value = value))
+  })
+
+  jenisNilaiSelect.addEventListener('change', ({ target: { value } }) => {
+    hiddenJenisNilaiInputs.forEach(input => (input.value = value))
   })
 }
 

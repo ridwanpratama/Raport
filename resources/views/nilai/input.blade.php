@@ -25,20 +25,11 @@
                 @endforeach
               </select>
 
-              <select id="nilaiSelect" class="form-control my-2" name="jenis_nilai[]" required>
+              <select id="jenisNilaiSelect" class="form-control my-2" required>
                 <option value disable>--Pilih Jenis Nilai--</option>
-                <option value="uh1">UH 1</option>
-                <option value="uh2">UH 2</option>
-                <option value="pts_ganjil">PTS Ganjil</option>
-                <option value="uh3">UH 3</option>
-                <option value="uh4">UH 4</option>
-                <option value="pas_ganjil">PAS Ganjil</option>
-                <option value="uh5">UH 5</option>
-                <option value="uh6">UH 6</option>
-                <option value="pts_genap">PTS Genap</option>
-                <option value="uh7">UH 7</option>
-                <option value="uh8">UH 8</option>
-                <option value="pat">PAT</option>
+                @foreach (App\JenisNilai::all() as $item)
+                  <option value="{{ $item->id }}">{{ $item->jenis_nilai }}</option>
+                @endforeach
               </select>
 
               <table class="table table-sm">
@@ -59,10 +50,11 @@
                       <input type="hidden" name="siswa_id[]" value="{{ $item->id }}">
                     </td>
                     <input type="hidden" name="mapel_id[]" value="placeholder"></td>
+                    <input type="hidden" name="jenis_nilai_id[]" value="placeholder"></td>
                     <td>{{ $item->nis }}</td>
                     <td>{{ $item->rayon->nama_rayon }}</td>
-                    <td><input class="form-control" data-tag="pengetahuanInput" type="text" name="nilai"></td>
-                    <td><input class="form-control" data-tag="keterampilanInput" type="text" name="nilai"></td>
+                    <td><input class="form-control" type="number" name="nilai_pengetahuan[]"></td>
+                    <td><input class="form-control" type="number" name="nilai_keterampilan[]"></td>
                   </tr>
                 </tbody>
                 @endforeach

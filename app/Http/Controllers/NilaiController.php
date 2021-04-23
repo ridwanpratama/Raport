@@ -29,44 +29,20 @@ class NilaiController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $siswa_id = $request->siswa_id;
         $mapel_id = $request->mapel_id;
-        $uh1 = $request->uh1;
-        $uh2 = $request->uh2;
-        $pts_ganjil = $request->pts_ganjil;
-        $uh3 = $request->uh3;
-        $uh4 = $request->uh4;
-        $pas_ganjil = $request->pas_ganjil;
-        $uh5 = $request->uh5;
-        $uh6 = $request->uh6;
-        $pts_genap = $request->pts_genap;
-        $uh7 = $request->uh7;
-        $uh8 = $request->uh8;
-        $pat = $request->pat;
-
-        $uh1k = $request->uh1k;
-        $uh2k = $request->uh2k;
-        $pts_ganjilk = $request->pts_ganjilk;
-        $uh3k = $request->uh3k;
-        $uh4k = $request->uh4k;
-        $pas_ganjilk = $request->pas_ganjilk;
-        $uh5k = $request->uh5k;
-        $uh6k = $request->uh6k;
-        $pts_genapk = $request->pts_genapk;
-        $uh7k = $request->uh7k;
-        $uh8k = $request->uh8k;
-        $patk = $request->patk;
+        $jenis_nilai_id = $request->jenis_nilai_id;
+        $nilai_pengetahuan = $request->nilai_pengetahuan;
+        $nilai_keterampilan = $request->nilai_keterampilan;
 
         for ($i = 0; $i < count($siswa_id); $i++) {
             $datasave = [
-                'siswa_id' => $siswa_id[$i] ?? null,
-                'mapel_id' => $mapel_id[$i] ?? null,
-                'uh1' => $uh1[$i] ?? null,
-                'uh1k' => $uh1k[$i] ?? null,
-                // dll
+                'siswa_id' => $siswa_id[$i],
+                'mapel_id' => $mapel_id[$i],
+                'jenis_nilai_id' => $jenis_nilai_id[$i],
+                'nilai_pengetahuan' => $nilai_pengetahuan[$i],
+                'nilai_keterampilan' => $nilai_keterampilan[$i],
             ];
-
             // return dd($datasave);
             DB::table('nilai_mapel')->insert($datasave);
         }

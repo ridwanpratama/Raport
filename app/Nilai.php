@@ -28,4 +28,9 @@ class Nilai extends Model
     {
 	    return $this->belongsTo('App\Jurusan');
     }
+
+    public function jenis_nilai()
+    {
+	    return $this->belongsTo('App\Jenisnilai');
+    }
 }
