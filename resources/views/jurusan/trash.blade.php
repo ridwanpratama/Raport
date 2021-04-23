@@ -29,7 +29,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->nama_jurusan }}</td>
                     <td>
-                        <a href="{{route('delete.rayon',[$item->id])}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus permanen jurusan: {{$item->nama_jurusan}}?')">Delete</a>
+                        <a href="{{route('delete.jurusan',[$item->id])}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus permanen jurusan: {{$item->nama_jurusan}}?')">Delete</a>
                         <a href="{{route('trashjurusan.restore',[$item->id])}}" class="btn btn-success btn-sm">Restore</a>
                     </td>
                 </tr>
