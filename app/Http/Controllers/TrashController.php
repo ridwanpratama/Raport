@@ -7,6 +7,7 @@ use App\Guru;
 use App\Siswa;
 use App\Rayon;
 use App\Jurusan;
+use App\Mapel;
 use Illuminate\Http\Request;
 
 class TrashController extends Controller
@@ -198,5 +199,43 @@ class TrashController extends Controller
         $detail->forceDelete();
 
         return redirect('/detail/trash');
+    }
+
+    public function mapel()
+    {
+        $mapel = Mapel::onlyTrashed()->get();
+        return view('mapel.trash', ['mapel' => $mapel]);
+    }
+
+    public function restoremapel($id)
+    {
+        $mapel = Mapel::onlyTrashed()->where('id', $id);
+        $mapel->restore();
+
+        return redirect('mapel/trash');
+    }
+
+    public function restore_allmapel()
+    {
+        $mapel = Mapel::onlyTrashed();
+        $mapel->restore();
+
+        return redirect('mapel/trash');
+    }
+
+    public function delete_mapel($id)
+    {
+        $mapel = Mapel::onlyTrashed()->where('id', $id);
+        $mapel->forceDelete();
+
+        return redirect('/mapel/trash');
+    }
+
+    public function delete_all_mapel()
+    {
+        $mapel = Mapel::onlyTrashed();
+        $mapel->forceDelete();
+
+        return redirect('/mapel/trash');
     }
 }

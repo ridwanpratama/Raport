@@ -26,6 +26,7 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
            <a href="{{ route('mapel.create') }}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Tambah Data</a>
+           <a href="{{ route('trash.mapel') }}" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i>Recycle Bin</a>
            <div class="card my-3">
                <div class="card-body">
            <table id="table" class="table table-striped table-bordered table-md">
@@ -43,7 +44,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $mapel->nama_mapel }}</td>
                     <td>{{ $mapel->guru->nama_guru }}</td>
-                    
+
                     <td><a href="">
                         <form action="{{ route('mapel.destroy', [$mapel->id]) }}" method="post">
                             {{ csrf_field() }}
@@ -52,7 +53,7 @@
                                 onclick="return confirm('apakah anda yakin ingin menghapus Mata Pelajaran: {{ $mapel->nama_mapel }}')">Hapus</button>
                             <a href="{{ route('mapel.edit', [$mapel->id]) }}"
                                 class="btn btn-warning btn-sm">Ubah</a>
-                            </td>	
+                            </td>
                         </form>
                     </td>
                 </tr>
