@@ -22,7 +22,6 @@ class ShowController extends Controller
         }catch(\Exception $exception){
             return redirect()->route('nilai.index')->with('toast_error', 'Data belum lengkap!');
         }
-        
 
         return view('nilai.show', compact('nilai','siswa','absen', 'upd'));
     }
@@ -41,7 +40,7 @@ class ShowController extends Controller
         return view('raport.show', compact('nilai','siswa','absen', 'upd'));
     }
 
-    public function exportNilai() 
+    public function exportNilai()
     {
         $nama_file = 'nilai_'.date('Y-m-d_H-i-s').'.xlsx';
         return Excel::download(new NilaiExport, $nama_file);

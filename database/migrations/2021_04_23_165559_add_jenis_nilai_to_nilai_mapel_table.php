@@ -15,7 +15,7 @@ class AddJenisNilaiToNilaiMapelTable extends Migration
     {
         Schema::table('nilai_mapel', function (Blueprint $table) {
           $table->unsignedBigInteger('jenis_nilai_id');
-          $table->foreign('jenis_nilai_id')->references('id')->on('jenis_nilai');
+          $table->foreign('jenis_nilai_id')->references('id')->on('jenis_nilai')->onDelete('cascade');
           $table->integer('nilai_pengetahuan');
           $table->integer('nilai_keterampilan');
         });
@@ -29,7 +29,8 @@ class AddJenisNilaiToNilaiMapelTable extends Migration
     public function down()
     {
         Schema::table('nilai_mapel', function (Blueprint $table) {
-            //
+          $table->dropForeign(['jenis_nilai_id']);
+          $table->dropColumn('jenis_nilai_id');
         });
     }
 }

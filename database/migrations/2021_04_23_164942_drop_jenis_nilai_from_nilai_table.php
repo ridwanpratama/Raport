@@ -50,6 +50,8 @@ class DropJenisNilaiFromNilaiTable extends Migration
           $table->dropColumn('rata_rata4');
           $table->dropColumn('predikat4');
           $table->dropColumn('ket4');
+          $table->dropColumn('created_at');
+          $table->dropColumn('updated_at');
         });
     }
 
