@@ -11,8 +11,8 @@
 <div class="section-body">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
-           <a href="{{ route('user.create') }}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Tambah Data</a>
-           <a href="{{ route('trash.user') }}" class="btn btn-icon icon-left btn-danger"><i class="fas fa-trash"></i>Recycle Bin</a>
+           <a href="{{ route('restore.user') }}" class="btn btn-icon icon-left btn-success" onclick="return confirm('Apakah anda yakin ingin merestore semua data?')"><i class="far fa-edit"></i>Restore All</a>
+           <a href="{{ route('deleteall.user') }}" class="btn btn-icon icon-left btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus permanen semua data?')"><i class="fas fa-trash"></i>Delete All</a>
            <div class="card my-3">
                <div class="card-body">
            <table id="table" class="table table-striped table-bordered table-md">
@@ -22,7 +22,7 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Level</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,14 +33,8 @@
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->level }}</td>
                     <td>
-                        <form action="{{route('user.destroy',[$item->id])}}" method="post">
-                            {{csrf_field()}}
-                            {{method_field('DELETE')}}
-                            <button class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ingin menghapus user: {{$item->name}}')">Hapus</button>
-                            <a href="{{route('user.edit',[$item->id])}}" class="btn btn-warning btn-sm">Ubah</a>
-                        </td>
-
-                        </form>
+                        <a href="{{route('delete.user',[$item->id])}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus permanen user: {{$item->name}}?')">Delete</a>
+                        <a href="{{route('trashuser.restore',[$item->id])}}" class="btn btn-success btn-sm">Restore</a>
                     </td>
                 </tr>
                 @endforeach

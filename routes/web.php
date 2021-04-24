@@ -76,6 +76,13 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
     Route::get('mapel/delete/{id}', 'TrashController@delete_mapel')->name('delete.mapel');
     Route::get('mapel/deleteall', 'TrashController@delete_all_mapel')->name('deleteall.mapel');
 
+    // Soft Deletes CRUD User
+    Route::get('user/trash', 'TrashController@user')->name('trash.user');
+    Route::get('user/restore/{id}', 'TrashController@restoreuser')->name('trashuser.restore');
+    Route::get('user/restore_all', 'TrashController@restore_alluser')->name('restore.user');
+    Route::get('user/delete/{id}', 'TrashController@delete_user')->name('delete.user');
+    Route::get('user/deleteall', 'TrashController@delete_all_user')->name('deleteall.user');
+
     Route::resource('siswa', 'SiswaController');
     Route::resource('guru', 'GuruController');
     Route::resource('rayon', 'RayonController');
