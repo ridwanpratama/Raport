@@ -11,7 +11,7 @@ class SiswaController extends Controller
     public function validation(Request $request)
     {
         $validation = $request->validate([
-            'nis' => 'required|unique:siswa,nis',
+            'nis' => 'required',
             'nama_siswa' => 'required',
             'rombel_id' => 'required',
             'rayon_id' => 'required',

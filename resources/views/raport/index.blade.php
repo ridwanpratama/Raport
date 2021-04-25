@@ -34,7 +34,6 @@
                     <th class="option-except">#</th>
                     <th class="option-except">NIS Siswa</th>
                     <th class="option-except">Nama Siswa</th>
-                    <th>Rombel</th>
                     <th>Rayon</th>
                     <th>Jurusan</th>
                     <th class="option-except">Semester</th>
@@ -46,7 +45,6 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->siswa->nis }}</td>
                     <td>{{ $item->siswa->nama_siswa }}</td>
-                    <td>{{ $item->siswa->rombel->nama_rombel }}</td>
                     <td>{{ $item->siswa->rayon->nama_rayon }}</td>
                     <td>{{ $item->siswa->jurusan->nama_jurusan }}</td>
                     <td>
