@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Jurusan;
 use Illuminate\Http\Request;
-use App\Mapel;
+use App\Http\Controllers\Controller;
 
-class MapelController extends Controller
+class JurusanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class MapelController extends Controller
      */
     public function index()
     {
-        $data_mapel = Mapel::all();
-        return view('mapel.index',compact('data_mapel'));
+        $data_jurusan = Jurusan::get();
+        return view('admin.jurusan.index',compact('data_jurusan'));
     }
 
     /**
@@ -25,15 +26,7 @@ class MapelController extends Controller
      */
     public function create()
     {
-        return view('mapel.create');
-    }
-
-    public function validation(Request $request)
-    {
-        $validation = $request->validate([
-            'nama_mapel' => 'required',
-            'guru_id' => 'required'
-        ]);
+        return view('admin.jurusan.create');
     }
 
     /**
@@ -44,14 +37,15 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validation($request);
-
-        Mapel::create([
-            'nama_mapel' => $request->get('nama_mapel'),
-            'guru_id' => $request->get('guru_id')
+        $this->validate($request,[
+            'nama_jurusan' => 'required'
         ]);
 
-        return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil disimpan!');
+        Jurusan::create([
+            'nama_jurusan' => $request->get('nama_jurusan')
+        ]);
+
+        return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -62,8 +56,7 @@ class MapelController extends Controller
      */
     public function show($id)
     {
-        $data_mapel = Mapel::find($id);
-        return view('mapel.show',compact('data_mapel'));
+        //
     }
 
     /**
@@ -74,8 +67,8 @@ class MapelController extends Controller
      */
     public function edit($id)
     {
-        $data_mapel = Mapel::find($id);
-        return view('mapel.edit',compact('data_mapel'));
+        $data_jurusan = Jurusan::find($id);
+        return view('admin.jurusan.edit',compact('data_jurusan'));
     }
 
     /**
@@ -87,14 +80,12 @@ class MapelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validation($request);
-        $data_mapel = Mapel::find($id);
-        $data_mapel->update([
-            'nama_mapel' => $request->get('nama_mapel'),
-            'guru_id' => $request->get('guru_id')
+        $data_jurusan = Jurusan::find($id);
+        $data_jurusan->update([
+            'nama_jurusan' => $request->get('nama_jurusan')
         ]);
 
-        return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil diupdate!');
+        return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -105,8 +96,8 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
-        $data_mapel = Mapel::find($id);
-        $data_mapel->delete();
-        return redirect('mapel')->with('toast_warning', 'Data berhasil dihapus!');
+        $data_jurusan = Jurusan::find($id);
+        $data_jurusan->delete();
+        return redirect('jurusan')->with('toast_warning', 'Data berhasil dihapus!');
     }
 }

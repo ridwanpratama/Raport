@@ -26,7 +26,7 @@ class AddSemesterToNilaiMapelTable extends Migration
     public function down()
     {
         Schema::table('nilai_mapel', function (Blueprint $table) {
-            //
+            $table->dropColumn('semester');
         });
     }
 }

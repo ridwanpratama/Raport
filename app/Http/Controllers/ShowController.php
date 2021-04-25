@@ -23,7 +23,7 @@ class ShowController extends Controller
             return redirect()->route('nilai.index')->with('toast_error', 'Data belum lengkap!');
         }
 
-        return view('nilai.show', compact('nilai','siswa','absen', 'upd'));
+        return view('guru.nilai.show', compact('nilai','siswa','absen', 'upd'));
     }
 
     // don't mind me, i just want this to complete already. tbh i can't find other way yet
@@ -45,7 +45,7 @@ class ShowController extends Controller
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
 
-        return view('raport.show', compact('nilai','siswa','absen', 'upd'));
+        return view('guru.raport.show', compact('nilai','siswa','absen', 'upd'));
     }
 
     public function raport2($siswa_id)
@@ -65,7 +65,7 @@ class ShowController extends Controller
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
 
-        return view('raport.show', compact('nilai','siswa','absen', 'upd'));
+        return view('guru.raport.show', compact('nilai','siswa','absen', 'upd'));
     }
 
     public function raport3($siswa_id)
@@ -85,7 +85,7 @@ class ShowController extends Controller
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
 
-        return view('raport.show', compact('nilai','siswa','absen', 'upd'));
+        return view('guru.raport.show', compact('nilai','siswa','absen', 'upd'));
     }
 
     public function raport4($siswa_id)
@@ -105,7 +105,7 @@ class ShowController extends Controller
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
 
-        return view('raport.show', compact('nilai_smt4','siswa','absen', 'upd'));
+        return view('guru.raport.show', compact('nilai_smt4','siswa','absen', 'upd'));
     }
 
     public function raport5($siswa_id)
@@ -125,7 +125,7 @@ class ShowController extends Controller
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
 
-        return view('raport.show', compact('nilai','siswa','absen', 'upd'));
+        return view('guru.raport.show', compact('nilai','siswa','absen', 'upd'));
     }
 
     public function exportNilai()

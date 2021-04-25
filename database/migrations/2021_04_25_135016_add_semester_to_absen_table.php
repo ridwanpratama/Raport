@@ -26,7 +26,7 @@ class AddSemesterToAbsenTable extends Migration
     public function down()
     {
         Schema::table('absen', function (Blueprint $table) {
-            //
+            $table->dropColumn('semester');
         });
     }
 }

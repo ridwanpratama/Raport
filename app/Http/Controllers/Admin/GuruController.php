@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Guru;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class GuruController extends Controller
 {
@@ -15,8 +16,8 @@ class GuruController extends Controller
     public function index()
     {
         $teacher = Guru::all();
-  
-        return view('guru.index',compact('teacher'));
+
+        return view('admin.guru.index',compact('teacher'));
     }
 
     /**
@@ -26,7 +27,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('guru.create');
+        return view('admin.guru.create');
     }
 
     /**
@@ -67,7 +68,7 @@ class GuruController extends Controller
      */
     public function edit(Guru $guru)
     {
-        return view('guru.edit', compact('guru'));
+        return view('admin.guru.edit', compact('guru'));
     }
 
     /**
@@ -102,5 +103,4 @@ class GuruController extends Controller
 
         return redirect()->route('guru.index')->with('toast_warning', 'Data berhasil dihapus!');
     }
-
 }

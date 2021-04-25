@@ -27,7 +27,8 @@ class AddForeignToRombelTable extends Migration
     public function down()
     {
         Schema::table('rombel', function (Blueprint $table) {
-            $table->dropForeign(['rombel_id']);
+            $table->dropColumn('jurusan_id');
+            $table->dropForeign('jurusan_id');
         });
     }
 }

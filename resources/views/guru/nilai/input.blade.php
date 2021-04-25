@@ -14,9 +14,9 @@
         <form action="{{ route('store_nilai') }}" method="POST">
           @csrf
           <div class="card-body" id="formsParent">
-            
-            {{-- <button class="btn btn-info" id="moreMapel">+</button>
-            <button class="btn btn-danger" id="lessMapel">-</button> --}}
+
+            <button class="btn btn-info" id="moreMapel">+</button>
+            <button class="btn btn-danger" id="lessMapel">-</button>
 
             <div id="baseForm" class="mt-4">
               <select class="form-control my-2" id="mapelSelect" required>
@@ -28,7 +28,7 @@
 
               <select id="jenisNilaiSelect" class="form-control my-2" required>
                 <option value disable>Pilih Jenis Nilai</option>
-                @foreach (App\JenisNilai::all() as $item)
+                @foreach (App\Jenisnilai::all() as $item)
                   <option value="{{ $item->id }}">{{ $item->jenis_nilai }}</option>
                 @endforeach
               </select>

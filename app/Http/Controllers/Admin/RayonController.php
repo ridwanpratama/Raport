@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Guru;
 use App\Rayon;
-use App\Guru;   
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RayonController extends Controller
 {
@@ -17,7 +18,7 @@ class RayonController extends Controller
     {
         $rayons = Rayon::with('guru')->orderBy('created_at', 'DESC')->get();
 
-        return view('rayon.index', compact('rayons'));
+        return view('admin.rayon.index', compact('rayons'));
     }
 
     /**
@@ -28,8 +29,8 @@ class RayonController extends Controller
     public function create()
     {
         $teachers = Guru::orderBy('nama_guru', 'ASC')->get();
-        
-        return view('rayon.create', compact('teachers'));
+
+        return view('admin.rayon.create', compact('teachers'));
     }
 
     /**
@@ -73,9 +74,9 @@ class RayonController extends Controller
          $guru = guru::all();
          $rayon = rayon::find($id);
          $selectguru = Guru::find($rayon->guru_id);
-        
-        return view('rayon.edit', compact('selectguru', 'rayon', 'guru'));
-        
+
+        return view('admin.rayon.edit', compact('selectguru', 'rayon', 'guru'));
+
     }
 
     /**

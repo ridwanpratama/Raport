@@ -26,7 +26,7 @@ class AddSemesterToUpdTable extends Migration
     public function down()
     {
         Schema::table('upd', function (Blueprint $table) {
-            //
+            $table->dropColumn('semester');
         });
     }
 }

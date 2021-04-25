@@ -32,16 +32,16 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('nilai/export/', 'ShowController@exportNilai')->name('export_nilai');
 
-    Route::get('nilai/rombel/{id}', 'NilaiController@rombel')->name('list_rombel');
-    Route::get('nilai/jurusan/', 'NilaiController@jurusan')->name('list_jurusan');
+    Route::get('nilai/rombel/{id}', 'Guru\NilaiController@rombel')->name('list_rombel');
+    Route::get('nilai/jurusan/', 'Guru\NilaiController@jurusan')->name('list_jurusan');
 
-    Route::get('nilai/input/{id}', 'NilaiController@input')->name('input_nilai');
-    Route::post('nilai/input/', 'NilaiController@store')->name('store_nilai');
+    Route::get('nilai/input/{id}', 'Guru\NilaiController@input')->name('input_nilai');
+    Route::post('nilai/input/', 'Guru\NilaiController@store')->name('store_nilai');
 
-    Route::resource('absen', 'AbsenController');
-    Route::resource('upd', 'UpdController');
-    Route::resource('nilai', 'NilaiController');
-    Route::resource('raport', 'RaportController');
+    Route::resource('absen', 'Guru\AbsenController');
+    Route::resource('upd', 'Guru\UpdController');
+    Route::resource('nilai', 'Guru\NilaiController');
+    Route::resource('raport', 'Guru\RaportController');
 });
 
 Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
@@ -80,12 +80,12 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
     Route::get('detail/delete/{id}', 'TrashController@delete_detail')->name('delete.detail');
     Route::get('detail/deleteall', 'TrashController@delete_all_detail')->name('deleteall.detail');
 
-    Route::resource('siswa', 'SiswaController');
-    Route::resource('guru', 'GuruController');
-    Route::resource('rayon', 'RayonController');
-    Route::resource('mapel', 'MapelController');
-    Route::resource('detail', 'DetailController');
-    Route::resource('user', 'UserController');
-    Route::resource('jurusan', 'JurusanController');
-    Route::resource('rombel', 'RombelController');
+    Route::resource('siswa', 'Admin\SiswaController');
+    Route::resource('guru', 'Admin\GuruController');
+    Route::resource('rayon', 'Admin\RayonController');
+    Route::resource('mapel', 'Admin\MapelController');
+    Route::resource('detail', 'Admin\DetailController');
+    Route::resource('user', 'Admin\UserController');
+    Route::resource('jurusan', 'Admin\JurusanController');
+    Route::resource('rombel', 'Admin\RombelController');
 });

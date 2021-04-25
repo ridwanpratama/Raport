@@ -29,7 +29,6 @@ class AddJenisNilaiToNilaiMapelTable extends Migration
     public function down()
     {
         Schema::table('nilai_mapel', function (Blueprint $table) {
-          $table->dropForeign(['jenis_nilai_id']);
           $table->dropColumn('jenis_nilai_id');
         });
     }

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guru;
 
+use App\Absen;
 use Illuminate\Http\Request;
-use App\Jurusan;
+use App\Http\Controllers\Controller;
 
-class JurusanController extends Controller
+class AbsenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class JurusanController extends Controller
      */
     public function index()
     {
-        $data_jurusan = Jurusan::get();
-        return view('jurusan.index',compact('data_jurusan'));
+        $absen = Absen::all();
+        return view('guru.absen.index', compact('absen'));
     }
 
     /**
@@ -25,7 +26,7 @@ class JurusanController extends Controller
      */
     public function create()
     {
-        return view('jurusan.create');
+        return view('guru.absen.create');
     }
 
     /**
@@ -36,15 +37,17 @@ class JurusanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama_jurusan' => 'required'
-        ]);
+        $absenBaru = new Absen();
 
-        Jurusan::create([
-            'nama_jurusan' => $request->get('nama_jurusan')
-        ]);
+        $absenBaru->siswa_id = $request->siswa_id;
+        $absenBaru->sakit = $request->sakit;
+        $absenBaru->izin = $request->izin;
+        $absenBaru->alpha = $request->alpha;
+        $absenBaru->semester = $request->semester;
 
-        return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil disimpan!');
+        $absenBaru->save();
+
+        return redirect(route('absen.index'))->with('toast_success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -66,8 +69,8 @@ class JurusanController extends Controller
      */
     public function edit($id)
     {
-        $data_jurusan = Jurusan::find($id);
-        return view('jurusan.edit',compact('data_jurusan'));
+        $absen = Absen::find($id);
+        return view('guru.absen.edit', compact('absen'));
     }
 
     /**
@@ -79,12 +82,16 @@ class JurusanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data_jurusan = Jurusan::find($id);
-        $data_jurusan->update([
-            'nama_jurusan' => $request->get('nama_jurusan')
+        $absen = Absen::find($id);
+        $absen->update([
+            'siswa_id' => $request->siswa_id,
+            'sakit' => $request->sakit,
+            'izin' => $request->izin,
+            'alpha' => $request->alpha,
+            'semester' => $request->semester
         ]);
 
-        return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil diupdate!');
+        return redirect()->route('absen.index')->with('toast_success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -95,8 +102,8 @@ class JurusanController extends Controller
      */
     public function destroy($id)
     {
-        $data_jurusan = Jurusan::find($id);
-        $data_jurusan->delete();
-        return redirect('jurusan')->with('toast_warning', 'Data berhasil dihapus!');
+        $absen = Absen::find($id);
+        $absen->delete();
+        return redirect(route('absen.index'))->with('toast_warning', 'Data berhasil dihapus!');
     }
 }

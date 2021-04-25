@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Detail;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DetailController extends Controller
 {
@@ -15,7 +16,7 @@ class DetailController extends Controller
     public function index()
     {
         $detail_upd = Detail::get();
-        return view('detail.index',compact('detail_upd'));
+        return view('admin.detail.index',compact('detail_upd'));
     }
 
     /**
@@ -25,7 +26,7 @@ class DetailController extends Controller
      */
     public function create()
     {
-        return view('detail.create');
+        return view('admin.detail.create');
     }
 
     /**
@@ -69,7 +70,7 @@ class DetailController extends Controller
     public function edit($id)
     {
         $detail_upd = Detail::find($id);
-        return view('detail.edit',compact('detail_upd'));
+        return view('admin.detail.edit',compact('detail_upd'));
     }
 
     /**
