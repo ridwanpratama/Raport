@@ -199,4 +199,80 @@ class TrashController extends Controller
 
         return redirect('/detail/trash');
     }
+
+    public function mapel()
+    {
+        $mapel = Mapel::onlyTrashed()->get();
+        return view('mapel.trash', ['mapel' => $mapel]);
+    }
+
+    public function restoremapel($id)
+    {
+        $mapel = Mapel::onlyTrashed()->where('id', $id);
+        $mapel->restore();
+
+        return redirect('mapel/trash');
+    }
+
+    public function restore_allmapel()
+    {
+        $mapel = Mapel::onlyTrashed();
+        $mapel->restore();
+
+        return redirect('mapel/trash');
+    }
+
+    public function delete_mapel($id)
+    {
+        $mapel = Mapel::onlyTrashed()->where('id', $id);
+        $mapel->forceDelete();
+
+        return redirect('/mapel/trash');
+    }
+
+    public function delete_all_mapel()
+    {
+        $mapel = Mapel::onlyTrashed();
+        $mapel->forceDelete();
+
+        return redirect('/mapel/trash');
+    }
+
+    public function user()
+    {
+        $user = User::onlyTrashed()->get();
+        return view('auth.user.trash', ['user' => $user]);
+    }
+
+    public function restoreuser($id)
+    {
+        $user = User::onlyTrashed()->where('id', $id);
+        $user->restore();
+
+        return redirect('user/trash');
+    }
+
+    public function restore_alluser()
+    {
+        $user = User::onlyTrashed();
+        $user->restore();
+
+        return redirect('user/trash');
+    }
+
+    public function delete_user($id)
+    {
+        $user = User::onlyTrashed()->where('id', $id);
+        $user->forceDelete();
+
+        return redirect('user/trash');
+    }
+
+    public function delete_all_user()
+    {
+        $user = User::onlyTrashed();
+        $user->forceDelete();
+
+        return redirect('user/trash');
+    }
 }
