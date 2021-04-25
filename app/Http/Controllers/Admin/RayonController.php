@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Guru;
-use App\Rayon;
+use App\Models\Admin\Guru;
+use App\Models\Admin\Rayon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

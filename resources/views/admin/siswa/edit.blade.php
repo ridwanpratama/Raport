@@ -33,7 +33,7 @@
                         <div class="col-md-9">
                             <select class="form-control" id="rombel_id" name="rombel_id">
                                 <option value="{{ $siswa->rombel_id }}">{{ $siswa->rombel->nama_rombel }}</option>
-                                @foreach (App\Rombel::all() as $rombel)
+                                @foreach (App\Models\Admin\Rombel::all() as $rombel)
                                     <option value="{{ $rombel->id }}">{{ $rombel->nama_rombel }}</option>
                                 @endforeach
                             </select>
@@ -45,7 +45,7 @@
                         <div class="col-md-9">
                             <select class="form-control" id="rayon_id" name="rayon_id">
                                 <option value="{{ $siswa->rayon_id }}">{{ $siswa->rayon->nama_rayon }}</option>
-                                @foreach (App\Rayon::all() as $rayon)
+                                @foreach (App\Models\Admin\Rayon::all() as $rayon)
                                     <option value="{{ $rayon->id }}">{{ $rayon->nama_rayon }}</option>
                                 @endforeach
                             </select>
@@ -57,7 +57,7 @@
                         <div class="col-md-9">
                             <select class="form-control" id="jurusan_id" name="jurusan_id">
                                 <option value="{{ $siswa->jurusan_id }}">{{ $siswa->jurusan->nama_jurusan }}</option>
-                                @foreach (App\Jurusan::all() as $jurusan)
+                                @foreach (App\Models\Admin\Jurusan::all() as $jurusan)
                                     <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>
                                 @endforeach
                             </select>

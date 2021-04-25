@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Jurusan;
 use Illuminate\Http\Request;
+use App\Models\Admin\Jurusan;
 use App\Http\Controllers\Controller;
 
 class JurusanController extends Controller
@@ -42,21 +42,10 @@ class JurusanController extends Controller
         ]);
 
         Jurusan::create([
-            'nama_jurusan' => $request->get('nama_jurusan')
+            'nama_jurusan' => $request->nama_jurusan
         ]);
 
         return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil disimpan!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -82,7 +71,7 @@ class JurusanController extends Controller
     {
         $data_jurusan = Jurusan::find($id);
         $data_jurusan->update([
-            'nama_jurusan' => $request->get('nama_jurusan')
+            'nama_jurusan' => $request->nama_jurusan
         ]);
 
         return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil diupdate!');

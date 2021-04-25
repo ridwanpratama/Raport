@@ -16,7 +16,7 @@
                         <div class="col-md-9">
                             <select class="form-control" id="siswa_id" name="siswa_id">
                                 <option value="0">--Pilih Siswa--</option>
-                                @foreach (App\Siswa::all() as $siswa)
+                                @foreach (App\Models\Admin\Siswa::all() as $siswa)
                                     <option value="{{ $siswa->id }}">{{ $siswa->nama_siswa }}</option>
                                 @endforeach
                             </select>

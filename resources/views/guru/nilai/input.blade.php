@@ -21,14 +21,14 @@
             <div id="baseForm" class="mt-4">
               <select class="form-control my-2" id="mapelSelect" required>
                 <option value disable>Pilih Mapel</option>
-                @foreach (App\Mapel::all() as $mapel)
+                @foreach (App\Models\Admin\Mapel::all() as $mapel)
                 <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
                 @endforeach
               </select>
 
               <select id="jenisNilaiSelect" class="form-control my-2" required>
                 <option value disable>Pilih Jenis Nilai</option>
-                @foreach (App\JenisNilai::all() as $item)
+                @foreach (App\Models\Admin\JenisNilai::all() as $item)
                 <option value="{{ $item->id }}">{{ $item->jenis_nilai }}</option>
                 @endforeach
               </select>

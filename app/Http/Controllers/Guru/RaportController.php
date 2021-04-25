@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Nilai;
+use App\Models\Guru\Nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;

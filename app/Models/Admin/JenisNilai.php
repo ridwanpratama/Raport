@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jenisnilai extends Model
+class JenisNilai extends Model
 {
   protected $table = "jenis_nilai";
 }

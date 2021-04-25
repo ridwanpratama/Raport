@@ -26,7 +26,7 @@
                             <select class="form-control @error('guru_id') is-invalid @enderror" id="guru_id" type="text" name="guru_id"
                             placeholder="@error('guru_id') {{ $message }} @enderror">
                                 <option value="{{ $data_mapel->guru_id }}">{{ $data_mapel->guru->nama_guru }}</option>
-                                @foreach (App\Guru::all() as $guru)
+                                @foreach (App\Models\Admin\Guru::all() as $guru)
                                     <option value="{{ $guru->id }}">{{ $guru->nama_guru }}</option>
                                 @endforeach
                             </select>

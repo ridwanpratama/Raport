@@ -25,7 +25,7 @@
                         <div class="col-md-9">
                             <select class="form-control" id="jurusan_id" name="jurusan_id">
                                 <option value="{{ $rombel->jurusan_id }}">{{ $rombel->jurusan->nama_jurusan }}</option>
-                                @foreach (App\Jurusan::all() as $jurusan)
+                                @foreach (App\Models\Admin\Jurusan::all() as $jurusan)
                                     <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>
                                 @endforeach
                             </select>

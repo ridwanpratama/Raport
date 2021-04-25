@@ -26,7 +26,7 @@
                             <select class="form-control @error('jurusan_id') is-invalid @enderror" type="text" name="jurusan_id"
                             placeholder="@error('jurusan_id') {{ $message }} @enderror">
                                 <option value disable>--Pilih Jurusan--</option>
-                                @foreach (App\Jurusan::all() as $jurusan)
+                                @foreach (App\Models\Admin\Jurusan::all() as $jurusan)
                                     <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>
                                 @endforeach
                             </select>

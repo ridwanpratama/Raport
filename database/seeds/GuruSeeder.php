@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Admin\Guru;
 use Illuminate\Database\Seeder;
-use App\Guru;
 
 class GuruSeeder extends Seeder
 {

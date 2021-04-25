@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Mapel;
+use App\Models\Admin\Mapel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -48,8 +48,8 @@ class MapelController extends Controller
         $this->validation($request);
 
         Mapel::create([
-            'nama_mapel' => $request->get('nama_mapel'),
-            'guru_id' => $request->get('guru_id')
+            'nama_mapel' => $request->nama_mapel,
+            'guru_id' => $request->guru_id
         ]);
 
         return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil disimpan!');
@@ -91,8 +91,8 @@ class MapelController extends Controller
         $this->validation($request);
         $data_mapel = Mapel::find($id);
         $data_mapel->update([
-            'nama_mapel' => $request->get('nama_mapel'),
-            'guru_id' => $request->get('guru_id')
+            'nama_mapel' => $request->nama_mapel,
+            'guru_id' => $request->guru_id
         ]);
 
         return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil diupdate!');

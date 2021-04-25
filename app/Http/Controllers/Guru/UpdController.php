@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Upd;
+use App\Models\Guru\Upd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -57,10 +57,10 @@ class UpdController extends Controller
   {
       $upd = Upd::find($id);
       $upd->update([
-          'siswa_id' => $request->get('siswa_id'),
-          'detail_upd_id' => $request->get('detail_upd_id'),
-          'nilai_upd' => $request->get('nilai_upd'),
-          'semester' => $request->get('semester')
+          'siswa_id' => $request->siswa_id,
+          'detail_upd_id' => $request->detail_upd_id,
+          'nilai_upd' => $request->nilai_upd,
+          'semester' => $request->semester
       ]);
 
       return redirect()->route('upd.index')->with('message','Mapel berhasil di perbarui');

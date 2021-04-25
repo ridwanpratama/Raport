@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Detail;
+use App\Models\Admin\Detail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -43,22 +43,11 @@ class DetailController extends Controller
         ]);
 
         Detail::create([
-            'nama_upd' => $request->get('nama_upd'),
-            'guru_id' => $request->get('guru_id')
+            'nama_upd' => $request->nama_upd,
+            'guru_id' => $request->guru_id
         ]);
 
         return redirect()->route('detail.index')->with('toast_success', 'Data berhasil disimpan!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Detail  $detail
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Detail $detail)
-    {
-        //
     }
 
     /**
@@ -84,8 +73,8 @@ class DetailController extends Controller
     {
         $detail_upd = Detail::find($id);
         $detail_upd->update([
-            'nama_upd' => $request->get('nama_upd'),
-            'guru_id' => $request->get('guru_id')
+            'nama_upd' => $request->nama_upd,
+            'guru_id' => $request->guru_id
         ]);
 
         return redirect()->route('detail.index')->with('toast_success', 'Data berhasil diupdate!');

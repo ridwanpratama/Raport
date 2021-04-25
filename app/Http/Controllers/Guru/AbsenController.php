@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Absen;
+use App\Models\Guru\Absen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

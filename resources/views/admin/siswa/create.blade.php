@@ -33,7 +33,7 @@
                             <select class="form-control @error('rombel_id') is-invalid @enderror" id="rombel_id" type="text" name="rombel_id"
                             placeholder="@error('rombel_id') {{ $message }} @enderror">
                                 <option value disable>--Pilih Rombel--</option>
-                                @foreach (App\Rombel::all() as $rombel)
+                                @foreach (App\Models\Admin\Rombel::all() as $rombel)
                                     <option value="{{ $rombel->id }}">{{ $rombel->nama_rombel }}</option>
                                 @endforeach
                             </select>
@@ -46,7 +46,7 @@
                             <select class="form-control @error('rayon_id') is-invalid @enderror" id="rayon_id" type="text" name="rayon_id"
                             placeholder="@error('rayon_id') {{ $message }} @enderror">
                                 <option value disable>--Pilih Rayon--</option>
-                                @foreach (App\Rayon::all() as $rayon)
+                                @foreach (App\Models\Admin\Rayon::all() as $rayon)
                                     <option value="{{ $rayon->id }}">{{ $rayon->nama_rayon }}</option>
                                 @endforeach
                             </select>
@@ -59,7 +59,7 @@
                             <select class="form-control @error('rayon_id') is-invalid @enderror" id="jurusan_id" type="text" name="jurusan_id"
                             placeholder="@error('rayon_id') {{ $message }} @enderror">
                                 <option value="0">--Pilih Jurusan--</option>
-                                @foreach (App\Jurusan::all() as $jurusan)
+                                @foreach (App\Models\Admin\Jurusan::all() as $jurusan)
                                     <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>
                                 @endforeach
                             </select>

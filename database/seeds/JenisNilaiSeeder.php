@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Jenisnilai;
+use App\Models\Admin\JenisNilai;
 
 class JenisNilaiSeeder extends Seeder
 {
@@ -12,51 +12,51 @@ class JenisNilaiSeeder extends Seeder
      */
     public function run()
     {
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PH1',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PH2',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PTS Ganjil',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PH3',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PH4',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PAS Ganjil',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PH5',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PH6',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PTS Genap',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PH7',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PH8',
         ]);
 
-        Jenisnilai::insert([
+        JenisNilai::insert([
           'jenis_nilai' => 'PAT',
         ]);
     }

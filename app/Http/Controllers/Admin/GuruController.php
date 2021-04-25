@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Guru;
+use App\Models\Admin\Guru;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -47,17 +47,6 @@ class GuruController extends Controller
         Guru::create($request->all());
 
         return redirect()->route('guru.index')->with('toast_success', 'Data berhasil ditambahkan');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Guru  $guru
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Guru $guru)
-    {
-        //
     }
 
     /**

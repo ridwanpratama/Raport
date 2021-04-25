@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Absen;
-use App\Jurusan;
-use App\Nilai;
-use App\Rombel;
-use App\Siswa;
+use App\Models\Guru\Absen;
+use App\Models\Guru\Nilai;
+use App\Models\Admin\Siswa;
+use App\Models\Admin\Rombel;
 use Illuminate\Http\Request;
+use App\Models\Admin\Jurusan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 

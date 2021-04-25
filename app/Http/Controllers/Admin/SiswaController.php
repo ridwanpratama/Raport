@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Siswa;
+use App\Models\Admin\Siswa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -55,11 +55,11 @@ class SiswaController extends Controller
   {
       $siswa = Siswa::find($id);
       $siswa->update([
-          'nis' => $request->get('nis'),
-          'nama_siswa' => $request->get('nama_siswa'),
-          'rayon_id' => $request->get('rayon_id'),
-          'jurusan_id' => $request->get('jurusan_id'),
-          'rombel_id' => $request->get('rombel_id')
+          'nis' => $request->nis,
+          'nama_siswa' => $request->nama_siswa,
+          'rayon_id' => $request->rayon_id,
+          'jurusan_id' => $request->jurusan_id,
+          'rombel_id' => $request->rombel_id
       ]);
 
       return redirect()->route('siswa.index')->with('toast_success', 'Data berhasil diupdate!');

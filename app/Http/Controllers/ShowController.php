@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Upd;
-use App\Absen;
-use App\Nilai;
-use App\Siswa;
+use App\Models\Guru\Upd;
+use App\Models\Guru\Absen;
+use App\Models\Guru\Nilai;
+use App\Models\Admin\Siswa;
 use App\Exports\NilaiExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;

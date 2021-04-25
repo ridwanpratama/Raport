@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Rombel;
+use App\Models\Admin\Rombel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -49,8 +49,8 @@ class RombelController extends Controller
   {
       $rombel = Rombel::find($id);
       $rombel->update([
-          'nama_rombel' => $request->get('nama_rombel'),
-          'jurusan_id' => $request->get('jurusan_id')
+          'nama_rombel' => $request->nama_rombel,
+          'jurusan_id' => $request->jurusan_id
       ]);
 
       return redirect()->route('rombel.index')->with('toast_success', 'Data berhasil diupdate!');
