@@ -53,10 +53,35 @@
                                     <tr>
                                         <td>{{ $item->mapel->nama_mapel }}</td>
                                         <td>75</td>
-                                        <td>{{ $item->rata_rata }}</td>
-                                        <td>{{ $item->rata_ratak }}</td>
-                                        <td>{{ $item->ket }}</td>
-                                        <td>{{ $item->predikat }}</td>
+                                        <td>{{ $item->nilai_pengetahuan }}</td>
+                                        <td>{{ $item->nilai_keterampilan }}</td>
+                                        <?php
+                                          $total = ($item->nilai_pengetahuan + $item->nilai_keterampilan) / 2;
+                                          if ($total > 89) { ?>
+                                            <td>A</td>
+                                        <?php }
+                                            elseif ($total > 79) { ?>
+                                            <td>B</td>
+                                        <?php }
+                                            elseif ($total > 69) { ?>
+                                            <td>C</td>
+                                        <?php }
+                                            elseif ($total > 59) { ?>
+                                            <td>D</td>
+                                        <?php }
+                                            else { ?>
+                                            <td>E</td>
+                                        <?php }
+                                        ?>
+
+                                        <?php
+                                        $total = ($item->nilai_pengetahuan + $item->nilai_keterampilan) / 2;
+                                        if ($total >= 75) { ?>
+                                          <td>K</td>
+                                        <?php } else { ?>
+                                          <td>BK</td>
+                                        <?php }
+                                        ?>
                                     </tr>
                                 @endforeach
                             </tbody>

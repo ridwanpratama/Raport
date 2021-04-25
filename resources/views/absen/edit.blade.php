@@ -40,6 +40,20 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="select1">Semester</label>
+                      <div class="col-md-9">
+                        <select id="semesterSelect" class="form-control my-2" name="semester" required>
+                          <option value="{{ $absen->semester }}">{{ $absen->semester }}</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                      </div>
+                  </div>
+
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Simpan Data</button>
                         <button class="btn btn-secondary" type="reset">Reset</button>

@@ -17,7 +17,7 @@
                             <select class="form-control" id="siswa_id" name="siswa_id">
                                 <option value="0">--Pilih Siswa--</option>
                                 @foreach (App\Siswa::all() as $siswa)
-                                    <option value="{{ $siswa->id }}">{{ $siswa->nis }}</option>
+                                    <option value="{{ $siswa->id }}">{{ $siswa->nama_siswa }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -43,6 +43,20 @@
                             <input class="form-control @error('rombel') is-invalid @enderror" id="rombel" type="text" name="alpha" placeholder="@error('rombel') {{ $message }} @enderror" value="{{ old('rombel') }}">
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label" for="select1">Semester</label>
+                      <div class="col-md-9">
+                        <select id="semesterSelect" class="form-control my-2" name="semester" required>
+                          <option value disable>Pilih Semester</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                      </div>
+                  </div>
 
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Simpan Data</button>

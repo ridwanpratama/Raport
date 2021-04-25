@@ -39,6 +39,7 @@
                     <th>Jurusan</th>
                     <th>Nama UPD</th>
                     <th class="option-except">Nilai</th>
+                    <th>Semester</th>
                     <th class="option-except">Action</th>
                 </tr>
             </thead>
@@ -53,6 +54,7 @@
                     <td>{{ $item->siswa->jurusan->nama_jurusan }}</td>
                     <td>{{ $item->detail->nama_upd }}</td>
                     <td>{{ $item->nilai_upd }}</td>
+                    <td>{{ $item->semester }}</td>
                     <td>
                         <form action="{{route('upd.destroy',[$item->id])}}" method="post">
                             {{csrf_field()}}
@@ -60,7 +62,7 @@
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus nilai upd dari: {{$item->siswa_id}}')">Hapus</button>
                             <a href="{{route('upd.edit',[$item->id])}}" class="btn btn-warning btn-sm">Ubah</a>
                         </td>
-                            
+
                         </form>
                     </td>
                 </tr>

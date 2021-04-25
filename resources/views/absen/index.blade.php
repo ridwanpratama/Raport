@@ -27,6 +27,7 @@
                                     <th>Sakit</th>
                                     <th>Izin</th>
                                     <th>Alpa</th>
+                                    <th>Semester</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -41,6 +42,7 @@
                                         <td>{{ $item->sakit }}</td>
                                         <td>{{ $item->izin }}</td>
                                         <td>{{ $item->alpha }}</td>
+                                        <td>{{ $item->semester }}</td>
                                         <td>
                                             <form action="{{ route('absen.destroy', [$item->id]) }}" method="post">
                                                 {{ csrf_field() }}

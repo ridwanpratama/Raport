@@ -38,83 +38,23 @@
                         </table>
 
                         <table class="table table-bordered">
-                            @foreach ($nilai as $item)
+
                                 <thead>
                                     <tr>
                                         <th>Mapel</th>
-                                        <th>UH1</th>
-                                        <th>UH2</th>
-                                        <th>PTS Ganjil</th>
-                                        <th>UH3</th>
-                                        <th>UH4</th>
-                                        <th>PAS Ganjil</th>
-                                        <th>UH5</th>
+                                        <th>Jenis Nilai</th>
+                                        <th>Pengetahuan</th>
+                                        <th>Keterampilan</th>
                                     </tr>
                                 </thead>
+                                @foreach ($nilai as $item)
                                 <tr>
-                                    <td rowspan="7">{{ $item->mapel->nama_mapel }}, Predikat: {{ $item->ket }}</td>
-                                    <td>{{ $item->uh1 }}</td>
-                                    <td>{{ $item->uh2 }}</td>
-                                    <td>{{ $item->pts_ganjil }}</td>
-                                    <td>{{ $item->uh3 }}</td>
-                                    <td>{{ $item->uh4 }}</td>
-                                    <td>{{ $item->pas_ganjil }}</td>
-                                    <td>{{ $item->uh6 }}</td>
+                                    <td>{{ $item->mapel->nama_mapel }}</td>
+                                    <td>{{ $item->jenis_nilai->jenis_nilai }}</td>
+                                    <td>{{ $item->nilai_pengetahuan }}</td>
+                                    <td>{{ $item->nilai_keterampilan }}</td>
                                 </tr>
-                                <tr>
-                                    <th>UH6</th>
-                                    <th>PTS Genap</th>
-                                    <th>UH7</th>
-                                    <th>UH8</th>
-                                    <th>PAT</th>
-                                    <th>Rata-rata</th>
-                                    <th>Keterangan</th>
-                                </tr>
-                                <tr>
-                                    <td>{{ $item->uh6 }}</td>
-                                    <td>{{ $item->pts_genap }}</td>
-                                    <td>{{ $item->uh7 }}</td>
-                                    <td>{{ $item->uh8 }}</td>
-                                    <td>{{ $item->pat }}</td>
-                                    <td>{{ $item->rata_rata }}</td>
-                                    <td>{{ $item->predikat }}</td>
-                                </tr>
-                                <tr>
-                                    <th>UH1 K</th>
-                                    <th>UH2 K</th>
-                                    <th>PTS Ganjil K</th>
-                                    <th>UH3 K</th>
-                                    <th>UH4 K</th>
-                                    <th>PAS Ganjil K</th>
-                                    <th>UH5 K</th>
-                                </tr>
-                                <tr>
-                                    <td>{{ $item->uh1k }}</td>
-                                    <td>{{ $item->uh2k }}</td>
-                                    <td>{{ $item->pts_ganjilk }}</td>
-                                    <td>{{ $item->uh3k }}</td>
-                                    <td>{{ $item->uh4k }}</td>
-                                    <td>{{ $item->pas_ganjilk }}</td>
-                                    <td>{{ $item->uh6k }}</td>
-                                </tr>
-                                <tr>
-                                    <th>UH6 K</th>
-                                    <th>PTS Genap K</th>
-                                    <th>UH7 K</th>
-                                    <th>UH8 K</th>
-                                    <th>PAT K</th>
-                                    <th>Rata-rata K</th>
-                                    <th>Keterangan K</th>
-                                </tr>
-                                <tr>
-                                    <td>{{ $item->uh6k }}</td>
-                                    <td>{{ $item->pts_genapk }}</td>
-                                    <td>{{ $item->uh7k }}</td>
-                                    <td>{{ $item->uh8k }}</td>
-                                    <td>{{ $item->patk }}</td>
-                                    <td>{{ $item->rata_ratak }}</td>
-                                    <td>{{ $item->predikatk }}</td>
-                                </tr>
+
                             @endforeach
                         </table>
 

@@ -25,7 +25,7 @@
 <div class="section-body">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
-          
+
            <div class="card my-3">
                <div class="card-body">
            <table id="table" class="table table-striped table-bordered table-md">
@@ -34,10 +34,9 @@
                     <th class="option-except">#</th>
                     <th class="option-except">NIS Siswa</th>
                     <th class="option-except">Nama Siswa</th>
-                    <th>Rombel</th>
                     <th>Rayon</th>
                     <th>Jurusan</th>
-                    <th class="option-except">Action</th>
+                    <th class="option-except">Semester</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,12 +45,14 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->siswa->nis }}</td>
                     <td>{{ $item->siswa->nama_siswa }}</td>
-                    <td>{{ $item->siswa->rombel->nama_rombel }}</td>
                     <td>{{ $item->siswa->rayon->nama_rayon }}</td>
                     <td>{{ $item->siswa->jurusan->nama_jurusan }}</td>
                     <td>
-                        <a href="{{route('raport_show',$item->siswa_id)}}" class="btn btn-info btn-sm">Lihat</a>
-                        </td>
+                        <a href="{{route('raport1_show',$item->siswa_id)}}" class="btn btn-info btn-sm">1</a>
+                        <a href="{{route('raport2_show',$item->siswa_id)}}" class="btn btn-info btn-sm">2</a>
+                        <a href="{{route('raport3_show',$item->siswa_id)}}" class="btn btn-info btn-sm">3</a>
+                        <a href="{{route('raport4_show',$item->siswa_id)}}" class="btn btn-info btn-sm">4</a>
+                        <a href="{{route('raport5_show',$item->siswa_id)}}" class="btn btn-info btn-sm">5</a>
                     </td>
                 </tr>
                 @endforeach
