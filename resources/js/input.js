@@ -3,9 +3,18 @@ const lessMapel = document.querySelector('#lessMapel')
 const baseForm = document.querySelector('#baseForm')
 const formsParent = document.querySelector('#formsParent')
 
+function toggleLessMapel() {
+  if (document.querySelectorAll('#baseForm').length <= 1) {
+    lessMapel.style.visibility = 'hidden'
+  } else {
+    lessMapel.style.visibility = 'visible'
+  }
+}
+
 moreMapel.addEventListener('click', () => {
   const formClone = baseForm.cloneNode(true)
   formsParent.appendChild(formClone)
+  toggleLessMapel()
   init(formClone)
 })
 
@@ -14,8 +23,8 @@ lessMapel.addEventListener('click', () => {
     children: { length },
     lastElementChild
   } = formsParent
-
   if (length > 2) formsParent.removeChild(lastElementChild)
+  toggleLessMapel()
 })
 
 function init(parentNode) {
