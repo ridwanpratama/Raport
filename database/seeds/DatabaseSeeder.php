@@ -25,5 +25,9 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345'),
             'level' => 'guru',
         ]);
+
+        DB::table('jenis_nilai')->insert([
+          'jenis_nilai' => 'PH1'
+      ]);
     }
 }

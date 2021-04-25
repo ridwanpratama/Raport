@@ -21,11 +21,15 @@ lessMapel.addEventListener('click', () => {
 function init(parentNode) {
   const jenisNilaiSelect = parentNode.querySelector('#jenisNilaiSelect')
   const mapelSelect = parentNode.querySelector('#mapelSelect')
+  const semesterSelect = parentNode.querySelector('#semesterSelect')
   const hiddenMapelInputs = parentNode.querySelectorAll(
     'input[name="mapel_id[]"]'
   )
   const hiddenJenisNilaiInputs = parentNode.querySelectorAll(
     'input[name="jenis_nilai_id[]"]'
+  )
+  const hiddenSemesterInputs = parentNode.querySelectorAll(
+    'input[name="semester[]"]'
   )
 
   mapelSelect.addEventListener('change', ({ target: { value } }) => {
@@ -34,6 +38,10 @@ function init(parentNode) {
 
   jenisNilaiSelect.addEventListener('change', ({ target: { value } }) => {
     hiddenJenisNilaiInputs.forEach(input => (input.value = value))
+  })
+
+  semesterSelect.addEventListener('change', ({ target: { value } }) => {
+    hiddenSemesterInputs.forEach(input => (input.value = value))
   })
 }
 

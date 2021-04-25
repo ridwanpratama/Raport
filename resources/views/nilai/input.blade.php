@@ -14,22 +14,32 @@
         <form action="{{ route('store_nilai') }}" method="POST">
           @csrf
           <div class="card-body" id="formsParent">
-            <button class="btn btn-info" id="moreMapel">+</button>
-            <button class="btn btn-danger" id="lessMapel">-</button>
+            
+            {{-- <button class="btn btn-info" id="moreMapel">+</button>
+            <button class="btn btn-danger" id="lessMapel">-</button> --}}
 
             <div id="baseForm" class="mt-4">
               <select class="form-control my-2" id="mapelSelect" required>
-                <option value disable>--Pilih Mapel--</option>
+                <option value disable>Pilih Mapel</option>
                 @foreach (App\Mapel::all() as $mapel)
                 <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
                 @endforeach
               </select>
 
               <select id="jenisNilaiSelect" class="form-control my-2" required>
-                <option value disable>--Pilih Jenis Nilai--</option>
+                <option value disable>Pilih Jenis Nilai</option>
                 @foreach (App\JenisNilai::all() as $item)
                   <option value="{{ $item->id }}">{{ $item->jenis_nilai }}</option>
                 @endforeach
+              </select>
+
+              <select id="semesterSelect" class="form-control my-2" required>
+                <option value disable>Pilih Semester</option>
+                  <option value="1">Semester 1</option>
+                  <option value="2">Semester 2</option>
+                  <option value="3">Semester 3</option>
+                  <option value="4">Semester 4</option>
+                  <option value="5">Semester 5</option>
               </select>
 
               <table class="table table-sm">
@@ -48,6 +58,7 @@
                   <tr>
                     <td>{{ $item->nama_siswa }}
                       <input type="hidden" name="siswa_id[]" value="{{ $item->id }}">
+                      <input type="hidden" name="semester[]" value="placeholder">
                     </td>
                     <input type="hidden" name="mapel_id[]" value="placeholder"></td>
                     <input type="hidden" name="jenis_nilai_id[]" value="placeholder"></td>

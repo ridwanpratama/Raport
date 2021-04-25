@@ -34,6 +34,7 @@ class NilaiController extends Controller
         $jenis_nilai_id = $request->jenis_nilai_id;
         $nilai_pengetahuan = $request->nilai_pengetahuan;
         $nilai_keterampilan = $request->nilai_keterampilan;
+        $semester = $request->semester;
 
         for ($i = 0; $i < count($siswa_id); $i++) {
             $datasave = [
@@ -42,6 +43,7 @@ class NilaiController extends Controller
                 'jenis_nilai_id' => $jenis_nilai_id[$i],
                 'nilai_pengetahuan' => $nilai_pengetahuan[$i],
                 'nilai_keterampilan' => $nilai_keterampilan[$i],
+                'semester' => $semester[$i],
             ];
             // return dd($datasave);
             DB::table('nilai_mapel')->insert($datasave);
