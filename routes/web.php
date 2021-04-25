@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,16 +24,25 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('data_nilai/{siswa_id}', 'ShowController@show')->name('nilai_show');
-    Route::get('raport/{siswa_id}', 'ShowController@raport')->name('raport_show');
+
+    Route::get('raport1/{siswa_id}', 'ShowController@raport1')->name('raport1_show');
+    Route::get('raport2/{siswa_id}', 'ShowController@raport2')->name('raport2_show');
+    Route::get('raport3/{siswa_id}', 'ShowController@raport3')->name('raport3_show');
+    Route::get('raport4/{siswa_id}', 'ShowController@raport4')->name('raport4_show');
+    Route::get('raport5/{siswa_id}', 'ShowController@raport5')->name('raport5_show');
+
     Route::get('nilai/export/', 'ShowController@exportNilai')->name('export_nilai');
 
-    Route::get('nilai/rombel/', 'NilaiController@rombel')->name('list_rombel');
-    Route::get('nilai/input/{id}', 'NilaiController@input')->name('input_nilai');
+    Route::get('nilai/rombel/{id}', 'Guru\NilaiController@rombel')->name('list_rombel');
+    Route::get('nilai/jurusan/', 'Guru\NilaiController@jurusan')->name('list_jurusan');
 
-    Route::resource('absen', 'AbsenController');
-    Route::resource('upd', 'UpdController');
-    Route::resource('nilai', 'NilaiController');
-    Route::resource('raport', 'RaportController');
+    Route::get('nilai/input/{id}', 'Guru\NilaiController@input')->name('input_nilai');
+    Route::post('nilai/input/', 'Guru\NilaiController@store')->name('store_nilai');
+
+    Route::resource('absen', 'Guru\AbsenController');
+    Route::resource('upd', 'Guru\UpdController');
+    Route::resource('nilai', 'Guru\NilaiController');
+    Route::resource('raport', 'Guru\RaportController');
 });
 
 Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
@@ -71,12 +81,12 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
     Route::get('detail/delete/{id}', 'TrashController@delete_detail')->name('delete.detail');
     Route::get('detail/deleteall', 'TrashController@delete_all_detail')->name('deleteall.detail');
 
-    Route::resource('siswa', 'SiswaController');
-    Route::resource('guru', 'GuruController');
-    Route::resource('rayon', 'RayonController');
-    Route::resource('mapel', 'MapelController');
-    Route::resource('detail', 'DetailController');
-    Route::resource('user', 'UserController');
-    Route::resource('jurusan', 'JurusanController');
-    Route::resource('rombel', 'RombelController');
+    Route::resource('siswa', 'Admin\SiswaController');
+    Route::resource('guru', 'Admin\GuruController');
+    Route::resource('rayon', 'Admin\RayonController');
+    Route::resource('mapel', 'Admin\MapelController');
+    Route::resource('detail', 'Admin\DetailController');
+    Route::resource('user', 'Admin\UserController');
+    Route::resource('jurusan', 'Admin\JurusanController');
+    Route::resource('rombel', 'Admin\RombelController');
 });

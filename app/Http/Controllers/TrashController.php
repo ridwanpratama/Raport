@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Detail;
-use App\Guru;
-use App\Siswa;
-use App\Rayon;
-use App\Jurusan;
+use App\Models\Admin\Guru;
+use App\Models\Admin\Rayon;
+use App\Models\Admin\Siswa;
+use App\Models\Admin\Detail;
 use Illuminate\Http\Request;
+use App\Models\Admin\Jurusan;
 
 class TrashController extends Controller
 {
     public function siswa()
     {
         $siswa = Siswa::onlyTrashed()->get();
-        return view('siswa.trash', ['siswa' => $siswa]);
+        return view('admin.siswa.trash', ['siswa' => $siswa]);
     }
 
     public function restoresiswa($id)
@@ -51,7 +51,7 @@ class TrashController extends Controller
     public function rayon()
     {
         $rayon = Rayon::onlyTrashed()->get();
-        return view('rayon.trash', ['rayon' => $rayon]);
+        return view('admin.rayon.trash', ['rayon' => $rayon]);
     }
 
     public function restorerayon($id)
@@ -89,7 +89,7 @@ class TrashController extends Controller
     public function jurusan()
     {
         $jurusan = Jurusan::onlyTrashed()->get();
-        return view('jurusan.trash', ['jurusan' => $jurusan]);
+        return view('admin.jurusan.trash', ['jurusan' => $jurusan]);
     }
 
     public function restorejurusan($id)
@@ -127,7 +127,7 @@ class TrashController extends Controller
     public function guru()
     {
         $guru = Guru::onlyTrashed()->get();
-        return view('guru.trash', ['guru'  => $guru]);
+        return view('admin.guru.trash', ['guru'  => $guru]);
     }
 
     public function restoreguru($id)
@@ -165,7 +165,7 @@ class TrashController extends Controller
     public function detail()
     {
         $detail = Detail::onlyTrashed()->get();
-        return view('detail.trash', ['detail' => $detail]);
+        return view('admin.detail.trash', ['detail' => $detail]);
     }
 
     public function restoredetail($id)

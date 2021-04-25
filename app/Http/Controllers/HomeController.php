@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Guru;
 use App\User;
-use App\Mapel;
-use App\Rayon;
-use App\Siswa;
-use App\Detail;
-use App\Jurusan;
+use App\Models\Admin\Guru;
+use App\Models\Admin\Mapel;
+use App\Models\Admin\Rayon;
+use App\Models\Admin\Siswa;
+use App\Models\Admin\Detail;
 use Illuminate\Http\Request;
+use App\Models\Admin\Jurusan;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
