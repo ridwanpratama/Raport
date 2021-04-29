@@ -89,4 +89,5 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
     Route::resource('user', 'Admin\UserController');
     Route::resource('jurusan', 'Admin\JurusanController');
     Route::resource('rombel', 'Admin\RombelController');
+    Route::resource('tahun_ajaran', 'Admin\TahunAjaranController');
 });

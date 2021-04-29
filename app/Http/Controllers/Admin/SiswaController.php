@@ -19,9 +19,9 @@ class SiswaController extends Controller
       ]);
   }
 
-  public function index()
+  public function index(Request $request)
   {
-      $siswa = Siswa::all();
+      $siswa = Siswa::where('tahun_ajaran_id', '=', $request->session()->get('tahun_ajaran'))->get();
       return view('admin.siswa.index',compact('siswa'));
   }
 
@@ -34,12 +34,15 @@ class SiswaController extends Controller
   {
       $this->validation($request);
 
+      $tahun_ajaran = $request->session()->get('tahun_ajaran');
+
       Siswa::create([
           'nis' => $request->nis,
           'nama_siswa' => $request->nama_siswa,
           'rombel_id' => $request->rombel_id,
           'rayon_id' => $request->rayon_id,
-          'jurusan_id' => $request->jurusan_id
+          'jurusan_id' => $request->jurusan_id,
+          'tahun_ajaran_id' => $tahun_ajaran
       ]);
 
       return redirect('siswa')->with('toast_success', 'Data berhasil disimpan!');

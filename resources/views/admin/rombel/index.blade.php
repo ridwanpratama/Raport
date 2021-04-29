@@ -33,10 +33,10 @@
                         <form action="{{route('rombel.destroy',[$item->id])}}" method="post">
                             {{csrf_field()}}
                             {{method_field('DELETE')}}
-                            <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus siswa: {{$item->nama_siswa}} ? Data akan masuk ke recycle bin ')">Hapus</button>
+                            <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data: {{$item->nama_rombel}} ? Data akan masuk ke recycle bin ')">Hapus</button>
                             <a href="{{route('rombel.edit',[$item->id])}}" class="btn btn-warning btn-sm">Ubah</a>
                         </td>
-                            
+
                         </form>
                     </td>
                 </tr>
