@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin\Guru;
+use App\Models\Admin\Mapel;
 use App\Models\Admin\Rayon;
 use App\Models\Admin\Siswa;
 use App\Models\Admin\Detail;
@@ -203,7 +204,7 @@ class TrashController extends Controller
     public function mapel()
     {
         $mapel = Mapel::onlyTrashed()->get();
-        return view('mapel.trash', ['mapel' => $mapel]);
+        return view('admin.mapel.trash', ['mapel' => $mapel]);
     }
 
     public function restoremapel($id)

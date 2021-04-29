@@ -25,6 +25,12 @@ class SiswaController extends Controller
       return view('admin.siswa.index',compact('siswa'));
   }
 
+  public function filterJurusan(Request $request, $id)
+  {
+      $siswa = Siswa::where('jurusan_id', '=', $id)->get();
+      return view('admin.siswa.index',compact('siswa'));
+  }
+
   public function create()
   {
       return view('admin.siswa.create');
