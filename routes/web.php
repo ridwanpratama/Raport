@@ -81,14 +81,14 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
     Route::get('detail/delete/{id}', 'TrashController@delete_detail')->name('delete.detail');
     Route::get('detail/deleteall', 'TrashController@delete_all_detail')->name('deleteall.detail');
 
-    //Soft Deletes CRUD Mapel
-    Route::get('mapel/trash', 'TrashController@mapel')->name('trash.mapel');
-    Route::get('mapel/restore/{id}', 'TrashController@restoremapel')->name('trashdetail.mapel');
-    Route::get('mapel/restore_all', 'TrashController@restore_allmapel')->name('restore.mapel');
-    Route::get('mapel/delete/{id}', 'TrashController@delete_mapel')->name('delete.mapel');
-    Route::get('mapel/deleteall', 'TrashController@delete_all_mapel')->name('deleteall.mapel');
+     //Soft Deletes CRUD Mapel
+     Route::get('mapel/trash', 'TrashController@mapel')->name('trash.mapel');
+     Route::get('mapel/restore/{id}', 'TrashController@restoremapel')->name('trashmapel.restore');
+     Route::get('mapel/restore_all', 'TrashController@restore_allmapel')->name('restore.mapel');
+     Route::get('mapel/delete/{id}', 'TrashController@delete_mapel')->name('delete.mapel');
+     Route::get('mapel/deleteall', 'TrashController@delete_all_mapel')->name('deleteall.mapel');
 
-    Route::get('datasiswa/jurusan/{id}', 'Admin\SiswaController@filterJurusan')->name('filterJurusan');
+     Route::get('datasiswa/jurusan/{id}', 'Admin\SiswaController@filterJurusan')->name('filterJurusan');
 
     Route::resource('siswa', 'Admin\SiswaController');
     Route::resource('guru', 'Admin\GuruController');

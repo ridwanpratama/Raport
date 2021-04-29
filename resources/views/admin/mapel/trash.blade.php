@@ -31,7 +31,7 @@
                     <td>{{ $item->nama_mapel }}</td>
                     <td>{{ $item->guru->nama_guru }}</td>
                     <td>
-                        <a href="{{route('delete.mapel',[$item->id])}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus permanen UPD: {{$item->nama_mapel}}?')">Delete</a>
+                        <a href="{{route('delete.mapel',[$item->id])}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus permanen Mata Pelajaran: {{$item->nama_mapel}}?')">Delete</a>
                         <a href="{{route('trashmapel.restore',[$item->id])}}" class="btn btn-success btn-sm">Restore</a>
                     </td>
                 </tr>

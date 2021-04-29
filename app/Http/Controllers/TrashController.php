@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin\Guru;
-use App\Models\Admin\Mapel;
 use App\Models\Admin\Rayon;
 use App\Models\Admin\Siswa;
 use App\Models\Admin\Detail;
 use Illuminate\Http\Request;
 use App\Models\Admin\Jurusan;
+use App\User;
+use App\Models\Admin\Mapel;
 
 class TrashController extends Controller
 {
