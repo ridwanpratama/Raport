@@ -8,6 +8,8 @@ use App\Models\Admin\Siswa;
 use App\Models\Admin\Detail;
 use Illuminate\Http\Request;
 use App\Models\Admin\Jurusan;
+use App\User;
+use App\Models\Admin\Mapel;
 
 class TrashController extends Controller
 {
@@ -203,7 +205,7 @@ class TrashController extends Controller
     public function mapel()
     {
         $mapel = Mapel::onlyTrashed()->get();
-        return view('mapel.trash', ['mapel' => $mapel]);
+        return view('admin.mapel.trash', ['mapel' => $mapel]);
     }
 
     public function restoremapel($id)
