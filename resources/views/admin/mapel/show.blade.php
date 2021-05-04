@@ -79,6 +79,7 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
+                            {{-- Yah otomatis jurusan yang disini juga gak bisa --}}
                                 <label for="mapel">Jurusan</label>
                                 <select class="form-control" id="jurusan_id" type="text" name="jurusan_id">
                                     <option value="{{ $item->jurusan_id }}">{{ $item->jurusan->nama_jurusan }}</option>
