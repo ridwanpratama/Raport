@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Models\Admin\Jurusan;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Jurusan;
+use Illuminate\Http\Request;
 
 class JurusanController extends Controller
 {
@@ -16,7 +16,7 @@ class JurusanController extends Controller
     public function index()
     {
         $data_jurusan = Jurusan::get();
-        return view('admin.jurusan.index',compact('data_jurusan'));
+        return view('admin.jurusan.index', compact('data_jurusan'));
     }
 
     /**
@@ -37,12 +37,12 @@ class JurusanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama_jurusan' => 'required'
+        $this->validate($request, [
+            'nama_jurusan' => 'required',
         ]);
 
         Jurusan::create([
-            'nama_jurusan' => $request->nama_jurusan
+            'nama_jurusan' => $request->nama_jurusan,
         ]);
 
         return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil disimpan!');
@@ -57,7 +57,7 @@ class JurusanController extends Controller
     public function edit($id)
     {
         $data_jurusan = Jurusan::find($id);
-        return view('admin.jurusan.edit',compact('data_jurusan'));
+        return view('admin.jurusan.edit', compact('data_jurusan'));
     }
 
     /**
@@ -71,7 +71,7 @@ class JurusanController extends Controller
     {
         $data_jurusan = Jurusan::find($id);
         $data_jurusan->update([
-            'nama_jurusan' => $request->nama_jurusan
+            'nama_jurusan' => $request->nama_jurusan,
         ]);
 
         return redirect()->route('jurusan.index')->with('toast_success', 'Data berhasil diupdate!');
@@ -88,5 +88,43 @@ class JurusanController extends Controller
         $data_jurusan = Jurusan::find($id);
         $data_jurusan->delete();
         return redirect('jurusan')->with('toast_warning', 'Data berhasil dihapus!');
+    }
+
+    public function jurusan()
+    {
+        $jurusan = Jurusan::onlyTrashed()->get();
+        return view('admin.jurusan.trash', ['jurusan' => $jurusan]);
+    }
+
+    public function restorejurusan($id)
+    {
+        $jurusan = Jurusan::onlyTrashed()->where('id', $id);
+        $jurusan->restore();
+
+        return redirect('jurusan/trash');
+    }
+
+    public function restore_alljurusan()
+    {
+        $jurusan = Jurusan::onlyTrashed();
+        $jurusan->restore();
+
+        return redirect('jurusan/trash');
+    }
+
+    public function delete_jurusan($id)
+    {
+        $jurusan = Jurusan::onlyTrashed()->where('id', $id);
+        $jurusan->forceDelete();
+
+        return redirect('/jurusan/trash');
+    }
+
+    public function delete_all_jurusan()
+    {
+        $jurusan = Jurusan::onlyTrashed();
+        $jurusan->forceDelete();
+
+        return redirect('/jurusan/trash');
     }
 }

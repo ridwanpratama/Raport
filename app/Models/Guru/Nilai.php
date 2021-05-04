@@ -33,4 +33,9 @@ class Nilai extends Model
   {
     return $this->belongsTo('App\Models\Admin\Jenisnilai');
   }
+
+  public function tahun_ajaran()
+  {
+    return $this->belongsTo('App\Models\Admin\TahunAjaran');
+  }
 }

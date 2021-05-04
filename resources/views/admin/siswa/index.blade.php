@@ -5,30 +5,20 @@
         href="{{ asset('https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css') }}">
 @endsection
-@push('page_css')
-    <style>
-        .ddtf-processed th.option-except>select {
-            display: none;
-        }
-
-        .ddtf-processed th.option-except>div {
-            display: block !important;
-        }
-
-        select {
-            border: none;
-            background-color: transparent;
-        }
-
-    </style>
-@endpush
 @section('pagetitle')
     <h1>Data Siswa</h1>
 @endsection
 @section('content')
     <div class="section-body">
         <div class="row">
-            <div class="col-md-2 mb-3">
+            <div class="col-12 col-md-12 col-lg-12">
+                <a href="{{ route('siswa.create') }}" class="btn btn-icon icon-left btn-primary shadow"><i
+                        class="far fa-edit"></i>Tambah Data</a>
+                <a href="{{ route('trash.siswa') }}" class="btn btn-icon icon-left btn-danger shadow"><i
+                        class="fas fa-trash"></i>Recycle Bin</a>
+            </div>
+
+            <div class="col-md-2 mt-3">
                 <select class="form-control shadow" id="jurusan_id" type="text" name="jurusan_id"
                     onchange="filterJurusan(this)">
                     <option value disable>Filter Jurusan</option>
@@ -38,11 +28,26 @@
                 </select>
             </div>
 
+            <div class="col-md-2 mt-3">
+                <select class="form-control shadow" id="rayon_id" type="text" name="rayon_id" onchange="filterRayon(this)">
+                    <option value disable>Filter Rayon</option>
+                    @foreach (App\Models\Admin\Rayon::all() as $rayon)
+                        <option value="{{ $rayon->id }}">{{ $rayon->nama_rayon }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-md-2 mt-3">
+                <select class="form-control shadow" id="rombel_id" type="text" name="rombel_id"
+                    onchange="filterRombel(this)">
+                    <option value disable>Filter Rombel</option>
+                    @foreach (App\Models\Admin\Rombel::all() as $rombel)
+                        <option value="{{ $rombel->id }}">{{ $rombel->nama_rombel }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="col-12 col-md-12 col-lg-12">
-                <a href="{{ route('siswa.create') }}" class="btn btn-icon icon-left btn-primary"><i
-                        class="far fa-edit"></i>Tambah Data</a>
-                <a href="{{ route('trash.siswa') }}" class="btn btn-icon icon-left btn-danger"><i
-                        class="fas fa-trash"></i>Recycle Bin</a>
                 <div class="card my-3">
                     <div class="card-body">
                         <table id="table" class="table table-striped table-bordered table-md">
@@ -58,7 +63,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($siswa as $item)
+                                @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->nis }}</td>
@@ -74,8 +79,7 @@
                                                     onclick="return confirm('Apakah anda yakin ingin menghapus siswa: {{ $item->nama_siswa }} ? Data akan masuk ke recycle bin ')">Hapus</button>
                                                 <a href="{{ route('siswa.edit', [$item->id]) }}"
                                                     class="btn btn-warning btn-sm">Ubah</a>
-                                        </td>
-                                        </form>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -86,25 +90,33 @@
             </div>
         </div>
     </div>
+    </div>
 @endsection
 
 @section('third_party_scripts')
     <script type="text/javascript" charset="utf8"
         src="{{ asset('https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/js/ddtf.js') }}"></script>
-
 @endsection
 @push('page_scripts')
     <script>
         $(document).ready(function() {
             $('#table').DataTable();
-            $('#table').ddTableFilter();
         });
 
         function filterJurusan(el) {
             var value = (el.value || el.options[el.selectedIndex].value);
-            window.location.href = '/datasiswa/jurusan/' + value;
+            window.location.href = '/siswa/jurusan/' + value;
+        }
+
+        function filterRayon(el) {
+            var value = (el.value || el.options[el.selectedIndex].value);
+            window.location.href = '/siswa/rayon/' + value;
+        }
+
+        function filterRombel(el) {
+            var value = (el.value || el.options[el.selectedIndex].value);
+            window.location.href = '/siswa/rombel/' + value;
         }
 
     </script>

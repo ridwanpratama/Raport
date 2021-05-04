@@ -54,7 +54,7 @@
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">Hapus</button>
-                            <a href="{{route('nilai_show',$item->siswa_id)}}" class="btn btn-info btn-sm">Lihat</a>
+                            <a href="{{route('nilai_show',[$item->siswa_id,$item->tahun_ajaran_id])}}" class="btn btn-info btn-sm">Lihat</a>
                         </td>
                             
                         </form>

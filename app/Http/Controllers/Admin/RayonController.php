@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin\Guru;
 use App\Models\Admin\Rayon;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class RayonController extends Controller
 {
@@ -49,18 +49,7 @@ class RayonController extends Controller
         Rayon::create($request->all());
 
         return redirect()->route('rayon.index')
-                        ->with('toast_success', 'Data berhasil ditambahkan');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Rayon  $rayon
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rayon $rayon)
-    {
-        //
+            ->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -71,9 +60,9 @@ class RayonController extends Controller
      */
     public function edit($id)
     {
-         $guru = guru::all();
-         $rayon = rayon::find($id);
-         $selectguru = Guru::find($rayon->guru_id);
+        $guru = guru::all();
+        $rayon = rayon::find($id);
+        $selectguru = Guru::find($rayon->guru_id);
 
         return view('admin.rayon.edit', compact('selectguru', 'rayon', 'guru'));
 
@@ -96,7 +85,7 @@ class RayonController extends Controller
         $rayon->update($request->all());
 
         return redirect()->route('rayon.index')
-                        ->with('toast_success', 'Data berhasil diperbarui');
+            ->with('toast_success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -110,6 +99,44 @@ class RayonController extends Controller
         $rayon->delete();
 
         return redirect()->route('rayon.index')
-                        ->with('toast_warning', 'Data berhasil dihapus');
+            ->with('toast_warning', 'Data berhasil dihapus');
+    }
+
+    public function rayon()
+    {
+        $rayon = Rayon::onlyTrashed()->get();
+        return view('admin.rayon.trash', ['rayon' => $rayon]);
+    }
+
+    public function restorerayon($id)
+    {
+        $rayon = Rayon::onlyTrashed()->where('id', $id);
+        $rayon->restore();
+
+        return redirect('rayon/trash');
+    }
+
+    public function restore_allrayon()
+    {
+        $rayon = Rayon::onlyTrashed();
+        $rayon->restore();
+
+        return redirect('rayon/trash');
+    }
+
+    public function delete_rayon($id)
+    {
+        $rayon = Rayon::onlyTrashed()->where('id', $id);
+        $rayon->forceDelete();
+
+        return redirect('/rayon/trash');
+    }
+
+    public function delete_all_rayon()
+    {
+        $rayon = Rayon::onlyTrashed();
+        $rayon->forceDelete();
+
+        return redirect('/rayon/trash');
     }
 }

@@ -38,6 +38,7 @@
               @yield('content')
         </section>
       </div>
+
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2020
@@ -45,6 +46,8 @@
       </footer>
     </div>
   </div>
+
+   @stack('modal')
   
   <!-- General JS Scripts -->
   <script src="{{ asset('https://code.jquery.com/jquery-3.3.1.min.js') }}" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -65,5 +68,6 @@
   <!-- Page Specific JS File -->
   @stack('page_scripts')
   @include('sweetalert::alert')
+  
 </body>
 </html>

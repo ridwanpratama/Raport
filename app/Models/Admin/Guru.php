@@ -10,10 +10,11 @@ class Guru extends Model
   use SoftDeletes;
 
   protected $table = "guru";
-  protected $fillable = ['nama_guru', 'jk', 'no_telp'];
+  protected $fillable = ['id', 'nama_guru', 'jk', 'no_telp'];
   protected $dates = ['deleted_at'];
 
   public function mapel(){
     return $this->hasMany('App\Models\Admin\Mapel');
   }
+  
 }

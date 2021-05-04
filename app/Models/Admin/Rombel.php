@@ -18,4 +18,9 @@ class Rombel extends Model
   {
     return $this->belongsTo('App\Models\Admin\Jurusan');
   }
+
+  public function mapel()
+  {
+    return $this->hasMany('App\Models\Admin\Mapel');
+  }
 }

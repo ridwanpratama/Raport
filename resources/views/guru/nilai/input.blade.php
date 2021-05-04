@@ -21,8 +21,8 @@
             <div id="baseForm" class="mt-4">
               <select class="form-control my-2" id="mapelSelect" required>
                 <option value disable>Pilih Mapel</option>
-                @foreach (App\Models\Admin\Mapel::all() as $mapel)
-                <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
+                @foreach ($mapel as $item)
+                <option value="{{ $item->id }}">{{ $item->nama_mapel }}</option>
                 @endforeach
               </select>
 

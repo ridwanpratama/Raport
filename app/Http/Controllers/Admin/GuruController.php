@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin\Guru;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class GuruController extends Controller
 {
@@ -17,7 +17,7 @@ class GuruController extends Controller
     {
         $teacher = Guru::all();
 
-        return view('admin.guru.index',compact('teacher'));
+        return view('admin.guru.index', compact('teacher'));
     }
 
     /**
@@ -91,5 +91,43 @@ class GuruController extends Controller
         $guru->delete();
 
         return redirect()->route('guru.index')->with('toast_warning', 'Data berhasil dihapus!');
+    }
+
+    public function guru()
+    {
+        $guru = Guru::onlyTrashed()->get();
+        return view('admin.guru.trash', ['guru' => $guru]);
+    }
+
+    public function restoreguru($id)
+    {
+        $guru = Guru::onlyTrashed()->where('id', $id);
+        $guru->restore();
+
+        return redirect('guru/trash');
+    }
+
+    public function restore_allguru()
+    {
+        $guru = Guru::onlyTrashed();
+        $guru->restore();
+
+        return redirect('guru/trash');
+    }
+
+    public function delete_guru($id)
+    {
+        $guru = Guru::onlyTrashed()->where('id', $id);
+        $guru->forceDelete();
+
+        return redirect('/guru/trash');
+    }
+
+    public function delete_all_guru()
+    {
+        $guru = Guru::onlyTrashed();
+        $guru->forceDelete();
+
+        return redirect('/guru/trash');
     }
 }

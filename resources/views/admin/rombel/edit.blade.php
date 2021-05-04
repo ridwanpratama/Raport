@@ -20,6 +20,15 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="tingkat">Tingkat</label>
+                        <select class="form-control" id="tingkat" type="text" name="tingkat">
+                            <option value="{{ $rombel->tingkat }}">{{ $rombel->tingkat }}</option>
+                            <option value="X">X</option>
+                            <option value="XI">XI</option>
+                            <option value="XII">XII</option>
+                    </div>
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="jurusan_id">Guru</label>
                         <div class="col-md-9">

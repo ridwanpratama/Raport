@@ -23,4 +23,8 @@ class Jurusan extends Model
   public function rombel(){
     return $this->hasMany('App\Models\Admin\Rombel');
   }
+
+  public function mapel(){
+    return $this->hasMany('App\Models\Admin\Mapel');
+  }
 }

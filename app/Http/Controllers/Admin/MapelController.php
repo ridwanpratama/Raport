@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin\Mapel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class MapelController extends Controller
 {
@@ -15,8 +15,11 @@ class MapelController extends Controller
      */
     public function index()
     {
-        $data_mapel = Mapel::all();
-        return view('admin.mapel.index',compact('data_mapel'));
+        $mapel = Mapel::distinct()->pluck('nama_mapel');
+        $data_mapel = Mapel::whereIn('nama_mapel', $mapel)->groupBy('nama_mapel')->get();
+        $jenis_mapel = Mapel::select('jenis_mapel')->get();
+
+        return view('admin.mapel.index', compact('data_mapel','jenis_mapel'));
     }
 
     /**
@@ -33,7 +36,9 @@ class MapelController extends Controller
     {
         $validation = $request->validate([
             'nama_mapel' => 'required',
-            'guru_id' => 'required'
+            'guru_id' => 'required',
+            'jurusan_id' => 'required',
+            'rombel_id' => 'required'
         ]);
     }
 
@@ -49,22 +54,13 @@ class MapelController extends Controller
 
         Mapel::create([
             'nama_mapel' => $request->nama_mapel,
-            'guru_id' => $request->guru_id
+            'guru_id' => $request->guru_id,
+            'jenis_mapel' => $request->jenis_mapel,
+            'rombel_id' => $request->rombel_id,
+            'jurusan_id' => $request->jurusan_id,
         ]);
 
         return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil disimpan!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $data_mapel = Mapel::find($id);
-        return view('admin.mapel.show',compact('data_mapel'));
     }
 
     /**
@@ -76,7 +72,7 @@ class MapelController extends Controller
     public function edit($id)
     {
         $data_mapel = Mapel::find($id);
-        return view('admin.mapel.edit',compact('data_mapel'));
+        return view('admin.mapel.edit', compact('data_mapel'));
     }
 
     /**
@@ -88,14 +84,15 @@ class MapelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validation($request);
-        $data_mapel = Mapel::find($id);
-        $data_mapel->update([
-            'nama_mapel' => $request->nama_mapel,
-            'guru_id' => $request->guru_id
+        $request->validate([
+            'jurusan_id' => 'required',
+            'rombel_id' => 'required',
         ]);
 
-        return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil diupdate!');
+        $data_mapel = Mapel::find($id);
+        $data_mapel->update($request->all());
+
+        return redirect()->back()->with('toast_success', 'data berhasil diupdate');
     }
 
     /**
@@ -109,5 +106,69 @@ class MapelController extends Controller
         $data_mapel = Mapel::find($id);
         $data_mapel->delete();
         return redirect('mapel')->with('toast_warning', 'Data berhasil dihapus!');
+    }
+
+    public function mapel()
+    {
+        $mapel = Mapel::onlyTrashed()->get();
+        return view('admin.mapel.trash', ['mapel' => $mapel]);
+    }
+
+    public function restoremapel($id)
+    {
+        $mapel = Mapel::onlyTrashed()->where('id', $id);
+        $mapel->restore();
+
+        return redirect('mapel/trash');
+    }
+
+    public function restore_allmapel()
+    {
+        $mapel = Mapel::onlyTrashed();
+        $mapel->restore();
+
+        return redirect('mapel/trash');
+    }
+
+    public function delete_mapel($id)
+    {
+        $mapel = Mapel::onlyTrashed()->where('id', $id);
+        $mapel->forceDelete();
+
+        return redirect('/mapel/trash');
+    }
+
+    public function delete_all_mapel()
+    {
+        $mapel = Mapel::onlyTrashed();
+        $mapel->forceDelete();
+
+        return redirect('/mapel/trash');
+    }
+
+    public function filterJenisMapel($jenis_mapel)
+    {
+        $mapel = Mapel::distinct()->pluck('nama_mapel');
+        $data_mapel = Mapel::whereIn('nama_mapel', $mapel)->where('jenis_mapel', $jenis_mapel)->groupBy('nama_mapel')->get();   
+        $jenis_mapel = Mapel::select('jenis_mapel')->get();
+
+        return view('admin.mapel.index', compact('data_mapel','jenis_mapel'));
+    }
+
+    public function filterJurusan($id)
+    {
+        $mapel = Mapel::distinct()->pluck('nama_mapel');
+        $data_mapel = Mapel::whereIn('nama_mapel',$mapel)->where('jurusan_id', $id)->groupBy('jurusan_id')->get();
+        $jenis_mapel = Mapel::select('jenis_mapel')->get();
+
+        return view('admin.mapel.index', compact('data_mapel','jenis_mapel'));
+    }
+
+    public function showMapel($nama_mapel)
+    {
+        $mapel = Mapel::where('nama_mapel', $nama_mapel)->get();
+        $identitas = Mapel::where('nama_mapel', $nama_mapel)->first();
+ 
+        return view('admin.mapel.show', compact('mapel','identitas'));
     }
 }
