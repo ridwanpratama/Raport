@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin\TahunAjaran;
 use Illuminate\Database\Seeder;
 
 
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GuruSeeder::class);
         $this->call(JurusanSeeder::class);
         $this->call(JenisNilaiSeeder::class);
+        $this->call(TahunAjaranSeeder::class);
     }
 }

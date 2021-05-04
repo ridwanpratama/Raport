@@ -59,7 +59,7 @@
                                         <td>{{ $mapel->nama_mapel }}</td>
                                         {{-- ERROR Trying to get property 'nama_jurusan' of non-object--}}
                                         {{-- I Dunno why, tadi siang bisa tapi coba lagi sekarang gak bisa --}}
-                                        {{-- <td>{{ $mapel->jurusan->nama_jurusan }}</td> --}}
+                                        <td>{{ $mapel->jurusan->nama_jurusan }}</td>
                                         <td><a href="">
                                                 <form action="{{ route('mapel.destroy', [$mapel->id]) }}" method="post">
                                                     {{ csrf_field() }}

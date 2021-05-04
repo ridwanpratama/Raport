@@ -38,7 +38,7 @@
                             <tbody>
                                 @foreach ($mapel as $item)
                                     <tr>
-                                        {{-- <td>{{ $item->jurusan->nama_jurusan }}</td> --}}
+                                        <td>{{ $item->jurusan->nama_jurusan }}</td>
                                         <td>{{ $item->rombel->tingkat }}</td>
                                         <td>{{ $item->guru->nama_guru }}</td>
                                         <td>
