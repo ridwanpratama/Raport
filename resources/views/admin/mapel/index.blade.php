@@ -45,9 +45,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Kode Mapel</th>
                                     <th>Jenis Mapel</th>
                                     <th>Mata Pelajaran</th>
-                                    <th>Jurusan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -55,11 +55,9 @@
                                 @foreach ($data_mapel as $mapel)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $mapel->kode_mapel }}</td>
                                         <td>{{ $mapel->jenis_mapel }}</td>
                                         <td>{{ $mapel->nama_mapel }}</td>
-                                        {{-- ERROR Trying to get property 'nama_jurusan' of non-object--}}
-                                        {{-- I Dunno why, tadi siang bisa tapi coba lagi sekarang gak bisa --}}
-                                        {{-- <td>{{ $mapel->jurusan->nama_jurusan }}</td> --}}
                                         <td><a href="">
                                                 <form action="{{ route('mapel.destroy', [$mapel->id]) }}" method="post">
                                                     {{ csrf_field() }}

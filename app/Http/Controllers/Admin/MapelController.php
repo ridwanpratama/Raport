@@ -53,6 +53,7 @@ class MapelController extends Controller
         $this->validation($request);
 
         Mapel::create([
+            'kode_mapel' => $request->kode_mapel,
             'nama_mapel' => $request->nama_mapel,
             'guru_id' => $request->guru_id,
             'jenis_mapel' => $request->jenis_mapel,
