@@ -24,7 +24,6 @@
                                     <th>Rombel</th>
                                     <th>Rayon</th>
                                     <th>Jurusan</th>
-                                    <th>Tahun Ajaran</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,7 +33,6 @@
                                     <td>{{ $siswa->rombel->nama_rombel }}</td>
                                     <td>{{ $siswa->rayon->nama_rayon }}</td>
                                     <td>{{ $siswa->jurusan->nama_jurusan }}</td>
-                                    <td>{{ $tahun_ajaran->tahun_ajaran }}</td>
                                 </tr>
                             </tbody>
                         </table>

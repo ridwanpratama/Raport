@@ -29,7 +29,9 @@ class MapelController extends Controller
      */
     public function create()
     {
-        return view('admin.mapel.create');
+        $mapel = Mapel::distinct()->pluck('nama_mapel');
+        $data_mapel = Mapel::whereIn('nama_mapel', $mapel)->groupBy('nama_mapel')->get();
+        return view('admin.mapel.create', compact('data_mapel'));
     }
 
     public function validation(Request $request)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Guru;
 
+use Carbon\Carbon;
 use App\Models\Guru\Absen;
 use App\Models\Guru\Nilai;
 use App\Models\Admin\Mapel;
@@ -9,6 +10,7 @@ use App\Models\Admin\Siswa;
 use App\Models\Admin\Rombel;
 use Illuminate\Http\Request;
 use App\Models\Admin\Jurusan;
+use App\Models\Admin\JenisNilai;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -46,6 +48,8 @@ class NilaiController extends Controller
                 'nilai_keterampilan' => $nilai_keterampilan[$i],
                 'semester' => $semester[$i],
                 'tahun_ajaran_id' => $request->session()->get('tahun_ajaran'),
+                "created_at" =>  \Carbon\Carbon::now(),
+                "updated_at" => \Carbon\Carbon::now(),
             ];
             // return dd($datasave);
             DB::table('nilai_mapel')->insert($datasave);
@@ -84,8 +88,9 @@ class NilaiController extends Controller
 
         $siswa = Siswa::where('rombel_id', $id)->get();
         $mapel = Mapel::where('jurusan_id', $request->session()->get('jurusan_id'))->get();
+        $jenis_nilai = JenisNilai::whereNotIn('id', array(13,14,15,16,17,18,19,20,21,22,23,24,24))->get();
 
-        return view('guru.nilai.input', compact('siswa','mapel'));
+        return view('guru.nilai.input', compact('siswa','mapel','jenis_nilai'));
     }
 
     public function jurusan()

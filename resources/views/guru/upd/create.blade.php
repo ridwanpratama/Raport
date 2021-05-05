@@ -37,10 +37,27 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Pilih Jenis Nilai</label>
+                        <div class="col-md-9">
+                            <select class="form-control" id="detail_upd_id" name="detail_upd_id">
+                                <option value disable>--Pilih Jenis Nilai--</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label class="col-md-3 col-form-label">Nilai UPD</label>
                         <div class="col-md-9">
                             <input class="form-control @error('nilai_upd') is-invalid @enderror" id="nilai_upd" type="number" name="nilai_upd"
                                 placeholder="@error('nilai_upd') {{ $message }} @enderror" value="{{ old('nilai_upd')}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Jumlah Tidak Hadir</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control">
                         </div>
                     </div>
 
@@ -54,6 +71,7 @@
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
+                            <option value="6">6</option>
                         </select>
                       </div>
                   </div>

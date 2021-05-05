@@ -8,6 +8,7 @@ class Nilai extends Model
 {
   protected $table = "nilai_mapel";
   protected $guarded = [];
+  public $timestamps = true;
 
   public function siswa()
   {

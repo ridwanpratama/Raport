@@ -13,31 +13,31 @@ class JurusanSeeder extends Seeder
     public function run()
     {
         Jurusan::insert([
-          'nama_jurusan' => 'Otomatisasi Tata Kelola Perkantoran',
+          'nama_jurusan' => 'OTKP',
         ]);
 
         Jurusan::insert([
-          'nama_jurusan' => 'Rekayasa Perangkat Lunak',
+          'nama_jurusan' => 'RPL',
         ]);
 
         Jurusan::insert([
-          'nama_jurusan' => 'Teknik Komputer dan Jaringan',
+          'nama_jurusan' => 'TKJ',
         ]);
 
         Jurusan::insert([
-          'nama_jurusan' => 'Multimedia',
+          'nama_jurusan' => 'MMD',
         ]);
 
         Jurusan::insert([
-          'nama_jurusan' => 'Bisnis Daring dan Pemasaran',
+          'nama_jurusan' => 'BDP',
         ]);
 
         Jurusan::insert([
-          'nama_jurusan' => 'Tata Boga',
+          'nama_jurusan' => 'TBG',
         ]);
 
         Jurusan::insert([
-          'nama_jurusan' => 'Perhotelan',
+          'nama_jurusan' => 'HTL',
         ]);
     }
 }

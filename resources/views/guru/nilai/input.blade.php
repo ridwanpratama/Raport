@@ -28,7 +28,7 @@
 
               <select id="jenisNilaiSelect" class="form-control my-2" required>
                 <option value disable>Pilih Jenis Nilai</option>
-                @foreach (App\Models\Admin\JenisNilai::all() as $item)
+                @foreach ($jenis_nilai as $item)
                 <option value="{{ $item->id }}">{{ $item->jenis_nilai }}</option>
                 @endforeach
               </select>
@@ -40,6 +40,7 @@
                 <option value="3">Semester 3</option>
                 <option value="4">Semester 4</option>
                 <option value="5">Semester 5</option>
+                <option value="5">Semester 6</option>
               </select>
 
               <table class="table table-sm">

@@ -29,6 +29,26 @@ class ShowController extends Controller
         return view('guru.nilai.show', compact('nilai','siswa','absen', 'upd','tahun_ajaran'));
     }
 
+    public function mingguan(Request $request, $siswa_id, $tahun_ajaran_id)
+    {
+        try{
+            $siswa = Siswa::where('id', $siswa_id)->firstorFail();
+        
+            $startDate = $request->session()->get('startDate');
+            $endDate = $request->session()->get('endDate');
+            $nilai = Nilai::whereBetween('created_at', [$startDate,$endDate])->where('siswa_id', $siswa_id)->get();
+
+            $absen = Absen::where('siswa_id', $siswa_id)->firstorFail();
+            $upd = Upd::where('siswa_id', $siswa_id)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
+            
+        }catch(\Exception $exception){
+            return redirect()->back()->with('toast_error', 'Data belum lengkap!');
+        }
+
+        return view('guru.raport.mingguan', compact('nilai','siswa','absen', 'upd','tahun_ajaran'));
+    }
+
     public function print($siswa_id, $tahun_ajaran_id)
     {
         try{
@@ -43,108 +63,6 @@ class ShowController extends Controller
         }
         // dd($tahun_ajaran);
         return view('guru.nilai.show', compact('nilai','siswa','absen', 'upd','tahun_ajaran'));
-    }
-
-    // don't mind me, i just want this to complete already. tbh i can't find other way yet
-
-    public function raport1($siswa_id)
-    {
-        try{
-            $siswa = Siswa::where('id', $siswa_id)->firstorFail();
-
-            $semester1 = ['siswa_id' => $siswa_id, 'semester' => '1'];
-            $nilai = Nilai::where($semester1)->get();
-
-            $absen1 = ['siswa_id' => $siswa_id, 'semester' => '1' ];
-            $absen = Absen::where($absen1)->firstorFail();
-
-            $upd1 = ['siswa_id' => $siswa_id, 'semester' => '1'];
-            $upd = Upd::where($upd1)->firstorFail();
-        }catch(\Exception $exception){
-            return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
-        }
-
-        return view('guru.raport.show', compact('nilai','siswa','absen', 'upd'));
-    }
-
-    public function raport2($siswa_id)
-    {
-        try{
-            $siswa = Siswa::where('id', $siswa_id)->firstorFail();
-
-            $semester2 = ['siswa_id' => $siswa_id, 'semester' => '2'];
-            $nilai = Nilai::where($semester2)->get();
-
-            $absen2 = ['siswa_id' => $siswa_id, 'semester' => '2' ];
-            $absen = Absen::where($absen2)->firstorFail();
-
-            $upd2 = ['siswa_id' => $siswa_id, 'semester' => '2'];
-            $upd = Upd::where($upd2)->firstorFail();
-        }catch(\Exception $exception){
-            return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
-        }
-
-        return view('guru.raport.show', compact('nilai','siswa','absen', 'upd'));
-    }
-
-    public function raport3($siswa_id)
-    {
-        try{
-            $siswa = Siswa::where('id', $siswa_id)->firstorFail();
-
-            $semester3 = ['siswa_id' => $siswa_id, 'semester' => '3'];
-            $nilai = Nilai::where($semester3)->get();
-
-            $absen3 = ['siswa_id' => $siswa_id, 'semester' => '3' ];
-            $absen = Absen::where($absen3)->firstorFail();
-
-            $upd3 = ['siswa_id' => $siswa_id, 'semester' => '3'];
-            $upd = Upd::where($upd3)->firstorFail();
-        }catch(\Exception $exception){
-            return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
-        }
-
-        return view('guru.raport.show', compact('nilai','siswa','absen', 'upd'));
-    }
-
-    public function raport4($siswa_id)
-    {
-        try{
-            $siswa = Siswa::where('id', $siswa_id)->firstorFail();
-
-            $semester4 = ['siswa_id' => $siswa_id, 'semester' => '4'];
-            $nilai = Nilai::where($semester4)->get();
-
-            $absen4 = ['siswa_id' => $siswa_id, 'semester' => '4' ];
-            $absen = Absen::where($absen4)->firstorFail();
-
-            $upd4 = ['siswa_id' => $siswa_id, 'semester' => '4'];
-            $upd = Upd::where($upd4)->firstorFail();
-        }catch(\Exception $exception){
-            return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
-        }
-
-        return view('guru.raport.show', compact('nilai_smt4','siswa','absen', 'upd'));
-    }
-
-    public function raport5($siswa_id)
-    {
-        try{
-            $siswa = Siswa::where('id', $siswa_id)->firstorFail();
-
-            $semester5 = ['siswa_id' => $siswa_id, 'semester' => '5'];
-            $nilai = Nilai::where($semester5)->get();
-
-            $absen5 = ['siswa_id' => $siswa_id, 'semester' => '5' ];
-            $absen = Absen::where($absen5)->firstorFail();
-
-            $upd5 = ['siswa_id' => $siswa_id, 'semester' => '5'];
-            $upd = Upd::where($upd5)->firstorFail();
-        }catch(\Exception $exception){
-            return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
-        }
-
-        return view('guru.raport.show', compact('nilai','siswa','absen', 'upd'));
     }
 
     public function exportNilai()

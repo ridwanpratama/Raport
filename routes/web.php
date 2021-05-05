@@ -107,19 +107,27 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('data_nilai/{siswa_id}/{tahun_ajaran_id}', 'ShowController@show')->name('nilai_show');
 
-    Route::get('raport1/{siswa_id}', 'ShowController@raport1')->name('raport1_show');
-    Route::get('raport2/{siswa_id}', 'ShowController@raport2')->name('raport2_show');
-    Route::get('raport3/{siswa_id}', 'ShowController@raport3')->name('raport3_show');
-    Route::get('raport4/{siswa_id}', 'ShowController@raport4')->name('raport4_show');
-    Route::get('raport5/{siswa_id}', 'ShowController@raport5')->name('raport5_show');
-    Route::get('raport6/{siswa_id}', 'ShowController@raport6')->name('raport6_show');
+    Route::get('data_nilai/mingguan/{siswa_id}/{tahun_ajaran_id}', 'ShowController@mingguan')->name('nilai_mingguan');
 
-    Route::get('mid1/{siswa_id}', 'ShowController@mid1')->name('mid1');
-    Route::get('mid2/{siswa_id}', 'ShowController@mid1')->name('mid2');
-    Route::get('mid3/{siswa_id}', 'ShowController@mid1')->name('mid3');
-    Route::get('mid4/{siswa_id}', 'ShowController@mid1')->name('mid4');
-    Route::get('mid5/{siswa_id}', 'ShowController@mid1')->name('mid5');
-    Route::get('mid6/{siswa_id}', 'ShowController@mid1')->name('mid6');
+    Route::get('raport1/{siswa_id}', 'Guru\RaportController@raport1')->name('raport1_show');
+    Route::get('raport2/{siswa_id}', 'Guru\RaportController@raport2')->name('raport2_show');
+    Route::get('raport3/{siswa_id}', 'Guru\RaportController@raport3')->name('raport3_show');
+    Route::get('raport4/{siswa_id}', 'Guru\RaportController@raport4')->name('raport4_show');
+    Route::get('raport5/{siswa_id}', 'Guru\RaportController@raport5')->name('raport5_show');
+    Route::get('raport6/{siswa_id}', 'Guru\RaportController@raport6')->name('raport6_show');
+
+    Route::get('mid1/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid1')->name('mid1');
+    Route::get('mid2/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid2')->name('mid2');
+    Route::get('mid3/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid3')->name('mid3');
+    Route::get('mid4/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid4')->name('mid4');
+    Route::get('mid5/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid5')->name('mid5');
+    Route::get('mid6/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid6')->name('mid6');
+    Route::get('mid7/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid7')->name('mid7');
+    Route::get('mid8/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid8')->name('mid8');
+    Route::get('mid9/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid9')->name('mid9');
+    Route::get('mid10/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid10')->name('mid10');
+    Route::get('mid11/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid11')->name('mid11');
+    Route::get('mid12/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid12')->name('mid12');
 
     Route::get('/raport/search', 'Guru\RaportController@search');
 

@@ -116,15 +116,22 @@
             let mapel =
             `<select class="form-control" id="nama_mapel"type="text" name="nama_mapel">`+
                 `<option value disable>Pilih Mapel</option>`+
-                    `@foreach (App\Models\Admin\Mapel::all() as $mapel)`+
-                        `<option value="{{ $mapel->nama_mapel }}">{{ $mapel->nama_mapel }}</option>`+
-                    `@endforeach`+
+                `@foreach ($data_mapel as $item)` +
+                    `<option value="{{ $item->nama_mapel }}" data-mapel={{ $item->kode_mapel }}>{{ $item->nama_mapel }}</option>`+ 
+                `@endforeach` +
             `</select>`+
-            `<input class="form-control mt-2" id="kode_mapel" type="text" name="kode_mapel" placeholder="Kode Mapel">`;
+            `<input class="form-control mt-2" id="kode_mapel" type="text" name="kode_mapel" placeholder="Kode Mapel" readonly>`;
 
             $("#newMapel").css("display", "none");
             $("#oldMapel").css("display", "none");
             $("#mapelContainer").append(mapel);
+
+            $(document).ready(function(){
+                $('#nama_mapel').change(function(){                
+                    let mapel = $(this).find(':selected').data('mapel');
+                    $('#kode_mapel').val(mapel)
+                })
+            });
         }
 
     </script>
