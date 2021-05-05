@@ -10,5 +10,4 @@
 8. Run migration using `php artisan migrate` command
 9. Run pnpm install && pnpm dev
 10. Seed database using php artisan db:seed
-11. Add tahun ajaran to tahun_ajaran table in phpmyadmin (first time running)
-12. Run the project with command `php artisan serve`
+11. Run project with command `php artisan serve`
