@@ -13,4 +13,9 @@ class Absen extends Model
   {
     return $this->belongsTo('App\Models\Admin\Siswa');
   }
+
+  public function jenis_nilai()
+  {
+    return $this->belongsTo('App\Models\Admin\JenisNilai','jenis_nilai_id');
+  }
 }

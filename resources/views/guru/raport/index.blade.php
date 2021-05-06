@@ -79,17 +79,17 @@
                                                         <td>{{ $item->siswa->rayon->nama_rayon }}</td>
                                                         <td>{{ $item->siswa->jurusan->nama_jurusan }}</td>
                                                         <td>
-                                                            <a href="{{ route('raport1_show', $item->siswa_id) }}"
+                                                            <a href="{{ route('raport1_show', [$item->siswa_id, $item->tahun_ajaran_id]) }}"
                                                                 class="btn btn-info btn-sm">1</a>
-                                                            <a href="{{ route('raport2_show', $item->siswa_id) }}"
+                                                            <a href="{{ route('raport2_show', [$item->siswa_id, $item->tahun_ajaran_id]) }}"
                                                                 class="btn btn-info btn-sm">2</a>
-                                                            <a href="{{ route('raport3_show', $item->siswa_id) }}"
+                                                            <a href="{{ route('raport3_show', [$item->siswa_id, $item->tahun_ajaran_id]) }}"
                                                                 class="btn btn-info btn-sm">3</a><br>
-                                                            <a href="{{ route('raport4_show', $item->siswa_id) }}"
+                                                            <a href="{{ route('raport4_show', [$item->siswa_id, $item->tahun_ajaran_id]) }}"
                                                                 class="btn btn-info btn-sm mt-1">4</a>
-                                                            <a href="{{ route('raport5_show', $item->siswa_id) }}"
+                                                            <a href="{{ route('raport5_show', [$item->siswa_id, $item->tahun_ajaran_id]) }}"
                                                                 class="btn btn-info btn-sm mt-1">5</a>
-                                                            <a href="{{ route('raport5_show', $item->siswa_id) }}"
+                                                            <a href="{{ route('raport5_show', [$item->siswa_id, $item->tahun_ajaran_id]) }}"
                                                                 class="btn btn-info btn-sm mt-1">6</a>
                                                         </td>
                                                         <td>

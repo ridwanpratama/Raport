@@ -44,6 +44,7 @@ class AbsenController extends Controller
         $absenBaru->izin = $request->izin;
         $absenBaru->alpha = $request->alpha;
         $absenBaru->semester = $request->semester;
+        $absenBaru->jenis_nilai_id = $request->jenis_nilai_id;
 
         $absenBaru->save();
 
@@ -77,7 +78,8 @@ class AbsenController extends Controller
             'sakit' => $request->sakit,
             'izin' => $request->izin,
             'alpha' => $request->alpha,
-            'semester' => $request->semester
+            'semester' => $request->semester,
+            'jenis_nilai_id' => $request->jenis_nilai_id
         ]);
 
         return redirect()->route('absen.index')->with('toast_success', 'Data berhasil diupdate!');

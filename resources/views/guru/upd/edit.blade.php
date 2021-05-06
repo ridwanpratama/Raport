@@ -41,7 +41,7 @@
                         <label class="col-md-3 col-form-label" for="select1">Pilih Jenis Nilai</label>
                         <div class="col-md-9">
                             <select class="form-control" id="jenis_nilai_id" name="jenis_nilai_id">
-                                <option value="{{ $upd->jenis_nilai_id }}">{{$upd->jenis_nilai}}</option>
+                                <option value="{{ $upd->jenis_nilai_id }}">{{$upd->jenis_nilai->jenis_nilai}}</option>
                                  @foreach (App\Models\Admin\JenisNilai::all() as $jenis)
                                     <option value="{{ $jenis->id }}">{{ $jenis->jenis_nilai }}</option>
                                 @endforeach
@@ -50,9 +50,9 @@
                     </div>
 
                         <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="select1">Jumlah Tidak Hadir</label>
+                        <label class="col-md-3 col-form-label" for="jumlah_tidak_hadir">Jumlah Tidak Hadir</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="jumlah_kehadiran" id="jumlah_kehadiran" value="{{ $upd->jumlah_kehadiran }}">
+                            <input type="text" class="form-control" name="jumlah_tidak_hadir" id="jumlah_tidak_hadir" value="{{ $upd->jumlah_tidak_hadir }}">
                         </div>
                     </div>
 

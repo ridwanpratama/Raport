@@ -120,12 +120,6 @@
                         </a>
                     </li>
 
-                    {{-- <li class="nav-item dropdown {{ Request::is('nilai/create') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('nilai.create') }}" class="nav-link">
-                            <span>Input Nilai Mapel</span>
-                        </a>
-                    </li> --}}
-
                     <li class="nav-item dropdown {{ Request::is('nilai') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('nilai.index') }}" class="nav-link">
                             <span>Data Nilai</span>

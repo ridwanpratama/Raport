@@ -99,12 +99,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($absen as $item)
                                 <tr>
-                                    <td>{{ $absen->alpha + $absen->sakit + $absen->izin }}</td>
-                                    <td>{{ $absen->alpha }}</td>
-                                    <td>{{ $absen->sakit }}</td>
-                                    <td>{{ $absen->izin }}</td>
+                                    <td>{{ $item->alpha + $item->sakit + $item->izin }}</td>
+                                    <td>{{ $item->alpha }}</td>
+                                    <td>{{ $item->sakit }}</td>
+                                    <td>{{ $item->izin }}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
@@ -113,12 +115,14 @@
                                 <tr>
                                     <th>UPD</th>
                                     <th>Nilai UPD</th>
+                                    <th>Jumlah Tidak Hadir</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>{{ $upd->detail->nama_upd }}</td>
                                     <td>{{ $upd->nilai_upd }}</td>
+                                    <td>{{ $upd->jumlah_tidak_hadir }}</td>
                                 </tr>
                             </tbody>
                         </table>

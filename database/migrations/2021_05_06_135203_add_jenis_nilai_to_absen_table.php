@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignJenisNilaiToUpdTable extends Migration
+class AddJenisNilaiToAbsenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddForeignJenisNilaiToUpdTable extends Migration
      */
     public function up()
     {
-        Schema::table('upd', function (Blueprint $table) {
+        Schema::table('absen', function (Blueprint $table) {
             $table->unsignedBigInteger('jenis_nilai_id');
             $table->foreign('jenis_nilai_id')->references('id')->on('jenis_nilai')->onDelete('cascade');
         });
@@ -26,7 +26,7 @@ class AddForeignJenisNilaiToUpdTable extends Migration
      */
     public function down()
     {
-        Schema::table('upd', function (Blueprint $table) {
+        Schema::table('absen', function (Blueprint $table) {
             //
         });
     }

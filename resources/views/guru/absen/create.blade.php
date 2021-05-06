@@ -45,6 +45,18 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Pilih Jenis Absen</label>
+                        <div class="col-md-9">
+                            <select class="form-control" id="jenis_nilai_id" name="jenis_nilai_id">
+                                <option value disable>--Pilih Jenis Absen--</option>
+                                 @foreach (App\Models\Admin\JenisNilai::all() as $jenis)
+                                    <option value="{{ $jenis->id }}">{{ $jenis->jenis_nilai }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="select1">Semester</label>
                       <div class="col-md-9">
                         <select id="semesterSelect" class="form-control my-2" name="semester" required>
@@ -54,6 +66,7 @@
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
+                            <option value="6">6</option>
                         </select>
                       </div>
                   </div>

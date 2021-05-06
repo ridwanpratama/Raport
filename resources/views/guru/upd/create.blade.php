@@ -57,9 +57,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="select1">Jumlah Tidak Hadir</label>
+                        <label class="col-md-3 col-form-label" for="jumlah_tidak_hadir">Jumlah Tidak Hadir</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="jumlah_kehadiran" id="jumlah_kehadiran">
+                            <input type="text" class="form-control" name="jumlah_tidak_hadir" id="jumlah_tidak_hadir">
                         </div>
                     </div>
 

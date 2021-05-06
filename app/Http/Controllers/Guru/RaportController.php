@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Models\Guru\Upd;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Siswa;
+use App\Models\Admin\TahunAjaran;
 use App\Models\Guru\Absen;
 use App\Models\Guru\Nilai;
-use App\Models\Admin\Siswa;
+use App\Models\Guru\Upd;
 use Illuminate\Http\Request;
-use App\Models\Admin\TahunAjaran;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class RaportController extends Controller
 {
@@ -46,7 +47,7 @@ class RaportController extends Controller
     // any help would be appreciated
     // i'm sorry :(
 
-    public function raport1($siswa_id)
+    public function raport1($siswa_id, $tahun_ajaran)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -55,18 +56,24 @@ class RaportController extends Controller
             $nilai = Nilai::where($semester1)->get();
 
             $absen1 = ['siswa_id' => $siswa_id, 'semester' => '1'];
-            $absen = Absen::where($absen1)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($absen1)
+                ->get();
 
             $upd1 = ['siswa_id' => $siswa_id, 'semester' => '1'];
+
             $upd = Upd::where($upd1)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
 
-        return view('guru.raport.show', compact('nilai', 'siswa', 'absen', 'upd'));
+        return view('guru.raport.show', compact('nilai', 'siswa', 'absen', 'upd', 'tahun_ajaran'));
     }
 
-    public function raport2($siswa_id)
+    public function raport2($siswa_id, $tahun_ajaran)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -75,10 +82,15 @@ class RaportController extends Controller
             $nilai = Nilai::where($semester2)->get();
 
             $absen2 = ['siswa_id' => $siswa_id, 'semester' => '2'];
-            $absen = Absen::where($absen2)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($absen2)
+                ->get();
 
             $upd2 = ['siswa_id' => $siswa_id, 'semester' => '2'];
             $upd = Upd::where($upd2)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
@@ -86,7 +98,7 @@ class RaportController extends Controller
         return view('guru.raport.show', compact('nilai', 'siswa', 'absen', 'upd'));
     }
 
-    public function raport3($siswa_id)
+    public function raport3($siswa_id, $tahun_ajaran)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -95,10 +107,15 @@ class RaportController extends Controller
             $nilai = Nilai::where($semester3)->get();
 
             $absen3 = ['siswa_id' => $siswa_id, 'semester' => '3'];
-            $absen = Absen::where($absen3)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($absen3)
+                ->get();
 
             $upd3 = ['siswa_id' => $siswa_id, 'semester' => '3'];
             $upd = Upd::where($upd3)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
@@ -106,7 +123,7 @@ class RaportController extends Controller
         return view('guru.raport.show', compact('nilai', 'siswa', 'absen', 'upd'));
     }
 
-    public function raport4($siswa_id)
+    public function raport4($siswa_id, $tahun_ajaran)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -115,10 +132,15 @@ class RaportController extends Controller
             $nilai = Nilai::where($semester4)->get();
 
             $absen4 = ['siswa_id' => $siswa_id, 'semester' => '4'];
-            $absen = Absen::where($absen4)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($absen4)
+                ->get();
 
             $upd4 = ['siswa_id' => $siswa_id, 'semester' => '4'];
             $upd = Upd::where($upd4)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
@@ -126,7 +148,7 @@ class RaportController extends Controller
         return view('guru.raport.show', compact('nilai_smt4', 'siswa', 'absen', 'upd'));
     }
 
-    public function raport5($siswa_id)
+    public function raport5($siswa_id, $tahun_ajaran)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -135,10 +157,15 @@ class RaportController extends Controller
             $nilai = Nilai::where($semester5)->get();
 
             $absen5 = ['siswa_id' => $siswa_id, 'semester' => '5'];
-            $absen = Absen::where($absen5)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($absen5)
+                ->get();
 
             $upd5 = ['siswa_id' => $siswa_id, 'semester' => '5'];
             $upd = Upd::where($upd5)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
@@ -146,7 +173,7 @@ class RaportController extends Controller
         return view('guru.raport.show', compact('nilai', 'siswa', 'absen', 'upd'));
     }
 
-    public function raport6($siswa_id)
+    public function raport6($siswa_id, $tahun_ajaran)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -155,10 +182,15 @@ class RaportController extends Controller
             $nilai = Nilai::where($semester6)->get();
 
             $absen6 = ['siswa_id' => $siswa_id, 'semester' => '6'];
-            $absen = Absen::where($absen6)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($absen6)
+                ->get();
 
             $upd5 = ['siswa_id' => $siswa_id, 'semester' => '6'];
             $upd = Upd::where($upd6)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
         }
@@ -173,9 +205,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(1, 2, 3))->get();
 
             $mid1 = ['siswa_id' => $siswa_id, 'semester' => '1'];
-            $absen = Absen::where($mid1)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid1)->whereIn('jenis_nilai_id', array(1, 2, 3))
+                ->get();
 
-            $upd = Upd::where($mid1)->firstorFail();
+            $upd = Upd::where($mid1)->whereIn('jenis_nilai_id', array(1, 2, 3))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -192,9 +227,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(4, 5, 6))->get();
 
             $mid2 = ['siswa_id' => $siswa_id, 'semester' => '1'];
-            $absen = Absen::where($mid2)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid2)->whereIn('jenis_nilai_id', array(4, 5, 6))
+                ->get();
 
-            $upd = Upd::where($mid2)->firstorFail();
+            $upd = Upd::where($mid2)->whereIn('jenis_nilai_id', array(4, 5, 6))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -211,9 +249,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(7, 8, 9))->get();
 
             $mid3 = ['siswa_id' => $siswa_id, 'semester' => '2'];
-            $absen = Absen::where($mid3)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid3)->whereIn('jenis_nilai_id', array(7, 8, 9))
+                ->get();
 
-            $upd = Upd::where($mid3)->firstorFail();
+            $upd = Upd::where($mid3)->whereIn('jenis_nilai_id', array(7, 8, 9))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -230,9 +271,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(10, 11, 12))->get();
 
             $mid = ['siswa_id' => $siswa_id, 'semester' => '2'];
-            $absen = Absen::where($mid)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid)->whereIn('jenis_nilai_id', array(10, 11, 12))
+                ->get();
 
-            $upd = Upd::where($mid)->firstorFail();
+            $upd = Upd::where($mid)->whereIn('jenis_nilai_id', array(10, 11, 12))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -249,9 +293,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(1, 2, 3))->get();
 
             $mid = ['siswa_id' => $siswa_id, 'semester' => '3'];
-            $absen = Absen::where($mid)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid)->whereIn('jenis_nilai_id', array(1, 2, 3))
+                ->get();
 
-            $upd = Upd::where($mid)->firstorFail();
+            $upd = Upd::where($mid)->whereIn('jenis_nilai_id', array(1, 2, 3))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -268,9 +315,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(4, 5, 6))->get();
 
             $mid = ['siswa_id' => $siswa_id, 'semester' => '3'];
-            $absen = Absen::where($mid)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid)->whereIn('jenis_nilai_id', array(4, 5, 6))
+                ->get();
 
-            $upd = Upd::where($mid)->firstorFail();
+            $upd = Upd::where($mid)->whereIn('jenis_nilai_id', array(4, 5, 6))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -287,9 +337,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(7, 8, 9))->get();
 
             $mid = ['siswa_id' => $siswa_id, 'semester' => '4'];
-            $absen = Absen::where($mid)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid)->whereIn('jenis_nilai_id', array(7, 8, 9))
+                ->get();
 
-            $upd = Upd::where($mid)->firstorFail();
+            $upd = Upd::where($mid)->whereIn('jenis_nilai_id', array(7, 8, 9))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -306,9 +359,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(10, 11, 12))->get();
 
             $mid = ['siswa_id' => $siswa_id, 'semester' => '4'];
-            $absen = Absen::where($mid)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid)->whereIn('jenis_nilai_id', array(10, 11, 12))
+                ->get();
 
-            $upd = Upd::where($mid)->firstorFail();
+            $upd = Upd::where($mid)->whereIn('jenis_nilai_id', array(10, 11, 12))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -325,9 +381,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(1, 2, 3))->get();
 
             $mid = ['siswa_id' => $siswa_id, 'semester' => '5'];
-            $absen = Absen::where($mid)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid)->whereIn('jenis_nilai_id', array(1, 2, 3))
+                ->get();
 
-            $upd = Upd::where($mid)->firstorFail();
+            $upd = Upd::where($mid)->whereIn('jenis_nilai_id', array(1, 2, 3))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -344,9 +403,11 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(4, 5, 6))->get();
 
             $mid = ['siswa_id' => $siswa_id, 'semester' => '5'];
-            $absen = Absen::where($mid)->firstorFail();
-
-            $upd = Upd::where($mid)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid)->whereIn('jenis_nilai_id', array(4, 5, 6))
+                ->get();
+            $upd = Upd::where($mid)->whereIn('jenis_nilai_id', array(4, 5, 6))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -363,9 +424,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(7, 8, 9))->get();
 
             $mid = ['siswa_id' => $siswa_id, 'semester' => '6'];
-            $absen = Absen::where($mid)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid)->whereIn('jenis_nilai_id', array(7, 8, 9))
+                ->get();
 
-            $upd = Upd::where($mid)->firstorFail();
+            $upd = Upd::where($mid)->whereIn('jenis_nilai_id', array(7, 8, 9))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
@@ -382,9 +446,12 @@ class RaportController extends Controller
             $nilai = Nilai::where('siswa_id', $siswa_id)->whereIn('jenis_nilai_id', array(10, 11, 12))->get();
 
             $mid = ['siswa_id' => $siswa_id, 'semester' => '6'];
-            $absen = Absen::where($mid)->firstorFail();
+            $absen = Absen::select("*", DB::raw('SUM(alpha) as alpha'), DB::raw('SUM(Absen.sakit) as sakit'),
+                DB::raw('SUM(Absen.izin) as izin'))
+                ->where($mid)->whereIn('jenis_nilai_id', array(10, 11, 12))
+                ->get();
 
-            $upd = Upd::where($mid)->firstorFail();
+            $upd = Upd::where($mid)->whereIn('jenis_nilai_id', array(10, 11, 12))->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
