@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Upd extends Model
 {
   protected $table = "upd";
-  protected $fillable = ['siswa_id','detail_upd_id','nilai_upd', 'semester'];
+  protected $fillable = ['siswa_id','detail_upd_id','jenis_nilai_id','nilai_upd', 'semester','jumlah_kehadiran'];
 
   public function siswa()
   {
@@ -17,5 +17,10 @@ class Upd extends Model
   public function detail()
   {
     return $this->belongsTo('App\Models\Admin\Detail','detail_upd_id');
+  }
+
+  public function jenis_nilai()
+  {
+    return $this->belongsTo('App\Models\Admin\JenisNilai','jenis_nilai_id');
   }
 }
