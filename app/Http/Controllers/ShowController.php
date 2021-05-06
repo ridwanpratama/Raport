@@ -25,7 +25,6 @@ class ShowController extends Controller
         }catch(\Exception $exception){
             return redirect()->route('nilai.index')->with('toast_error', 'Data belum lengkap!');
         }
-        // dd($tahun_ajaran);
         return view('guru.nilai.show', compact('nilai','siswa','absen', 'upd','tahun_ajaran'));
     }
 

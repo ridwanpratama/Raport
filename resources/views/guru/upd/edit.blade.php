@@ -18,7 +18,7 @@
                         <div class="col-md-9">
                             <select class="form-control" id="siswa_id" name="siswa_id">
                                 <option value="{{ $upd->siswa_id }}">{{ $upd->siswa->nama_siswa }}</option>
-                                @foreach (App\Siswa::all() as $siswa)
+                                @foreach (App\Models\Admin\Siswa::all() as $siswa)
                                     <option value="{{ $siswa->id }}">{{ $siswa->nama_siswa }}</option>
                                 @endforeach
                             </select>
@@ -26,14 +26,33 @@
                     </div>
 
                    <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="select1">Nama Siswa</label>
+                        <label class="col-md-3 col-form-label" for="select1">PILIH UPD</label>
                         <div class="col-md-9">
                             <select class="form-control" id="detail_upd_id" name="detail_upd_id">
                                 <option value="{{ $upd->detail_upd_id }}">{{ $upd->detail->nama_upd }}</option>
-                                @foreach (App\Detail::all() as $upd_detail)
+                                @foreach (App\Models\Admin\Detail::all() as $upd_detail)
                                     <option value="{{ $upd_detail->id }}">{{ $upd_detail->nama_upd }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+
+                        <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Pilih Jenis Nilai</label>
+                        <div class="col-md-9">
+                            <select class="form-control" id="jenis_nilai_id" name="jenis_nilai_id">
+                                <option value="{{ $upd->jenis_nilai_id }}">{{$upd->jenis_nilai}}</option>
+                                 @foreach (App\Models\Admin\JenisNilai::all() as $jenis)
+                                    <option value="{{ $jenis->id }}">{{ $jenis->jenis_nilai }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                        <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Jumlah Tidak Hadir</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="jumlah_kehadiran" id="jumlah_kehadiran" value="{{ $upd->jumlah_kehadiran }}">
                         </div>
                     </div>
 

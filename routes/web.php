@@ -106,8 +106,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('data_nilai/{siswa_id}/{tahun_ajaran_id}', 'ShowController@show')->name('nilai_show');
-
     Route::get('data_nilai/mingguan/{siswa_id}/{tahun_ajaran_id}', 'ShowController@mingguan')->name('nilai_mingguan');
+    Route::post('/data_nilai/import', 'Guru\NilaiController@import')->name('import_nilai');
 
     Route::get('raport1/{siswa_id}', 'Guru\RaportController@raport1')->name('raport1_show');
     Route::get('raport2/{siswa_id}', 'Guru\RaportController@raport2')->name('raport2_show');

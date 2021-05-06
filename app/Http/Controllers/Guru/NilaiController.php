@@ -7,12 +7,15 @@ use App\Models\Guru\Absen;
 use App\Models\Guru\Nilai;
 use App\Models\Admin\Mapel;
 use App\Models\Admin\Siswa;
+use App\Imports\NilaiImport;
 use App\Models\Admin\Rombel;
 use Illuminate\Http\Request;
 use App\Models\Admin\Jurusan;
 use App\Models\Admin\JenisNilai;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NilaiController extends Controller
 {
@@ -84,8 +87,6 @@ class NilaiController extends Controller
 
     public function input(Request $request, $id)
     {
-        $session = $request->session()->get('jurusan_id');
-
         $siswa = Siswa::where('rombel_id', $id)->get();
         $mapel = Mapel::where('jurusan_id', $request->session()->get('jurusan_id'))->get();
         $jenis_nilai = JenisNilai::whereNotIn('id', array(13,14,15,16,17,18,19,20,21,22,23,24,24))->get();
@@ -99,4 +100,34 @@ class NilaiController extends Controller
 
         return view('guru.nilai.show.listjurusan', compact('jurusan'));
     }
+
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = $file->hashName();
+
+        //temporary file
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        // import data
+        $import = Excel::import(new NilaiImport(), storage_path('app/public/excel/'.$nama_file));
+
+        //remove from server
+        Storage::delete($path);
+
+        if($import) {
+            //redirect
+            return redirect()->route('nilai.index')->with(['toast_success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect
+            return redirect()->route('nilai.index')->with(['toast_error' => 'Data Gagal Diimport!']);
+        }
+    }
+
 }

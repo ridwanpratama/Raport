@@ -22,8 +22,8 @@
                 <select class="form-control shadow" id="jurusan_id" type="text" name="jurusan_id"
                     onchange="filterJurusan(this)">
                     <option value disable>Filter Jurusan</option>
-                    @foreach (App\Models\Admin\Jurusan::all() as $jurusan)
-                        <option value="{{ $jurusan->id }}">{{ $jurusan->nama_jurusan }}</option>
+                    @foreach ($data as $jurusan)
+                        <option value="{{ $jurusan->jurusan->id }}">{{ $jurusan->jurusan->nama_jurusan }}</option>
                     @endforeach
                 </select>
             </div>
@@ -31,8 +31,8 @@
             <div class="col-md-2 mt-3">
                 <select class="form-control shadow" id="rayon_id" type="text" name="rayon_id" onchange="filterRayon(this)">
                     <option value disable>Filter Rayon</option>
-                    @foreach (App\Models\Admin\Rayon::all() as $rayon)
-                        <option value="{{ $rayon->id }}">{{ $rayon->nama_rayon }}</option>
+                    @foreach ($data as $rayon)
+                        <option value="{{ $rayon->rayon->id }}">{{ $rayon->rayon->nama_rayon }}</option>
                     @endforeach
                 </select>
             </div>
@@ -41,8 +41,8 @@
                 <select class="form-control shadow" id="rombel_id" type="text" name="rombel_id"
                     onchange="filterRombel(this)">
                     <option value disable>Filter Rombel</option>
-                    @foreach (App\Models\Admin\Rombel::all() as $rombel)
-                        <option value="{{ $rombel->id }}">{{ $rombel->nama_rombel }}</option>
+                    @foreach ($data as $rombel)
+                        <option value="{{ $rombel->rombel->id }}">{{ $rombel->rombel->nama_rombel }}</option>
                     @endforeach
                 </select>
             </div>
