@@ -47,7 +47,7 @@ class RaportController extends Controller
     // any help would be appreciated
     // i'm sorry :(
 
-    public function raport1($siswa_id, $tahun_ajaran)
+    public function raport1($siswa_id, $tahun_ajaran_id)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -73,7 +73,7 @@ class RaportController extends Controller
         return view('guru.raport.show', compact('nilai', 'siswa', 'absen', 'upd', 'tahun_ajaran'));
     }
 
-    public function raport2($siswa_id, $tahun_ajaran)
+    public function raport2($siswa_id, $tahun_ajaran_id)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -98,7 +98,7 @@ class RaportController extends Controller
         return view('guru.raport.show', compact('nilai', 'siswa', 'absen', 'upd'));
     }
 
-    public function raport3($siswa_id, $tahun_ajaran)
+    public function raport3($siswa_id, $tahun_ajaran_id)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -123,7 +123,7 @@ class RaportController extends Controller
         return view('guru.raport.show', compact('nilai', 'siswa', 'absen', 'upd'));
     }
 
-    public function raport4($siswa_id, $tahun_ajaran)
+    public function raport4($siswa_id, $tahun_ajaran_id)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -148,7 +148,7 @@ class RaportController extends Controller
         return view('guru.raport.show', compact('nilai_smt4', 'siswa', 'absen', 'upd'));
     }
 
-    public function raport5($siswa_id, $tahun_ajaran)
+    public function raport5($siswa_id, $tahun_ajaran_id)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
@@ -173,7 +173,7 @@ class RaportController extends Controller
         return view('guru.raport.show', compact('nilai', 'siswa', 'absen', 'upd'));
     }
 
-    public function raport6($siswa_id, $tahun_ajaran)
+    public function raport6($siswa_id, $tahun_ajaran_id)
     {
         try {
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
