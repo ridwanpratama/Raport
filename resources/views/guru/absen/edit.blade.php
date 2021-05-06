@@ -13,9 +13,11 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label">Siswa ID</label>
+                        <label class="col-md-3 col-form-label">Nama Siswa</label>
                         <div class="col-md-9">
-                            <input class="form-control @error('nis') is-invalid @enderror" id="nis" type="number" name="siswa_id" placeholder="@error('nis') {{ $message }} @enderror" value="{{ $absen->siswa_id }}" readonly>
+                          <select class="form-control" id="siswa_id" name="siswa_id" disabled>
+                            <option value="{{ $absen->siswa_id }}" selected disabled>{{ $absen->siswa->nama_siswa }}</option>
+                        </select>
                         </div>
                     </div>
 
