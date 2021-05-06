@@ -11,3 +11,4 @@
 9. Run pnpm install && pnpm dev
 10. Seed database using php artisan db:seed
 11. Run project with command `php artisan serve`
+12. In production don't forget to change `APP_DEBUG` in .env to `false`
