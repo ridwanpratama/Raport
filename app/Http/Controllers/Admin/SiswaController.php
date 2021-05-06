@@ -21,7 +21,7 @@ class SiswaController extends Controller
 
     public function index(Request $request)
     {
-        $data = Siswa::where('tahun_ajaran_id', $request->session()->get('tahun_ajaran'))->get();
+        $data = Siswa::with('jurusan','rombel','rayon')->where('tahun_ajaran_id', $request->session()->get('tahun_ajaran'))->get();
         return view('admin.siswa.index', compact('data'));
     }
 

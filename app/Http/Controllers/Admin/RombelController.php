@@ -19,7 +19,7 @@ class RombelController extends Controller
 
   public function index()
   {
-      $rombel = Rombel::all();
+      $rombel = Rombel::with('jurusan')->get();
       return view('admin.rombel.index',compact('rombel'));
   }
 

@@ -60,52 +60,5 @@ class JenisNilaiSeeder extends Seeder
           'jenis_nilai' => 'PAT',
         ]);
 
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD1',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD2',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD3',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD4',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD5',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD6',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD7',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD8',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD9',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD10',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD11',
-        ]);
-
-        JenisNilai::insert([
-          'jenis_nilai' => 'UPD12',
-        ]);
     }
 }

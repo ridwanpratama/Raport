@@ -1,23 +1,25 @@
 <table>
     <thead>
     <tr>
-        <th>Nama Siswa</th>
-        <th>Mata Pelajaran</th>
-        <th>Semester</th>
-        <th>Jenis Nilai</th>
-        <th>Nilai Pengetahuan</th>
-        <th>Nilai Keterampilan</th>
+        <th>siswa_id</th>
+        <th>mapel_id</th>
+        <th>semester</th>
+        <th>jenis_nilai_id</th>
+        <th>nilai_pengetahuan</th>
+        <th>nilai_keterampilan</th>
+        <th>tahun_ajaran_id</th>
     </tr>
     </thead>
     <tbody>
     @foreach($datas as $item)
         <tr>
-            <td>{{ $item->siswa->nama_siswa }}</td>
-            <td>{{ $item->mapel->nama_mapel }}</td>
+            <td>{{ $item->siswa_id }}</td>
+            <td>{{ $item->mapel_id }}</td>
             <td>{{ $item->semester }}</td>
-            <td>{{ $item->jenis_nilai }}</td>
+            <td>{{ $item->jenis_nilai_id }}</td>
             <td>{{ $item->nilai_pengetahuan }}</td>
             <td>{{ $item->nilai_keterampilan }}</td>
+            <td>{{ $item->tahun_ajaran_id }}</td>
         </tr>
     @endforeach
     </tbody>
