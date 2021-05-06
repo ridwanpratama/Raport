@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guru;
 use App\Models\Guru\Absen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Siswa;
 
 class AbsenController extends Controller
 {
@@ -70,7 +71,8 @@ class AbsenController extends Controller
     public function edit($id)
     {
         $absen = Absen::find($id);
-        return view('guru.absen.edit', compact('absen'));
+        $siswa = Siswa::all();
+        return view('guru.absen.edit', compact('absen', 'siswa'));
     }
 
     /**
