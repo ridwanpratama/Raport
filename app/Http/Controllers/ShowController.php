@@ -8,6 +8,7 @@ use App\Models\Guru\Nilai;
 use App\Models\Admin\Siswa;
 use App\Exports\NilaiExport;
 use App\Exports\UpdExport;
+use App\Exports\AbsenExport;
 use Illuminate\Http\Request;
 use App\Models\Admin\TahunAjaran;
 use Maatwebsite\Excel\Facades\Excel;
@@ -75,5 +76,11 @@ class ShowController extends Controller
     {
       $file_names = 'NilaiUPD_'.date('Y-m-d_H-i-s').'.xlsx';
       return Excel::download(new UpdExport, $file_names);
+    }
+
+    public function exportAbsen()
+    {
+      $file_names = 'Absen_'.date('Y-m-d_H-i-s').'.xlsx';
+      return Excel::download(new AbsenExport, $file_names);
     }
 }

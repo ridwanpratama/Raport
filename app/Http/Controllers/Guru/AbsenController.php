@@ -63,11 +63,10 @@ class AbsenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show($id)
     {
         $absen = Absen::find($id);
-        $siswa = Siswa::all();
-        return view('guru.absen.edit', compact('absen', 'siswa'));
+        return view('guru.absen.show', compact('absen'));
     }
 
     /**

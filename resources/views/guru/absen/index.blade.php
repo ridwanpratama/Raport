@@ -12,8 +12,8 @@
     <div class="section-body">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
-                <a href="{{ route('absen.create') }}" class="btn btn-icon icon-left btn-primary"><i
-                        class="far fa-edit"></i>Tambah Data</a>
+                <a href="{{ route('export_absen') }}" class="btn btn-icon icon-left btn-primary"><i
+                        class="fas fa-file-export"></i>Export Excel</a>
                 <div class="card my-3">
                     <div class="card-body">
                         <table id="table" class="table table-striped table-bordered table-md">
@@ -24,10 +24,6 @@
                                     <th>Nama Siswa</th>
                                     <th>Rombel</th>
                                     <th>Rayon</th>
-                                    <th>Sakit</th>
-                                    <th>Izin</th>
-                                    <th>Alpa</th>
-                                    <th>Semester</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -39,18 +35,14 @@
                                         <td>{{ $item->siswa->nama_siswa }}</td>
                                         <td>{{ $item->siswa->rombel->nama_rombel }}</td>
                                         <td>{{ $item->siswa->rayon->nama_rayon }}</td>
-                                        <td>{{ $item->sakit }}</td>
-                                        <td>{{ $item->izin }}</td>
-                                        <td>{{ $item->alpha }}</td>
-                                        <td>{{ $item->semester }}</td>
                                         <td>
                                             <form action="{{ route('absen.destroy', [$item->id]) }}" method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
                                                 <button class="btn btn-danger btn-sm"
                                                     onclick="return confirm('apakah anda yakin ingin menghapus siswa: {{ $item->id }}')">Hapus</button>
-                                                <a href="{{ route('absen.edit', [$item->id]) }}"
-                                                    class="btn btn-warning btn-sm">Ubah</a>
+                                                <a href="{{ route('absen.show', [$item->id]) }}"
+                                                    class="btn btn-info btn-sm">Lihat</a>
                                         </td>
                                         </form>
                                         </td>
