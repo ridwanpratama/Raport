@@ -137,6 +137,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/raport/search', 'Guru\RaportController@search');
 
+    Route::get('/absen/jurusan', 'Guru\AbsenController@jurusan')->name('pilih_jurusan');
+    Route::get('/absen/rombel/{id}', 'Guru\AbsenController@rombel')->name('pilih_rombel');
+    Route::get('absen/input/{id}', 'Guru\AbsenController@input_absen')->name('input_absen');
+    Route::post('absen/input', 'Guru\AbsenController@submit')->name('store_absen');
+
     Route::resource('absen', 'Guru\AbsenController');
     Route::resource('upd', 'Guru\UpdController');
     Route::resource('nilai', 'Guru\NilaiController');

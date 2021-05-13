@@ -107,6 +107,13 @@
                 <ul class="dropdown-menu" style="display: none;">
 
                     <li
+                        class="nav-item dropdown {{ Request::is('absen/jurusan') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('pilih_jurusan') }}" class="nav-link">
+                            <span>Input Absen</span>
+                        </a>
+                    </li>
+
+                    <li
                         class="nav-item dropdown {{ Request::is('absen', 'absen/create') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('absen.index') }}" class="nav-link">
                             <span>Data Absen</span>
