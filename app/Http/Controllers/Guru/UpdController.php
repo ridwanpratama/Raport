@@ -113,8 +113,7 @@ class UpdController extends Controller
 
     public function edit($id)
     {
-        $upd = Upd::find($id);
-        return view('guru.upd.edit', compact('upd'));
+        //
     }
 
     public function update(Request $request, $id)
@@ -137,6 +136,12 @@ class UpdController extends Controller
         $upd = Upd::find($id);
         $upd->delete();
         return redirect('upd');
+    }
+
+    public function show($id)
+    {
+      $upd = Upd::find($id);
+      return view('guru.upd.show', compact('upd'));
     }
 
 }

@@ -126,6 +126,12 @@
                         </a>
                     </li>
 
+                    <li class="nav-item dropdown {{ Request::is('upd') ? 'sidebar-item active' : '' }}">
+                      <a href="{{ route('upd.index') }}" class="nav-link">
+                          <span>Data Nilai UPD</span>
+                      </a>
+                    </li>
+
                     <li class="nav-item dropdown {{ Request::is('raport') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('raport.index') }}" class="nav-link">
                             <span>Kelola Raport</span>

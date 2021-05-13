@@ -109,6 +109,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('upd/rombel/{id}', 'Guru\UpdController@rombel')->name('data_rombel');
     Route::get('upd/input/{id}', 'Guru\UpdController@input_nilai')->name('input_nilai_upd');
     Route::post('upd/input', 'Guru\UpdController@submit')->name('store_upd');
+    Route::get('upd/export', 'ShowController@exportUpd')->name('export_upd');
 
     Route::get('data_nilai/{siswa_id}/{tahun_ajaran_id}', 'ShowController@show')->name('nilai_show');
     Route::get('data_nilai/mingguan/{siswa_id}/{tahun_ajaran_id}', 'ShowController@mingguan')->name('nilai_mingguan');
