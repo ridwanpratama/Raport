@@ -102,8 +102,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/rombel/{id}', 'Guru\NilaiController@rombel')->name('list_rombel');
         Route::get('/jurusan', 'Guru\NilaiController@jurusan')->name('list_jurusan');
         Route::get('/input/{id}', 'Guru\NilaiController@input')->name('input_nilai');
-        Route::post('/input', 'Guru\NilaiController@store')->name('store_nilai');        
+        Route::post('/input', 'Guru\NilaiController@store')->name('store_nilai');
     });
+
+    Route::get('/upd/jurusan', 'Guru\UpdController@jurusan')->name('data_jurusan');
+    Route::get('upd/rombel/{id}', 'Guru\UpdController@rombel')->name('data_rombel');
+    Route::get('upd/input/{id}', 'Guru\UpdController@input_nilai')->name('input_nilai_upd');
+    Route::post('upd/input', 'Guru\UpdController@submit')->name('store_upd');
 
     Route::get('data_nilai/{siswa_id}/{tahun_ajaran_id}', 'ShowController@show')->name('nilai_show');
     Route::get('data_nilai/mingguan/{siswa_id}/{tahun_ajaran_id}', 'ShowController@mingguan')->name('nilai_mingguan');

@@ -78,7 +78,7 @@ class NilaiController extends Controller
     }
 
     public function rombel(Request $request, $id)
-    {        
+    {
         $rombel = Rombel::where('jurusan_id', $id)->get();
         $request->session()->put('jurusan_id', $request->id);
 

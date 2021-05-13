@@ -114,9 +114,9 @@
                     </li>
 
                     <li
-                        class="nav-item dropdown {{ Request::is('upd', 'upd/create') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('upd.index') }}" class="nav-link">
-                            <span>Data Nilai UPD</span>
+                        class="nav-item dropdown {{ Request::is('upd/jurusan') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('data_jurusan') }}" class="nav-link">
+                            <span>Input Nilai UPD</span>
                         </a>
                     </li>
 
