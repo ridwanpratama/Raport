@@ -14,7 +14,6 @@ class AddForeignJenisNilaiToUpdTable extends Migration
     public function up()
     {
         Schema::table('upd', function (Blueprint $table) {
-            $table->unsignedBigInteger('jenis_nilai_id');
             $table->foreign('jenis_nilai_id')->references('id')->on('jenis_nilai')->onDelete('cascade');
         });
     }
@@ -27,7 +26,7 @@ class AddForeignJenisNilaiToUpdTable extends Migration
     public function down()
     {
         Schema::table('upd', function (Blueprint $table) {
-            //
+          $table->dropForeign(['jenis_nilai_id']);
         });
     }
 }

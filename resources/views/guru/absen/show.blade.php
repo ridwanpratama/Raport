@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Edit Absen')
+@section('title', 'Lihat Absen')
 @section('pagetitle')
-    <h1>Edit Absen</h1>
+    <h1>Lihat Absen</h1>
 @endsection
 @section('content')
 <div class="section-body">
@@ -24,28 +24,28 @@
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">Sakit</label>
                         <div class="col-md-9">
-                            <input class="form-control @error('nama_siswa') is-invalid @enderror" id="nama_siswa" type="text" name="sakit" placeholder="@error('nama_siswa') {{ $message }} @enderror" value="{{ $absen->sakit }}">
+                            <input class="form-control @error('nama_siswa') is-invalid @enderror" id="nama_siswa" type="text" name="sakit" placeholder="@error('nama_siswa') {{ $message }} @enderror" value="{{ $absen->sakit }}" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">Izin</label>
                         <div class="col-md-9">
-                            <input class="form-control @error('rombel') is-invalid @enderror" id="rombel" type="text" name="izin" placeholder="@error('rombel') {{ $message }} @enderror" value="{{ $absen->izin }}">
+                            <input class="form-control @error('rombel') is-invalid @enderror" id="rombel" type="text" name="izin" placeholder="@error('rombel') {{ $message }} @enderror" value="{{ $absen->izin }}" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">Alpa</label>
                         <div class="col-md-9">
-                            <input class="form-control @error('rombel') is-invalid @enderror" id="rombel" type="text" name="alpha" placeholder="@error('rombel') {{ $message }} @enderror" value="{{ $absen->alpha }}">
+                            <input class="form-control @error('rombel') is-invalid @enderror" id="rombel" type="text" name="alpha" placeholder="@error('rombel') {{ $message }} @enderror" value="{{ $absen->alpha }}" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="select1">Pilih Jenis Nilai</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="jenis_nilai_id" name="jenis_nilai_id">
+                            <select class="form-control" id="jenis_nilai_id" name="jenis_nilai_id" selected disabled>
                                 <option value="{{ $absen->jenis_nilai_id }}">{{$absen->jenis_nilai->jenis_nilai}}</option>
                                  @foreach (App\Models\Admin\JenisNilai::all() as $jenis)
                                     <option value="{{ $jenis->id }}">{{ $jenis->jenis_nilai }}</option>
@@ -57,7 +57,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="select1">Semester</label>
                       <div class="col-md-9">
-                        <select id="semesterSelect" class="form-control my-2" name="semester" required>
+                        <select id="semesterSelect" class="form-control my-2" name="semester" selected disabled>
                           <option value="{{ $absen->semester }}">{{ $absen->semester }}</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -70,8 +70,7 @@
                   </div>
 
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Simpan Data</button>
-                        <button class="btn btn-secondary" type="reset">Reset</button>
+                        <a href="{{ route('absen.index') }}" class="btn btn-danger">Back</a>
                     </div>
 
                 </form>

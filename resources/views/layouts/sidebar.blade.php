@@ -107,6 +107,13 @@
                 <ul class="dropdown-menu" style="display: none;">
 
                     <li
+                        class="nav-item dropdown {{ Request::is('absen/jurusan') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('pilih_jurusan') }}" class="nav-link">
+                            <span>Input Absen</span>
+                        </a>
+                    </li>
+
+                    <li
                         class="nav-item dropdown {{ Request::is('absen', 'absen/create') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('absen.index') }}" class="nav-link">
                             <span>Data Absen</span>
@@ -114,9 +121,9 @@
                     </li>
 
                     <li
-                        class="nav-item dropdown {{ Request::is('upd', 'upd/create') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('upd.index') }}" class="nav-link">
-                            <span>Data Nilai UPD</span>
+                        class="nav-item dropdown {{ Request::is('upd/jurusan') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('data_jurusan') }}" class="nav-link">
+                            <span>Input Nilai UPD</span>
                         </a>
                     </li>
 
@@ -124,6 +131,12 @@
                         <a href="{{ route('nilai.index') }}" class="nav-link">
                             <span>Data Nilai</span>
                         </a>
+                    </li>
+
+                    <li class="nav-item dropdown {{ Request::is('upd') ? 'sidebar-item active' : '' }}">
+                      <a href="{{ route('upd.index') }}" class="nav-link">
+                          <span>Data Nilai UPD</span>
+                      </a>
                     </li>
 
                     <li class="nav-item dropdown {{ Request::is('raport') ? 'sidebar-item active' : '' }}">

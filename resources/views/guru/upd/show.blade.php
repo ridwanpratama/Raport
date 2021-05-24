@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Edit Nilai UPD')
+@section('title', 'Lihat Nilai UPD')
 @section('pagetitle')
-    <h1>Edit Nilai UPD</h1>
+    <h1>Lihat Nilai UPD</h1>
 @endsection
 @section('content')
 <div class="section-body">
@@ -14,9 +14,9 @@
                     @method('PUT')
 
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="select1">Siswa ID</label>
+                        <label class="col-md-3 col-form-label" for="select1">Nama Siswa</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="siswa_id" name="siswa_id">
+                            <select class="form-control" id="siswa_id" name="siswa_id" selected disabled>
                                 <option value="{{ $upd->siswa_id }}">{{ $upd->siswa->nama_siswa }}</option>
                                 @foreach (App\Models\Admin\Siswa::all() as $siswa)
                                     <option value="{{ $siswa->id }}">{{ $siswa->nama_siswa }}</option>
@@ -26,9 +26,9 @@
                     </div>
 
                    <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="select1">PILIH UPD</label>
+                        <label class="col-md-3 col-form-label" for="select1">Nama UPD</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="detail_upd_id" name="detail_upd_id">
+                            <select class="form-control" id="detail_upd_id" name="detail_upd_id" selected disabled>
                                 <option value="{{ $upd->detail_upd_id }}">{{ $upd->detail->nama_upd }}</option>
                                 @foreach (App\Models\Admin\Detail::all() as $upd_detail)
                                     <option value="{{ $upd_detail->id }}">{{ $upd_detail->nama_upd }}</option>
@@ -38,9 +38,9 @@
                     </div>
 
                         <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="select1">Pilih Jenis Nilai</label>
+                        <label class="col-md-3 col-form-label" for="select1">Jenis Nilai</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="jenis_nilai_id" name="jenis_nilai_id">
+                            <select class="form-control" id="jenis_nilai_id" name="jenis_nilai_id" selected disabled>
                                 <option value="{{ $upd->jenis_nilai_id }}">{{$upd->jenis_nilai->jenis_nilai}}</option>
                                  @foreach (App\Models\Admin\JenisNilai::all() as $jenis)
                                     <option value="{{ $jenis->id }}">{{ $jenis->jenis_nilai }}</option>
@@ -52,7 +52,7 @@
                         <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="jumlah_tidak_hadir">Jumlah Tidak Hadir</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="jumlah_tidak_hadir" id="jumlah_tidak_hadir" value="{{ $upd->jumlah_tidak_hadir }}">
+                            <input type="text" class="form-control" name="jumlah_tidak_hadir" id="jumlah_tidak_hadir" value="{{ $upd->jumlah_tidak_hadir }}" disabled>
                         </div>
                     </div>
 
@@ -60,14 +60,14 @@
                         <label class="col-md-3 col-form-label">Nilai</label>
                         <div class="col-md-9">
                             <input class="form-control @error('nilai_upd') is-invalid @enderror" id="nilai_upd" type="number" name="nilai_upd"
-                                placeholder="@error('nilai_upd') {{ $message }} @enderror" value="{{ $upd->nilai_upd }}">
+                                placeholder="@error('nilai_upd') {{ $message }} @enderror" value="{{ $upd->nilai_upd }}" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label" for="select1">Semester</label>
                       <div class="col-md-9">
-                        <select id="semesterSelect" class="form-control my-2" name="semester" required>
+                        <select id="semesterSelect" class="form-control my-2" name="semester" selected disabled>
                           <option value="{{ $upd->semester }}">{{ $upd->semester }}</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -79,8 +79,7 @@
                   </div>
 
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Simpan Data</button>
-                        <button class="btn btn-secondary" type="reset">Reset</button>
+                        <a href="{{ route('upd.index') }}" class="btn btn-danger">Back</a>
                     </div>
 
                 </form>
