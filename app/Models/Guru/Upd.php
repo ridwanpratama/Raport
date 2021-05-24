@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Upd extends Model
 {
   protected $table = "upd";
-  protected $fillable = ['siswa_id','detail_upd_id','jenis_nilai_id','nilai_upd', 'jumlah_tidak_hadir', 'semester'];
+  protected $fillable = ['siswa_id','detail_upd_id','jenis_nilai_id','nilai_upd','jumlah_kehadiran', 'jumlah_tidak_hadir', 'semester'];
 
   public function siswa()
   {

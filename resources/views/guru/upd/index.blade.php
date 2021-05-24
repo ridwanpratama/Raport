@@ -54,7 +54,7 @@
                             {{csrf_field()}}
                             {{method_field('DELETE')}}
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus nilai upd dari: {{$item->siswa_id}}')">Hapus</button>
-                            <a href="{{route('upd.show',[$item->id])}}" class="btn btn-info btn-sm">Lihat</a>
+                            <a href="{{route('showUpd',[$item->siswa_id])}}" class="btn btn-info btn-sm">Lihat</a>
                         </td>
 
                         </form>

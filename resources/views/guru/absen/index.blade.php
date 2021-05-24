@@ -41,7 +41,7 @@
                                                 {{ method_field('DELETE') }}
                                                 <button class="btn btn-danger btn-sm"
                                                     onclick="return confirm('apakah anda yakin ingin menghapus siswa: {{ $item->id }}')">Hapus</button>
-                                                <a href="{{ route('absen.show', [$item->id]) }}"
+                                                <a href="{{ route('showAbsen', [$item->siswa_id]) }}"
                                                     class="btn btn-info btn-sm">Lihat</a>
                                         </td>
                                         </form>

@@ -86,7 +86,7 @@
   </div>
 </div>
 @endsection
-{{--
+
 @push('page_scripts')
-<script src="/js/input.js"></script>
-@endpush --}}
+<script src="/js/upd.js"></script>
+@endpush

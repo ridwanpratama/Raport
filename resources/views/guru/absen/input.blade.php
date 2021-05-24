@@ -79,6 +79,6 @@
 </div>
 @endsection
 
-{{-- @push('page_scripts')
-<script src="/js/input.js"></script>
-@endpush --}}
+@push('page_scripts')
+<script src="/js/absen.js"></script>
+@endpush

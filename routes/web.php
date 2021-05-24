@@ -117,6 +117,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/input/{id}', 'Guru\UpdController@input_nilai')->name('input_nilai_upd');
         Route::post('/input', 'Guru\UpdController@submit')->name('store_upd');
         Route::get('/export', 'ShowController@exportUpd')->name('export_upd'); 
+        Route::get('/detail/{siswa_id}', 'Guru\UpdController@showUpd')->name('showUpd');
+    });
+
+    Route::prefix('absen')->group(function () {
+        Route::get('/jurusan', 'Guru\AbsenController@jurusan')->name('pilih_jurusan');
+        Route::get('/rombel/{id}', 'Guru\AbsenController@rombel')->name('pilih_rombel');
+        Route::get('/input/{id}', 'Guru\AbsenController@input_absen')->name('input_absen');
+        Route::post('/input', 'Guru\AbsenController@submit')->name('store_absen');
+        Route::get('/export', 'ShowController@exportAbsen')->name('export_absen');
+        Route::get('/detail/{siswa_id}', 'Guru\AbsenController@showAbsen')->name('showAbsen');
     });
     
     Route::get('raport1/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@raport1')->name('raport1_show');
@@ -140,12 +150,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('mid12/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@mid12')->name('mid12');
 
     Route::get('/raport/search', 'Guru\RaportController@search');
-
-    Route::get('/absen/jurusan', 'Guru\AbsenController@jurusan')->name('pilih_jurusan');
-    Route::get('/absen/rombel/{id}', 'Guru\AbsenController@rombel')->name('pilih_rombel');
-    Route::get('absen/input/{id}', 'Guru\AbsenController@input_absen')->name('input_absen');
-    Route::post('absen/input', 'Guru\AbsenController@submit')->name('store_absen');
-    Route::get('absen/export', 'ShowController@exportAbsen')->name('export_absen');
 
     Route::resource('absen', 'Guru\AbsenController');
     Route::resource('upd', 'Guru\UpdController');

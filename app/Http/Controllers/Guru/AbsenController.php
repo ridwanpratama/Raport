@@ -19,9 +19,12 @@ class AbsenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $absen = Absen::all();
+        $data = Absen::distinct()->pluck('siswa_id');
+        $absen = Absen::whereIn('siswa_id', $data)->groupBy('siswa_id')->get();
+
         return view('guru.absen.index', compact('absen'));
     }
 
@@ -35,26 +38,31 @@ class AbsenController extends Controller
         return view('guru.absen.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $absenBaru = new Absen();
+        $this->validation($request);
+        $siswa_id = $request->siswa_id;
+        $jenis_nilai_id = $request->jenis_nilai_id;
+        $sakit = $request->sakit;
+        $izin = $request->izin;
+        $alpha = $request->alpha;
+        $semester = $request->semester;
 
-        $absenBaru->siswa_id = $request->siswa_id;
-        $absenBaru->sakit = $request->sakit;
-        $absenBaru->izin = $request->izin;
-        $absenBaru->alpha = $request->alpha;
-        $absenBaru->semester = $request->semester;
-        $absenBaru->jenis_nilai_id = $request->jenis_nilai_id;
+        for ($i = 0; $i < count($siswa_id); $i++) {
+            $datasave = [
+                'siswa_id' => $siswa_id[$i],
+                'jenis_nilai_id' => $jenis_nilai_id[$i],
+                'semester' => $semester[$i],
+                'sakit' => $sakit[$i],
+                'izin' => $izin[$i],
+                'alpha' => $alpha[$i],
+                "created_at" =>  \Carbon\Carbon::now(),
+                "updated_at" => \Carbon\Carbon::now(),
+            ];
 
-        $absenBaru->save();
-
-        return redirect(route('absen.index'))->with('toast_success', 'Data berhasil disimpan!');
+            DB::table('absen')->insert($datasave);
+        }
+        return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -80,7 +88,6 @@ class AbsenController extends Controller
     {
         $absen = Absen::find($id);
         $absen->update([
-            'siswa_id' => $request->siswa_id,
             'sakit' => $request->sakit,
             'izin' => $request->izin,
             'alpha' => $request->alpha,
@@ -88,7 +95,7 @@ class AbsenController extends Controller
             'jenis_nilai_id' => $request->jenis_nilai_id
         ]);
 
-        return redirect()->route('absen.index')->with('toast_success', 'Data berhasil diupdate!');
+        return back()->with('toast_success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -101,7 +108,7 @@ class AbsenController extends Controller
     {
         $absen = Absen::find($id);
         $absen->delete();
-        return redirect(route('absen.index'))->with('toast_warning', 'Data berhasil dihapus!');
+        return back()->with('toast_warning', 'Data berhasil dihapus!');
     }
 
     public function jurusan()
@@ -144,12 +151,19 @@ class AbsenController extends Controller
               'alpha' => $alpha[$i],
               "created_at" =>  \Carbon\Carbon::now(),
               "updated_at" => \Carbon\Carbon::now(),
-              'semester' => $semester[$i],
               'jenis_nilai_id' => $jenis_nilai_id[$i],
           ];
           // return dd($datasave);
           DB::table('absen')->insert($datasave);
       }
       return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
+    }
+
+    public function showAbsen($siswa_id)
+    {
+        $absen = Absen::where('siswa_id', $siswa_id)->get();
+        $siswa = Siswa::where('id', $siswa_id)->firstorFail();
+ 
+        return view('guru.absen.view', compact('absen','siswa'));
     }
 }

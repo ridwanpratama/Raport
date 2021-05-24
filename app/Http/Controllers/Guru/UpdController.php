@@ -50,13 +50,10 @@ class UpdController extends Controller
 
     public function index()
     {
-        $upd = Upd::all();
-        return view('guru.upd.index', compact('upd'));
-    }
+        $data = Upd::distinct()->pluck('siswa_id');
+        $upd = Upd::whereIn('siswa_id', $data)->groupBy('siswa_id')->get();
 
-    public function create()
-    {
-      //
+        return view('guru.upd.index', compact('upd'));
     }
 
     public function input_nilai(Request $request, $id)
@@ -70,17 +67,30 @@ class UpdController extends Controller
 
     public function store(Request $request)
     {
-      $this->validation($request);
-      Upd::create([
-          'siswa_id' => $request->siswa_id,
-          'detail_upd_id' => $request->detail_upd_id,
-          'jenis_nilai_id' => $request->jenis_nilai_id,
-          'nilai_upd' => $request->nilai_upd,
-          'jumlah_tidak_hadir' => $request->jumlah_tidak_hadir,
-          'semester' => $request->semester,
-      ]);
+        $this->validation($request);
+        $siswa_id = $request->siswa_id;
+        $detail_upd_id = $request->detail_upd_id;
+        $jenis_nilai_id = $request->jenis_nilai_id;
+        $nilai_upd = $request->nilai_upd;
+        $jumlah_tidak_hadir = $request->jumlah_tidak_hadir;
+        $semester = $request->semester;
 
-      return redirect('upd')->with('toast_success', 'Data berhasil disimpan!');
+        for ($i = 0; $i < count($siswa_id); $i++) {
+            $datasave = [
+                'siswa_id' => $siswa_id[$i],
+                'detail_upd_id' => $detail_upd_id[$i],
+                'jenis_nilai_id' => $jenis_nilai_id[$i],
+                'nilai_upd' => $nilai_upd[$i],
+                'jumlah_tidak_hadir' => $jumlah_tidak_hadir[$i],
+                'semester' => $semester[$i],
+                'jumlah_kehadiran' => $jumlah_kehadiran[$i],
+                "created_at" =>  \Carbon\Carbon::now(),
+                "updated_at" => \Carbon\Carbon::now(),
+            ];
+            // return dd($datasave);
+            DB::table('upd')->insert($datasave);
+        }
+        return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
     }
 
     public function submit(Request $request)
@@ -111,37 +121,33 @@ class UpdController extends Controller
       return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
     public function update(Request $request, $id)
     {
         $upd = Upd::find($id);
         $upd->update([
-            'siswa_id' => $request->siswa_id,
             'detail_upd_id' => $request->detail_upd_id,
             'jenis_nilai_id' => $request->jenis_nilai_id,
             'nilai_upd' => $request->nilai_upd,
-            'semester' => $request->semester,
             'jumlah_tidak_hadir' => $request->jumlah_tidak_hadir,
+            'jumlah_kehadiran' => $request->jumlah_kehadiran,
         ]);
 
-        return redirect()->route('upd.index')->with('message', 'Mapel berhasil di perbarui');
+        return back()->with('toast_success', 'Mapel berhasil di perbarui');
     }
 
     public function destroy($id)
     {
         $upd = Upd::find($id);
         $upd->delete();
-        return redirect('upd');
+        return back()->with('toast_warning', 'Data berhasil dihapus');
     }
 
-    public function show($id)
+    public function showUpd($siswa_id)
     {
-      $upd = Upd::find($id);
-      return view('guru.upd.show', compact('upd'));
+        $upd = Upd::where('siswa_id', $siswa_id)->get();
+        $siswa = Siswa::where('id', $siswa_id)->firstorFail();
+ 
+        return view('guru.upd.view', compact('upd','siswa'));
     }
 
 }
