@@ -19,7 +19,6 @@ class CreateUpdTable extends Migration
             $table->unsignedBigInteger('detail_upd_id');
             $table->unsignedBigInteger('jenis_nilai_id');
             $table->integer('nilai_upd');
-            $table->integer('jumlah_kehadiran');
             $table->integer('jumlah_tidak_hadir');
             $table->integer('semester');
             $table->timestamps();
