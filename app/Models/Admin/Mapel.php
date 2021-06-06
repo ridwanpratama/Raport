@@ -11,7 +11,7 @@ class Mapel extends Model
 
     protected $table = "mapel";
 
-    protected $fillable = ['nama_mapel', 'guru_id', 'jenis_mapel', 'rombel_id', 'jurusan_id', 'kode_mapel'];
+    protected $fillable = ['nama_mapel', 'guru_id', 'jenis_mapel', 'rombel_id', 'jurusan_id', 'kode_mapel', 'ki_kd_id'];
 
     protected $dates = ['deleted_at'];
 
@@ -33,5 +33,10 @@ class Mapel extends Model
     public function rombel()
     {
         return $this->belongsTo('App\Models\Admin\Rombel');
+    }
+
+    public function kikd()
+    {
+        return $this->belongsTo('App\Models\Admin\Kikd', 'ki_kd_id');
     }
 }

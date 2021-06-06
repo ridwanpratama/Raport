@@ -38,6 +38,13 @@
                         </li>
 
                         <li
+                            class="nav-item dropdown {{ Request::is('kikd', 'kikd/create') ? 'sidebar-item active' : '' }}">
+                            <a class="nav-link" href="{{ route('kikd.index') }}">
+                                <span>KI dan KD</span>
+                            </a>
+                        </li>
+
+                        <li
                             class="nav-item dropdown {{ Request::is('guru', 'guru/create') ? 'sidebar-item active' : '' }}">
                             <a href="{{ route('guru.index') }}" class="nav-link">
                                 <span>Data Guru</span>

@@ -32,6 +32,8 @@
                                     <th>Jurusan</th>
                                     <th>Tingkat</th>
                                     <th>Guru</th>
+                                    <th>Kompetensi Inti</th>
+                                    <th>Kompetensi Dasar</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -41,6 +43,8 @@
                                         <td>{{ $item->jurusan->nama_jurusan }}</td>
                                         <td>{{ $item->rombel->tingkat }}</td>
                                         <td>{{ $item->guru->nama_guru }}</td>
+                                        <td>{{ $item->kikd->ki }}</td>
+                                        <td>{{ $item->kikd->kd }}</td>
                                         <td>
                                             <form action="{{ route('mapel.destroy', [$item->id]) }}" method="post">
                                                 @csrf
@@ -104,6 +108,26 @@
                             <option value="{{ $guru->id }}">{{ $guru->nama_guru }}</option>
                         @endforeach
                     </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="ki_kd_id">Kompetensi Inti</label>
+                      <select name="ki_kd_id" id="ki_kd_id" class="form-control">
+                        <option value="{{ $item->ki_kd_id }}">{{ $item->kikd->ki }}</option>
+                        @foreach (App\Models\Admin\Kikd::all() as $kikd)
+                            <option value="{{ $kikd->id }}">{{ $kikd->ki }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="ki_kd_id">Kompetensi Dasar</label>
+                      <select name="ki_kd_id" id="ki_kd_id" class="form-control">
+                        <option value="{{ $item->ki_kd_id }}">{{ $item->kikd->kd }}</option>
+                        @foreach (App\Models\Admin\Kikd::all() as $kikd)
+                            <option value="{{ $kikd->id }}">{{ $kikd->kd }}</option>
+                        @endforeach
+                      </select>
                     </div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>

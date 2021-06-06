@@ -94,6 +94,7 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
     Route::resource('jurusan', 'Admin\JurusanController');
     Route::resource('rombel', 'Admin\RombelController');
     Route::resource('tahun_ajaran', 'Admin\TahunAjaranController');
+    Route::resource('kikd', 'Admin\KikdController');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -108,7 +109,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('data_nilai')->group(function () {
         Route::get('/{siswa_id}/{tahun_ajaran_id}', 'ShowController@show')->name('nilai_show');
         Route::get('/mingguan/{siswa_id}/{tahun_ajaran_id}', 'ShowController@mingguan')->name('nilai_mingguan');
-        Route::post('/import', 'Guru\NilaiController@import')->name('import_nilai');            
+        Route::post('/import', 'Guru\NilaiController@import')->name('import_nilai');
     });
 
     Route::prefix('upd')->group(function () {
@@ -116,7 +117,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/rombel/{id}', 'Guru\UpdController@rombel')->name('data_rombel');
         Route::get('/input/{id}', 'Guru\UpdController@input_nilai')->name('input_nilai_upd');
         Route::post('/input', 'Guru\UpdController@submit')->name('store_upd');
-        Route::get('/export', 'ShowController@exportUpd')->name('export_upd'); 
+        Route::get('/export', 'ShowController@exportUpd')->name('export_upd');
         Route::get('/detail/{siswa_id}', 'Guru\UpdController@showUpd')->name('showUpd');
     });
 
@@ -128,7 +129,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/export', 'ShowController@exportAbsen')->name('export_absen');
         Route::get('/detail/{siswa_id}', 'Guru\AbsenController@showAbsen')->name('showAbsen');
     });
-    
+
     Route::get('raport1/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@raport1')->name('raport1_show');
     Route::get('raport2/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@raport2')->name('raport2_show');
     Route::get('raport3/{siswa_id}/{tahun_ajaran_id}', 'Guru\RaportController@raport3')->name('raport3_show');
