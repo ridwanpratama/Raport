@@ -16,7 +16,7 @@
                             {{-- <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="kode_mapel">Kode Mapel</label>
                                 <div class="col-md-9">
-                                    
+
                                 </div>
                             </div> --}}
 
@@ -87,6 +87,34 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                              <label class="col-md-3 col-form-label" for="ki_kd_id">Kompetensi Inti</label>
+                              <div class="col-md-9">
+                                  <select class="form-control @error('ki_kd_id') is-invalid @enderror" id="ki_kd_id"
+                                      type="text" name="ki_kd_id"
+                                      placeholder="@error('ki_kd_id') {{ $message }} @enderror">
+                                      <option value disable>Pilih Kompetensi Inti</option>
+                                      @foreach (App\Models\Admin\Kikd::all() as $kikd)
+                                          <option value="{{ $kikd->id }}">{{ $kikd->ki }}</option>
+                                      @endforeach
+                                  </select>
+                              </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="guru_id">Kompetensi Dasar</label>
+                            <div class="col-md-9">
+                                <select class="form-control" id=""
+                                    type="text" name=""
+                                    placeholder="">
+                                    <option value disable>Pilih Kompetensi Dasar</option>
+                                    @foreach (App\Models\Admin\Kikd::all() as $kikd)
+                                        <option value="{{ $kikd->id }}">{{ $kikd->kd }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-sm btn-primary" type="submit">Simpan Data</button>
@@ -117,7 +145,7 @@
             `<select class="form-control" id="nama_mapel"type="text" name="nama_mapel">`+
                 `<option value disable>Pilih Mapel</option>`+
                 `@foreach ($data_mapel as $item)` +
-                    `<option value="{{ $item->nama_mapel }}" data-mapel={{ $item->kode_mapel }}>{{ $item->nama_mapel }}</option>`+ 
+                    `<option value="{{ $item->nama_mapel }}" data-mapel={{ $item->kode_mapel }}>{{ $item->nama_mapel }}</option>`+
                 `@endforeach` +
             `</select>`+
             `<input class="form-control mt-2" id="kode_mapel" type="text" name="kode_mapel" placeholder="Kode Mapel" readonly>`;
@@ -127,7 +155,7 @@
             $("#mapelContainer").append(mapel);
 
             $(document).ready(function(){
-                $('#nama_mapel').change(function(){                
+                $('#nama_mapel').change(function(){
                     let mapel = $(this).find(':selected').data('mapel');
                     $('#kode_mapel').val(mapel)
                 })

@@ -59,20 +59,29 @@
                                         <td>{{ $item->nilai_keterampilan }}</td>
                                         <?php
                                           $total = ($item->nilai_pengetahuan + $item->nilai_keterampilan) / 2;
-                                          if ($total > 89) { ?>
+                                          if ($total >= 95) { ?>
+                                            <td>A+</td>
+                                        <?php }
+                                            elseif ($total >= 90 && $total <= 94) { ?>
                                             <td>A</td>
                                         <?php }
-                                            elseif ($total > 79) { ?>
+                                            elseif ($total >= 85 && $total <= 89) { ?>
+                                            <td>A-</td>
+                                        <?php }
+                                            elseif ($total >= 80 && $total <= 84) { ?>
+                                            <td>B+</td>
+                                        <?php }
+                                            elseif ($total >= 75 && $total <= 79) {?>
                                             <td>B</td>
                                         <?php }
-                                            elseif ($total > 69) { ?>
+                                            elseif ($total >= 70 && $total <= 74) {?>
+                                            <td>B-</td>
+                                        <?php }
+                                            elseif ($total >= 60 && $total <= 69) {?>
                                             <td>C</td>
                                         <?php }
-                                            elseif ($total > 59) { ?>
-                                            <td>D</td>
-                                        <?php }
                                             else { ?>
-                                            <td>E</td>
+                                            <td>D</td>
                                         <?php }
                                         ?>
 

@@ -40,7 +40,8 @@ class MapelController extends Controller
             'nama_mapel' => 'required',
             'guru_id' => 'required',
             'jurusan_id' => 'required',
-            'rombel_id' => 'required'
+            'rombel_id' => 'required',
+            'ki_kd_id' => 'required',
         ]);
     }
 
@@ -61,6 +62,7 @@ class MapelController extends Controller
             'jenis_mapel' => $request->jenis_mapel,
             'rombel_id' => $request->rombel_id,
             'jurusan_id' => $request->jurusan_id,
+            'ki_kd_id' => $request->ki_kd_id,
         ]);
 
         return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil disimpan!');
@@ -152,7 +154,7 @@ class MapelController extends Controller
     public function filterJenisMapel($jenis_mapel)
     {
         $mapel = Mapel::distinct()->pluck('nama_mapel');
-        $data_mapel = Mapel::whereIn('nama_mapel', $mapel)->where('jenis_mapel', $jenis_mapel)->groupBy('nama_mapel')->get();   
+        $data_mapel = Mapel::whereIn('nama_mapel', $mapel)->where('jenis_mapel', $jenis_mapel)->groupBy('nama_mapel')->get();
         $jenis_mapel = Mapel::select('jenis_mapel')->get();
 
         return view('admin.mapel.index', compact('data_mapel','jenis_mapel'));
@@ -171,7 +173,7 @@ class MapelController extends Controller
     {
         $mapel = Mapel::where('nama_mapel', $nama_mapel)->get();
         $identitas = Mapel::where('nama_mapel', $nama_mapel)->first();
- 
+
         return view('admin.mapel.show', compact('mapel','identitas'));
     }
 }

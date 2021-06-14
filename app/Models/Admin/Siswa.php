@@ -34,4 +34,9 @@ class Siswa extends Model
   public function rombel(){
     return $this->belongsTo('App\Models\Admin\Rombel');
   }
+
+  public function kikd()
+  {
+    return $this->belongsTo('App\Models\Admin\Kikd');
+  }
 }
