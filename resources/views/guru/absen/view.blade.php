@@ -44,7 +44,7 @@
                             <tbody>
                                 @foreach ($absen as $item)
                                     <tr>
-                                        <td>{{ $item->semester }}</td>
+                                        <td>Semester {{ $item->semester }}</td>
                                         <td>{{ $item->jenis_nilai->jenis_nilai }}</td>
                                         <td>{{ $item->sakit }}</td>
                                         <td>{{ $item->izin }}</td>

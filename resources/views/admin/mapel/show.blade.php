@@ -14,12 +14,14 @@
                         <table class="table table-sm" style="margin-bottom: 50px;">
                             <thead>
                                 <tr>
+                                    <th>Kode Mapel</th>
                                     <th>Jenis Mapel</th>
                                     <th>Nama Mapel</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>{{ $identitas->kode_mapel }}</td>
                                     <td>{{ $identitas->jenis_mapel }}</td>
                                     <td>{{ $identitas->nama_mapel }}</td>
                                 </tr>

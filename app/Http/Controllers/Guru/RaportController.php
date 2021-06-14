@@ -64,7 +64,7 @@ class RaportController extends Controller
             $upd1 = ['siswa_id' => $siswa_id, 'semester' => '1'];
 
             $upd = Upd::where($upd1)->firstorFail();
-            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
@@ -89,7 +89,7 @@ class RaportController extends Controller
 
             $upd2 = ['siswa_id' => $siswa_id, 'semester' => '2'];
             $upd = Upd::where($upd2)->firstorFail();
-            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
@@ -114,7 +114,7 @@ class RaportController extends Controller
 
             $upd3 = ['siswa_id' => $siswa_id, 'semester' => '3'];
             $upd = Upd::where($upd3)->firstorFail();
-            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
@@ -139,7 +139,7 @@ class RaportController extends Controller
 
             $upd4 = ['siswa_id' => $siswa_id, 'semester' => '4'];
             $upd = Upd::where($upd4)->firstorFail();
-            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
@@ -164,7 +164,7 @@ class RaportController extends Controller
 
             $upd5 = ['siswa_id' => $siswa_id, 'semester' => '5'];
             $upd = Upd::where($upd5)->firstorFail();
-            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');
@@ -189,7 +189,7 @@ class RaportController extends Controller
 
             $upd5 = ['siswa_id' => $siswa_id, 'semester' => '6'];
             $upd = Upd::where($upd6)->firstorFail();
-            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran)->firstorFail();
+            $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         } catch (\Exception $exception) {
             return redirect()->route('raport.index')->with('toast_error', 'Data belum lengkap!');

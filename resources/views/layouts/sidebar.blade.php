@@ -127,27 +127,27 @@
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown {{ Request::is('nilai') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('nilai.index') }}" class="nav-link">
-                            <span>Data Nilai</span>
-                        </a>
-                    </li>
-
                     <li class="nav-item dropdown {{ Request::is('upd') ? 'sidebar-item active' : '' }}">
                       <a href="{{ route('upd.index') }}" class="nav-link">
                           <span>Data Nilai UPD</span>
                       </a>
                     </li>
 
-                    <li class="nav-item dropdown {{ Request::is('raport') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('raport.index') }}" class="nav-link">
-                            <span>Kelola Raport</span>
-                        </a>
-                    </li>
-
                     <li class="nav-item dropdown {{ Request::is('nilai/jurusan') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('list_jurusan') }}" class="nav-link">
                             <span>Input Nilai</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown {{ Request::is('nilai') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('nilai.index') }}" class="nav-link">
+                            <span>Data Nilai</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown {{ Request::is('raport') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('raport.index') }}" class="nav-link">
+                            <span>Kelola Raport</span>
                         </a>
                     </li>
 

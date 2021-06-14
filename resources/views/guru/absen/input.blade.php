@@ -26,7 +26,7 @@
                 @endforeach
               </select>
 
-              <select id="semesterSelect" class="form-control my-2" required>
+              <select id="semesterSelect" class="form-control my-2" name="semester" required>
                 <option value disable>Pilih Semester</option>
                 <option value="1">Semester 1</option>
                 <option value="2">Semester 2</option>

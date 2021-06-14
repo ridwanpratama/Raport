@@ -38,33 +38,6 @@ class AbsenController extends Controller
         return view('guru.absen.create');
     }
 
-    public function store(Request $request)
-    {
-        $this->validation($request);
-        $siswa_id = $request->siswa_id;
-        $jenis_nilai_id = $request->jenis_nilai_id;
-        $sakit = $request->sakit;
-        $izin = $request->izin;
-        $alpha = $request->alpha;
-        $semester = $request->semester;
-
-        for ($i = 0; $i < count($siswa_id); $i++) {
-            $datasave = [
-                'siswa_id' => $siswa_id[$i],
-                'jenis_nilai_id' => $jenis_nilai_id[$i],
-                'semester' => $semester[$i],
-                'sakit' => $sakit[$i],
-                'izin' => $izin[$i],
-                'alpha' => $alpha[$i],
-                "created_at" =>  \Carbon\Carbon::now(),
-                "updated_at" => \Carbon\Carbon::now(),
-            ];
-
-            DB::table('absen')->insert($datasave);
-        }
-        return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -149,6 +122,7 @@ class AbsenController extends Controller
               'sakit' => $sakit[$i],
               'izin' => $izin[$i],
               'alpha' => $alpha[$i],
+              'semester' => $semester[$i],
               "created_at" =>  \Carbon\Carbon::now(),
               "updated_at" => \Carbon\Carbon::now(),
               'jenis_nilai_id' => $jenis_nilai_id[$i],

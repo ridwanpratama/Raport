@@ -45,7 +45,7 @@
                             <tbody>
                                 @foreach ($upd as $item)
                                     <tr>
-                                        <td>{{ $item->semester }}</td>
+                                        <td>Semester {{ $item->semester }}</td>
                                         <td>{{ $item->jenis_nilai->jenis_nilai }}</td>
                                         <td>{{ $item->detail->nama_upd }}</td>
                                         <td>{{ $item->nilai_upd }}</td>
