@@ -106,11 +106,12 @@
                 </li>
             @endif
 
-            <li class="menu-header">Kelola Nilai</li>
+           @if (auth()->user()->level == 'guru')
+            <li class="menu-header">Input Nilai</li>
 
             <li
-                class="nav-item dropdown {{ Request::is('nilai', 'nilai/create', 'raport', 'absen', 'absen/create', 'upd', 'upd/create', 'nilai/rombel', 'nilai/jurusan') ? 'sidebar-item active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-edit"></i><span>Kelola Nilai</span></a>
+                class="nav-item dropdown {{ Request::is('nilai/create', 'absen/create', 'upd/create', 'nilai/rombel', 'nilai/jurusan') ? 'sidebar-item active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-edit"></i><span>Input Nilai</span></a>
                 <ul class="dropdown-menu" style="display: none;">
 
                     <li
@@ -121,16 +122,32 @@
                     </li>
 
                     <li
-                        class="nav-item dropdown {{ Request::is('absen', 'absen/create') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('absen.index') }}" class="nav-link">
-                            <span>Data Absen</span>
-                        </a>
-                    </li>
-
-                    <li
                         class="nav-item dropdown {{ Request::is('upd/jurusan') ? 'sidebar-item active' : '' }}">
                         <a href="{{ route('data_jurusan') }}" class="nav-link">
                             <span>Input Nilai UPD</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown {{ Request::is('nilai/jurusan') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('list_jurusan') }}" class="nav-link">
+                            <span>Input Nilai</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="menu-header">Data Nilai</li>
+
+            <li
+                class="nav-item dropdown {{ Request::is('nilai', 'raport', 'absen', 'upd') ? 'sidebar-item active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-server "></i><span>Data Nilai</span></a>
+                <ul class="dropdown-menu" style="display: none;">
+
+                    <li
+                        class="nav-item dropdown {{ Request::is('absen', 'absen/create') ? 'sidebar-item active' : '' }}">
+                        <a href="{{ route('absen.index') }}" class="nav-link">
+                            <span>Data Absen</span>
                         </a>
                     </li>
 
@@ -138,12 +155,6 @@
                       <a href="{{ route('upd.index') }}" class="nav-link">
                           <span>Data Nilai UPD</span>
                       </a>
-                    </li>
-
-                    <li class="nav-item dropdown {{ Request::is('nilai/jurusan') ? 'sidebar-item active' : '' }}">
-                        <a href="{{ route('list_jurusan') }}" class="nav-link">
-                            <span>Input Nilai</span>
-                        </a>
                     </li>
 
                     <li class="nav-item dropdown {{ Request::is('nilai') ? 'sidebar-item active' : '' }}">
@@ -160,6 +171,7 @@
 
                 </ul>
             </li>
+           @endif
 
             <li class="menu-header">Logout</li>
 

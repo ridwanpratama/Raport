@@ -13,4 +13,9 @@ class TahunAjaran extends Model
     {
         return $this->hasMany('App\Models\Guru\Nilai');
     }
+
+    public function siswa()
+    {
+      return $this->hasMany('App\Models\Admin\Siswa');
+    }
 }

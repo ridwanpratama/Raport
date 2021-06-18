@@ -35,8 +35,8 @@ class Siswa extends Model
     return $this->belongsTo('App\Models\Admin\Rombel');
   }
 
-  public function kikd()
+  public function tahun_ajaran()
   {
-    return $this->belongsTo('App\Models\Admin\Kikd');
+    return $this->belongsTo('App\Models\Admin\TahunAjaran');
   }
 }
