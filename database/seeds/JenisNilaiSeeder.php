@@ -13,6 +13,10 @@ class JenisNilaiSeeder extends Seeder
     public function run()
     {
         JenisNilai::insert([
+          'jenis_nilai' => 'Nilai Harian',
+        ]);
+
+        JenisNilai::insert([
           'jenis_nilai' => 'PH1',
         ]);
 

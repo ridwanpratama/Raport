@@ -41,9 +41,11 @@ class NilaiController extends Controller
         $nilai_pengetahuan = $request->nilai_pengetahuan;
         $nilai_keterampilan = $request->nilai_keterampilan;
         $semester = $request->semester;
+        $tanggal = $request->tanggal;
 
         for ($i = 0; $i < count($siswa_id); $i++) {
             $datasave = [
+                'tanggal' => $tanggal,
                 'siswa_id' => $siswa_id[$i],
                 'mapel_id' => $mapel_id[$i],
                 'jenis_nilai_id' => $jenis_nilai_id[$i],

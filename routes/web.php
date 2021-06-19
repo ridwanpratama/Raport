@@ -24,6 +24,8 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
         Route::get('/jurusan/{id}', 'Admin\SiswaController@filterJurusan')->name('filterJurusan');
         Route::get('/rayon/{id}', 'Admin\SiswaController@filterRayon')->name('filterRayon');
         Route::get('/rombel/{id}', 'Admin\SiswaController@filterRombel')->name('filterRombel');
+        Route::get('/export', 'ShowController@exportSiswa')->name('export_siswa');
+        Route::post('/import', 'Admin\SiswaController@import')->name('import_siswa');
     });
 
     Route::prefix('rayon')->group(function () {
