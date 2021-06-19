@@ -19,6 +19,7 @@
             <button type="button" class="btn btn-danger" id="lessMapel">-</button>
 
             <div id="baseForm" class="mt-4">
+              <input type="date" class="form-control" name="tanggal" id="tanggal">
               <select class="form-control my-2" id="mapelSelect" required>
                 <option value disable>Pilih Mapel</option>
                 @foreach ($mapel as $item)
