@@ -20,14 +20,12 @@ class ShowController extends Controller
         try{
             $siswa = Siswa::where('id', $siswa_id)->firstorFail();
             $nilai = Nilai::where('siswa_id', $siswa_id)->get();
-            $absen = Absen::where('siswa_id', $siswa_id)->firstorFail();
-            $upd = Upd::where('siswa_id', $siswa_id)->firstorFail();
             $tahun_ajaran = TahunAjaran::where('id', $tahun_ajaran_id)->firstorFail();
 
         }catch(\Exception $exception){
             return redirect()->route('nilai.index')->with('toast_error', 'Data belum lengkap!');
         }
-        return view('guru.nilai.show', compact('nilai','siswa','absen', 'upd','tahun_ajaran'));
+        return view('guru.nilai.show', compact('nilai','siswa', 'tahun_ajaran'));
     }
 
     public function mingguan(Request $request, $siswa_id, $tahun_ajaran_id)

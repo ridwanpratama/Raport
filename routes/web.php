@@ -97,7 +97,7 @@ Route::middleware(['auth', 'ceklevel:admin'])->group(function () {
     Route::resource('kikd', 'Admin\KikdController');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'ceklevel:guru'])->group(function () {
     Route::prefix('nilai')->group(function () {
         Route::get('/export', 'ShowController@exportNilai')->name('export_nilai');
         Route::get('/rombel/{id}', 'Guru\NilaiController@rombel')->name('list_rombel');
