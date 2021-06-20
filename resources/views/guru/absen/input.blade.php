@@ -19,12 +19,14 @@
             <button type="button" class="btn btn-danger" id="lessMapel">-</button>
 
             <div id="baseForm" class="mt-4">
-              <select id="jenisNilaiSelect" class="form-control my-2" required>
+              <input type="date" class="form-control" name="tanggal" id="tanggal">
+              <input type hidden value="1" name="jenis_nilai_id" class="form-control">
+              {{-- <select id="jenisNilaiSelect" class="form-control my-2" required>
                 <option value disable>Pilih Jenis Nilai</option>
                 @foreach ($jenis_nilai as $item)
                 <option value="{{ $item->id }}">{{ $item->jenis_nilai }}</option>
                 @endforeach
-              </select>
+              </select> --}}
 
               <select id="semesterSelect" class="form-control my-2" name="semester" required>
                 <option value disable>Pilih Semester</option>
@@ -55,7 +57,6 @@
                       <input type="hidden" name="siswa_id[]" value="{{ $item->id }}">
                       <input type="hidden" name="semester[]" value="placeholder">
                     </td>
-                    <input type="hidden" name="jenis_nilai_id[]" value="placeholder"></td>
                     <td>{{ $item->nis }}</td>
                     <td>{{ $item->rayon->nama_rayon }}</td>
                     <td><input class="form-control" type="number" name="sakit[]"></td>

@@ -156,21 +156,35 @@
                             <tr>
                               <th>Keterangan</th>
                               <th>Jumlah</th>
+                              <th>Tanggal</th>
                             </tr>
                           </thead>
                           <tbody>
                             @foreach ($absen as $item)
                             <tr>
                               <td>Sakit</td>
-                              <td>{{ $item->sakit }}</td>
+                              <td>{{ $item->sakit }} Hari</td>
+                              <td>{{ $item->tanggal }}</td>
                             </tr>
                             <tr>
                               <td>Ijin</td>
-                              <td>{{ $item->izin }}</td>
+                              <td>{{ $item->izin }} Hari</td>
+                              <?php
+                                if ($item->izin <= 0) { ?>
+                                  <td>-</td>
+                                <?php } else { ?>
+                                  <td>{{ $item->tanggal }}</td>
+                                <?php } ?>
                             </tr>
                             <tr>
                               <td>Tanpa Keterangan</td>
-                              <td>{{ $item->alpha }}</td>
+                              <td>{{ $item->alpha }} Hari</td>
+                              <?php
+                                if ($item->alpha <= 0) { ?>
+                                  <td>-</td>
+                                <?php } else { ?>
+                                  <td>{{ $item->tanggal }}</td>
+                                <?php } ?>
                             </tr>
                             @endforeach
                           </tbody>
