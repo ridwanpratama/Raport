@@ -16,124 +16,164 @@
                     value="Print!" />
                 <div class="card my-3">
                     <div class="card-body" id="printableArea">
-                        <table class="table table-sm" style="margin-bottom: 50px;">
-                            <thead>
-                                <tr>
-                                    <th>Nama Siswa:</th>
-                                    <th>NIS</th>
-                                    <th>Rombel</th>
-                                    <th>Rayon</th>
-                                    <th>Jurusan</th>
-                                    <th>Tahun Ajaran</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{ $siswa->nama_siswa }}</td>
-                                    <td>{{ $siswa->nis }}</td>
-                                    <td>{{ $siswa->rombel->nama_rombel }}</td>
-                                    <td>{{ $siswa->rayon->nama_rayon }}</td>
-                                    <td>{{ $siswa->jurusan->nama_jurusan }}</td>
-                                    <td>{{ $tahun_ajaran->tahun_ajaran }}</td>
-                                </tr>
-                            </tbody>
+                        <table class="table table-sm">
+                          <tr>
+                            <td rowspan="4">
+                              <div><img src="{{ asset('assets/img/logo.png') }}" width="100px"></div>
+                            </td>
+                            <td style="float:right">
+                              <b>YAYASAN PRAWITAMA</b><br>
+                              <b>SMK WIKRAMA BOGOR</b>
+                              <p>Jalan Raya Wangun Kel.Sindangsari - Bogor, Telp./Fax (0251)8242411 <br> Website : www.smkwikrama.sch.id, e-mail : prohumasi@smkwikrama.net</p>
+                            </td>
+                          </tr>
                         </table>
-
+                        <hr color="black">
+                        <table class="table table-sm">
+                          <tr>
+                            <td><center><b>LAPORAN PENCAPAIAN KOMPETENSI PESERTA DIDIK</b></center></td>
+                          </tr>
+                        </table>
+                        <table class="table table-sm" width="50%" style="float: left;">
+                          <tr>
+                            <td>NIS : {{ $siswa->nis }}</td>
+                            <td style="float: right">Tahun Pelajaran : {{ $tahun_ajaran->tahun_ajaran }}</td>
+                          </tr>
+                          <tr>
+                            <td>Nama : {{ $siswa->nama_siswa }}</td>
+                            <td style="float: right">Kelas : {{ $siswa->rombel->nama_rombel }}</td>
+                          </tr>
+                          <tr>
+                            <td>Kompetensi Keahlian : {{ $siswa->jurusan->nama_jurusan }}</td>
+                          </tr>
+                        </table>
+                        <table class="table table-sm">
+                          <b>A. NILAI AKADEMIK</b>
+                        </table>
                         <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Mapel</th>
-                                    <th>KKM</th>
-                                    <th>Nilai Pengetahuan</th>
-                                    <th>Nilai Keterampilan</th>
-                                    <th>Predikat</th>
-                                    <th>Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($nilai as $item)
-                                    <tr>
-                                        <td>{{ $item->mapel->nama_mapel }}</td>
-                                        <td>75</td>
-                                        <td>{{ $item->nilai_pengetahuan }}</td>
-                                        <td>{{ $item->nilai_keterampilan }}</td>
-                                        <?php
-                                          $total = ($item->nilai_pengetahuan + $item->nilai_keterampilan) / 2;
-                                          if ($total >= 95) { ?>
-                                            <td>A+</td>
-                                        <?php }
-                                            elseif ($total >= 90 && $total <= 94) { ?>
-                                            <td>A</td>
-                                        <?php }
-                                            elseif ($total >= 85 && $total <= 89) { ?>
-                                            <td>A-</td>
-                                        <?php }
-                                            elseif ($total >= 80 && $total <= 84) { ?>
-                                            <td>B+</td>
-                                        <?php }
-                                            elseif ($total >= 75 && $total <= 79) {?>
-                                            <td>B</td>
-                                        <?php }
-                                            elseif ($total >= 70 && $total <= 74) {?>
-                                            <td>B-</td>
-                                        <?php }
-                                            elseif ($total >= 60 && $total <= 69) {?>
-                                            <td>C</td>
-                                        <?php }
-                                            else { ?>
-                                            <td>D</td>
-                                        <?php }
-                                        ?>
+                          <thead>
+                            <tr>
+                              <th><center>MATA PELAJARAN</center></th>
+                              <th><center>KKM</center></th>
+                              <th><center>Pengetahuan</center></th>
+                              <th><center>Keterampilan</center></th>
+                              <th><center>Nilai Akhir</center></th>
+                              <th><center>Predikat</center></th>
+                              <th><center>Keterangan</center></th>
+                            </tr>
+                          </thead>
+                          {{-- <tr>
+                            <td colspan="7"><b>A. Muatan Nasional</b></td>
+                          </tr> --}}
+                          <tbody>
+                            @foreach ($nilai as $item)
+                            <tr>
+                                <td>{{ $item->mapel->nama_mapel }}</td>
+                                <td>75</td>
+                                <td>{{ $item->nilai_pengetahuan }}</td>
+                                <td>{{ $item->nilai_keterampilan }}</td>
+                                <?php
+                                  $nilai_akhir = ($item->nilai_pengetahuan + $item->nilai_keterampilan) / 2;
+                                ?>
+                                <td>{{ $nilai_akhir }}</td>
+                                <?php
+                                  $total = ($item->nilai_pengetahuan + $item->nilai_keterampilan) / 2;
+                                  if ($total >= 95) { ?>
+                                    <td>A+</td>
+                                <?php }
+                                    elseif ($total >= 90 && $total <= 94) { ?>
+                                    <td>A</td>
+                                <?php }
+                                    elseif ($total >= 85 && $total <= 89) { ?>
+                                    <td>A-</td>
+                                <?php }
+                                    elseif ($total >= 80 && $total <= 84) { ?>
+                                    <td>B+</td>
+                                <?php }
+                                    elseif ($total >= 75 && $total <= 79) {?>
+                                    <td>B</td>
+                                <?php }
+                                    elseif ($total >= 70 && $total <= 74) {?>
+                                    <td>B-</td>
+                                <?php }
+                                    elseif ($total >= 60 && $total <= 69) {?>
+                                    <td>C</td>
+                                <?php }
+                                    else { ?>
+                                    <td>D</td>
+                                <?php }
+                                ?>
 
-                                        <?php
-                                        $total = ($item->nilai_pengetahuan + $item->nilai_keterampilan) / 2;
-                                        if ($total >= 75) { ?>
-                                          <td>K</td>
-                                        <?php } else { ?>
-                                          <td>BK</td>
-                                        <?php }
-                                        ?>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                                <?php
+                                $total = ($item->nilai_pengetahuan + $item->nilai_keterampilan) / 2;
+                                if ($total >= 75) { ?>
+                                  <?php $predikat = "K" ?>
+                                  <td>{{ $predikat }}</td>
+                                <?php } else { ?>
+                                  <?php $predikat = "BK" ?>
+                                  <td>{{ $predikat }}</td>
+                                <?php }
+                                ?>
+                              </tr>
+                            @endforeach
+                          </tbody>
                         </table>
-
-                        <table class="table table-bordered" style="margin-top: 50px;">
-                            <thead>
-                                <tr>
-                                    <th>Jumlah Absen</th>
-                                    <th>Alpha</th>
-                                    <th>Sakit</th>
-                                    <th>Izin</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($absen as $item)
-                                <tr>
-                                    <td>{{ $item->alpha + $item->sakit + $item->izin }}</td>
-                                    <td>{{ $item->alpha }}</td>
-                                    <td>{{ $item->sakit }}</td>
-                                    <td>{{ $item->izin }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
+                        <table class="table table-sm">
+                          <tr>
+                            <td><b>B. EKSTRAKURIKULER</b></td>
+                          </tr>
                         </table>
-
-                        <table class="table table-bordered" style="margin-top: 50px;">
-                            <thead>
-                                <tr>
-                                    <th>UPD</th>
-                                    <th>Nilai UPD</th>
-                                    <th>Jumlah Tidak Hadir</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{ $upd->detail->nama_upd }}</td>
-                                    <td>{{ $upd->nilai_upd }}</td>
-                                    <td>{{ $upd->jumlah_tidak_hadir }}</td>
-                                </tr>
-                            </tbody>
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Kegiatan Ekstrakurikuler</th>
+                              <th>Nilai</th>
+                              <th>Jumlah Tidak Hadir</th>
+                              <th>Keterangan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>{{ $upd->detail->nama_upd }}</td>
+                              <td>{{ $upd->nilai_upd }}</td>
+                              <td>{{ $upd->jumlah_tidak_hadir }}</td>
+                              <?php
+                              if ($upd->nilai_upd >= 75) { ?>
+                                <td>K</td>
+                              <?php } else { ?>
+                                <td>BK</td>
+                              <?php } ?>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table class="table table-sm">
+                          <tr>
+                            <td><b>C. KETIDAKHADIRAN</b></td>
+                          </tr>
+                        </table>
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Keterangan</th>
+                              <th>Jumlah</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @foreach ($absen as $item)
+                            <tr>
+                              <td>Sakit</td>
+                              <td>{{ $item->sakit }}</td>
+                            </tr>
+                            <tr>
+                              <td>Ijin</td>
+                              <td>{{ $item->izin }}</td>
+                            </tr>
+                            <tr>
+                              <td>Tanpa Keterangan</td>
+                              <td>{{ $item->alpha }}</td>
+                            </tr>
+                            @endforeach
+                          </tbody>
                         </table>
                     </div>
                 </div>
