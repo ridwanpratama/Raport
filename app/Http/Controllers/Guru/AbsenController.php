@@ -115,6 +115,7 @@ class AbsenController extends Controller
       $izin = $request->izin;
       $alpha = $request->alpha;
       $semester = $request->semester;
+      $tanggal = $request->tanggal;
 
       for ($i = 0; $i < count($siswa_id); $i++) {
           $datasave = [
@@ -126,18 +127,19 @@ class AbsenController extends Controller
               "created_at" =>  \Carbon\Carbon::now(),
               "updated_at" => \Carbon\Carbon::now(),
               'jenis_nilai_id' => $jenis_nilai_id[$i],
+              'tanggal' => $tanggal,
           ];
-          // return dd($datasave);
-          DB::table('absen')->insert($datasave);
+          return dd($datasave);
+          // DB::table('absen')->insert($datasave);
       }
-      return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
+      // return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
     }
 
     public function showAbsen($siswa_id)
     {
         $absen = Absen::where('siswa_id', $siswa_id)->get();
         $siswa = Siswa::where('id', $siswa_id)->firstorFail();
- 
+
         return view('guru.absen.view', compact('absen','siswa'));
     }
 }
