@@ -38,13 +38,13 @@ class KikdController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-          'ki' => 'required',
-          'kd' => 'required',
+          'jenis_kikd' => 'required',
+          'kompetensi' => 'required',
         ]);
 
         Kikd::create([
-          'ki' => $request->ki,
-          'kd' => $request->kd,
+          'jenis_kikd' => $request->jenis_kikd,
+          'kompetensi' => $request->kompetensi,
       ]);
 
       return redirect()->route('kikd.index')->with('toast_success', 'Data berhasil disimpan!');
@@ -84,8 +84,8 @@ class KikdController extends Controller
     {
         $data_kikd = Kikd::find($id);
         $data_kikd->update([
-          'ki' => $request->ki,
-          'kd' => $request->kd,
+          'jenis_kikd' => $request->jenis_kikd,
+          'kompetensi' => $request->kompetensi,
         ]);
 
         return redirect()->route('kikd.index')->with('toast_success', 'Data berhasil diperbarui!');

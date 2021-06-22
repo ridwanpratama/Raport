@@ -13,17 +13,23 @@
                     enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
-                    <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="text-input">Kompetensi Inti</label>
+                    <div class="form-group row" id="block">
+                        <label class="col-md-3 col-form-label" for="jenis_kikd">Pilih Kompetensi</label>
                         <div class="col-md-9">
-                          <textarea name="ki" id="ki" cols="30" rows="20" class="form-control" placeholder="Masukkan Kompetensi Inti">{{ $data_kikd->ki }}</textarea>
+                            <select class="form-control" id=""
+                                type="text" name="jenis_kikd"
+                                placeholder="">
+                                <option value="{{ $data_kikd->jenis_kikd }}">{{ $data_kikd->jenis_kikd }}</option>
+                                <option value="Kompetensi Inti">Kompetensi Inti</option>
+                                <option value="Kompetensi Dasar">Kompetensi Dasar</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-md-3 col-form-label" for="text-input">Kompetensi Dasar</label>
+                      <label class="col-md-3 col-form-label" for="kompetensi">Kompetensi</label>
                       <div class="col-md-9">
-                        <textarea name="kd" id="kd" cols="30" rows="20" class="form-control" placeholder="Masukkan Kompetensi Dasar">{{ $data_kikd->kd }}</textarea>
+                          <textarea name="kompetensi" id="kompetensi" cols="30" rows="20" class="form-control" placeholder="Masukkan Kompetensi">{{ $data_kikd->kompetensi }}</textarea>
                       </div>
                   </div>
             </div>

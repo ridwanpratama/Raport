@@ -18,8 +18,8 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Kompetensi Inti</th>
-                    <th>Kompetensi Dasar</th>
+                    <th>Jenis Kompetensi</th>
+                    <th>Kompetensi</th>
                     <th class="option-except">Action</th>
                 </tr>
             </thead>
@@ -27,8 +27,8 @@
                 @foreach ($data_kikd as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->ki }}</td>
-                    <td>{{ $item->kd }}</td>
+                    <td>{{ $item->jenis_kikd }}</td>
+                    <td>{{ $item->kompetensi }}</td>
                     <td>
                         <form action="{{route('kikd.destroy',[$item->id])}}" method="post">
                             {{csrf_field()}}

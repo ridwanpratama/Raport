@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin\Kikd;
 use App\Models\Admin\Mapel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MapelController extends Controller
 {
@@ -31,7 +32,10 @@ class MapelController extends Controller
     {
         $mapel = Mapel::distinct()->pluck('nama_mapel');
         $data_mapel = Mapel::whereIn('nama_mapel', $mapel)->groupBy('nama_mapel')->get();
-        return view('admin.mapel.create', compact('data_mapel'));
+        $komp_inti = Kikd::where('jenis_kikd', 'Kompetensi Inti')->get();
+        $komp_dasar = Kikd::where('jenis_kikd', 'Kompetensi Dasar')->get();
+   
+        return view('admin.mapel.create', compact('data_mapel', 'komp_inti', 'komp_dasar'));
     }
 
     public function validation(Request $request)
@@ -67,6 +71,7 @@ class MapelController extends Controller
 
         return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil disimpan!');
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -176,4 +181,5 @@ class MapelController extends Controller
 
         return view('admin.mapel.show', compact('mapel','identitas'));
     }
+
 }

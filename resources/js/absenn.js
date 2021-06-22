@@ -28,23 +28,25 @@ lessMapel.addEventListener('click', () => {
 })
 
 function init(parentNode) {
-  const jenisNilaiSelect = parentNode.querySelector('#jenisNilaiSelect')
   const semesterSelect = parentNode.querySelector('#semesterSelect')
+  const tanggalSelect = parentNode.querySelector('#tanggalSelect')
 
-  const hiddenJenisNilaiInputs = parentNode.querySelectorAll(
-    'input[name="jenis_nilai_id[]"]'
-  )
   const hiddenSemesterInputs = parentNode.querySelectorAll(
     'input[name="semester[]"]'
   )
 
-  jenisNilaiSelect.addEventListener('change', ({ target: { value } }) => {
-    hiddenJenisNilaiInputs.forEach(input => (input.value = value))
-  })
+  const hiddenTanggalInputs = parentNode.querySelectorAll(
+    'input[name="tanggal[]"]'
+  )
 
   semesterSelect.addEventListener('change', ({ target: { value } }) => {
     hiddenSemesterInputs.forEach(input => (input.value = value))
   })
+
+  tanggalSelect.addEventListener('change', ({ target: { value } }) => {
+    hiddenTanggalInputs.forEach(input => (input.value = value))
+  })
+
 }
 
 init(baseForm)

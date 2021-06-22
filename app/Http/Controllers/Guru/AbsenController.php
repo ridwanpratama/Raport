@@ -127,12 +127,12 @@ class AbsenController extends Controller
               "created_at" =>  \Carbon\Carbon::now(),
               "updated_at" => \Carbon\Carbon::now(),
               'jenis_nilai_id' => $jenis_nilai_id[$i],
-              'tanggal' => $tanggal,
+              'tanggal' => $tanggal[$i],
           ];
-          return dd($datasave);
-          // DB::table('absen')->insert($datasave);
+            //   return dd($datasave);
+          DB::table('absen')->insert($datasave);
       }
-      // return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
+      return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
     }
 
     public function showAbsen($siswa_id)

@@ -88,29 +88,31 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+
+                            <button type="button" class="btn btn-info mb-2" id="add"><b>+</b> KI/KD</button>
+                        
+                            <div class="form-group row" id="block">
                               <label class="col-md-3 col-form-label" for="ki_kd_id">Kompetensi Inti</label>
                               <div class="col-md-9">
                                   <select class="form-control @error('ki_kd_id') is-invalid @enderror" id="ki_kd_id"
                                       type="text" name="ki_kd_id"
                                       placeholder="@error('ki_kd_id') {{ $message }} @enderror">
                                       <option value disable>Pilih Kompetensi Inti</option>
-                                      @foreach (App\Models\Admin\Kikd::all() as $kikd)
-                                          <option value="{{ $kikd->id }}">{{ $kikd->ki }}</option>
+                                      @foreach ($komp_inti as $ki)
+                                          <option value="{{ $ki->id }}">{{ $ki->kompetensi }}</option>
                                       @endforeach
                                   </select>
                               </div>
                           </div>
 
-                          <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="guru_id">Kompetensi Dasar</label>
+                          <div class="form-group row" id="block">
+                            <label class="col-md-3 col-form-label" for="ki_kd_id">Kompetensi Dasar</label>
                             <div class="col-md-9">
                                 <select class="form-control" id=""
-                                    type="text" name=""
-                                    placeholder="">
+                                    type="text" name="ki_kd_id">
                                     <option value disable>Pilih Kompetensi Dasar</option>
-                                    @foreach (App\Models\Admin\Kikd::all() as $kikd)
-                                        <option value="{{ $kikd->id }}">{{ $kikd->kd }}</option>
+                                    @foreach ($komp_dasar as $kd)
+                                        <option value="{{ $kd->id }}">{{ $kd->kompetensi }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -161,6 +163,35 @@
                 })
             });
         }
+
+        $('#add').click(function () {
+        $('#block:last').before('<div class="form-group row" id="block">' +
+                              '<label class="col-md-3 col-form-label" for="ki_kd_id">Kompetensi Inti</label>' +
+                              '<div class="col-md-9">' +
+                                  '<select class="form-control" id="ki_kd_id"' +
+                                  'type="text" name="ki_kd_id"' +
+                                  'placeholder="">' +
+                                  '<option value disable>Pilih Kompetensi Inti</option>' +
+                                  '@foreach ($komp_inti as $ki)' +
+                                    '<option value="{{ $ki->id }}">{{ $ki->kompetensi }}</option>' +
+                                  '@endforeach' +
+                                  '</select>' +
+                                  '</div>' +
+                                  '</div>'+
+                            '<div class="form-group row" id="block">' +
+                            '<label class="col-md-3 col-form-label" for="guru_id">Kompetensi Dasar</label>'+
+                            '<div class="col-md-9">'+
+                                '<select class="form-control" id=""'+
+                                    'type="text" name="ki_kd_id"'+
+                                   ' placeholder="">'+
+                                    '<option value disable>Pilih Kompetensi Dasar</option>'+
+                                    '@foreach ($komp_dasar as $kd)'+
+                                        '<option value="{{ $kd->id }}">{{ $kd->kompetensi }}</option>'+
+                                   ' @endforeach'+
+                                '</select>'+
+                            '</div>'+
+                        '</div>');
+        });
 
     </script>
 @endpush
