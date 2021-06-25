@@ -88,9 +88,9 @@
                                 </div>
                             </div>
 
-                            
+
                             <button type="button" class="btn btn-info mb-2" id="add"><b>+</b> KI/KD</button>
-                        
+
                             <div class="form-group row" id="block">
                               <label class="col-md-3 col-form-label" for="ki_kd_id">Kompetensi Inti</label>
                               <div class="col-md-9">
@@ -109,10 +109,10 @@
                             <label class="col-md-3 col-form-label" for="ki_kd_id">Kompetensi Dasar</label>
                             <div class="col-md-9">
                                 <select class="form-control" id=""
-                                    type="text" name="ki_kd_id[]">
+                                    type="text" name="kd">
                                     <option value disable>Pilih Kompetensi Dasar</option>
                                     @foreach ($komp_dasar as $kd)
-                                        <option value="{{ $kd->id }}">{{ $kd->kompetensi }}</option>
+                                        <option value="{{ $kd->kompetensi }}">{{ $kd->kompetensi }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -182,11 +182,11 @@
                             '<label class="col-md-3 col-form-label" for="guru_id">Kompetensi Dasar</label>'+
                             '<div class="col-md-9">'+
                                 '<select class="form-control" id=""'+
-                                    'type="text" name="ki_kd_id[]"'+
+                                    'type="text" name="kd"'+
                                    ' placeholder="">'+
                                     '<option value disable>Pilih Kompetensi Dasar</option>'+
                                     '@foreach ($komp_dasar as $kd)'+
-                                        '<option value="{{ $kd->id }}">{{ $kd->kompetensi }}</option>'+
+                                        '<option value="{{ $kd->kompetensi }}">{{ $kd->kompetensi }}</option>'+
                                    ' @endforeach'+
                                 '</select>'+
                             '</div>'+

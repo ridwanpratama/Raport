@@ -11,7 +11,7 @@ class Mapel extends Model
 
     protected $table = "mapel";
 
-    protected $fillable = ['nama_mapel', 'guru_id', 'jenis_mapel', 'rombel_id', 'jurusan_id', 'kode_mapel', 'ki_kd_id'];
+    protected $fillable = ['nama_mapel', 'guru_id', 'jenis_mapel', 'rombel_id', 'jurusan_id', 'kode_mapel', 'ki_kd_id', 'kd'];
 
     protected $dates = ['deleted_at'];
 

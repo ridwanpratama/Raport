@@ -45,8 +45,8 @@
                                         <td>{{ $item->jurusan->nama_jurusan }}</td>
                                         <td>{{ $item->rombel->tingkat }}</td>
                                         <td>{{ $item->guru->nama_guru }}</td>
-                                        <td>{{ $item->kikd->ki }}</td>
-                                        <td>{{ $item->kikd->kd }}</td>
+                                        <td>{{ $item->kikd->kompetensi }}</td>
+                                        <td>{{ $item->kd }}</td>
                                         <td>
                                             <form action="{{ route('mapel.destroy', [$item->id]) }}" method="post">
                                                 @csrf
@@ -115,19 +115,19 @@
                     <div class="form-group">
                       <label for="ki_kd_id">Kompetensi Inti</label>
                       <select name="ki_kd_id" id="ki_kd_id" class="form-control">
-                        <option value="{{ $item->ki_kd_id }}">{{ $item->kikd->ki }}</option>
-                        @foreach (App\Models\Admin\Kikd::all() as $kikd)
-                            <option value="{{ $kikd->id }}">{{ $kikd->ki }}</option>
+                        <option value="{{ $item->ki_kd_id }}">{{ $item->kikd->kompetensi }}</option>
+                        @foreach ($komp_inti as $ki)
+                            <option value="{{ $ki->id }}">{{ $ki->kompetensi }}</option>
                         @endforeach
                       </select>
                     </div>
 
                     <div class="form-group">
-                      <label for="ki_kd_id">Kompetensi Dasar</label>
-                      <select name="ki_kd_id" id="ki_kd_id" class="form-control">
-                        <option value="{{ $item->ki_kd_id }}">{{ $item->kikd->kd }}</option>
-                        @foreach (App\Models\Admin\Kikd::all() as $kikd)
-                            <option value="{{ $kikd->id }}">{{ $kikd->kd }}</option>
+                      <label for="kd">Kompetensi Dasar</label>
+                      <select name="kd" id="kd" class="form-control">
+                        <option value="{{ $item->kd }}">{{ $item->kd }}</option>
+                        @foreach ($komp_dasar as $kd)
+                            <option value="{{ $kd->kompetensi }}">{{ $kd->kompetensi }}</option>
                         @endforeach
                       </select>
                     </div>

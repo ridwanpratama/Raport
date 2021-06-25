@@ -36,7 +36,7 @@ class MapelController extends Controller
         $data_mapel = Mapel::whereIn('nama_mapel', $mapel)->groupBy('nama_mapel')->get();
         $komp_inti = Kikd::where('jenis_kikd', 'Kompetensi Inti')->get();
         $komp_dasar = Kikd::where('jenis_kikd', 'Kompetensi Dasar')->get();
-   
+
         return view('admin.mapel.create', compact('data_mapel', 'komp_inti', 'komp_dasar'));
     }
 
@@ -71,13 +71,14 @@ class MapelController extends Controller
                     "created_at" =>  \Carbon\Carbon::now(),
                     "updated_at" => \Carbon\Carbon::now(),
                     'ki_kd_id' => $value,
+                    'kd' => $request->kd,
                 ]);
             }
         }
         return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
     }
-    
-    
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -183,8 +184,10 @@ class MapelController extends Controller
     {
         $mapel = Mapel::where('nama_mapel', $nama_mapel)->get();
         $identitas = Mapel::where('nama_mapel', $nama_mapel)->first();
+        $komp_inti = Kikd::where('jenis_kikd', 'Kompetensi Inti')->get();
+        $komp_dasar = Kikd::where('jenis_kikd', 'Kompetensi Dasar')->get();
 
-        return view('admin.mapel.show', compact('mapel','identitas'));
+        return view('admin.mapel.show', compact('mapel','identitas', 'komp_inti', 'komp_dasar'));
     }
 
 }
