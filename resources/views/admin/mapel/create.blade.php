@@ -88,14 +88,14 @@
                                 </div>
                             </div>
 
-
+                            
                             <button type="button" class="btn btn-info mb-2" id="add"><b>+</b> KI/KD</button>
                         
                             <div class="form-group row" id="block">
                               <label class="col-md-3 col-form-label" for="ki_kd_id">Kompetensi Inti</label>
                               <div class="col-md-9">
                                   <select class="form-control @error('ki_kd_id') is-invalid @enderror" id="ki_kd_id"
-                                      type="text" name="ki_kd_id"
+                                      type="text" name="ki_kd_id[]"
                                       placeholder="@error('ki_kd_id') {{ $message }} @enderror">
                                       <option value disable>Pilih Kompetensi Inti</option>
                                       @foreach ($komp_inti as $ki)
@@ -109,7 +109,7 @@
                             <label class="col-md-3 col-form-label" for="ki_kd_id">Kompetensi Dasar</label>
                             <div class="col-md-9">
                                 <select class="form-control" id=""
-                                    type="text" name="ki_kd_id">
+                                    type="text" name="ki_kd_id[]">
                                     <option value disable>Pilih Kompetensi Dasar</option>
                                     @foreach ($komp_dasar as $kd)
                                         <option value="{{ $kd->id }}">{{ $kd->kompetensi }}</option>
@@ -169,7 +169,7 @@
                               '<label class="col-md-3 col-form-label" for="ki_kd_id">Kompetensi Inti</label>' +
                               '<div class="col-md-9">' +
                                   '<select class="form-control" id="ki_kd_id"' +
-                                  'type="text" name="ki_kd_id"' +
+                                  'type="text" name="ki_kd_id[]"' +
                                   'placeholder="">' +
                                   '<option value disable>Pilih Kompetensi Inti</option>' +
                                   '@foreach ($komp_inti as $ki)' +
@@ -182,7 +182,7 @@
                             '<label class="col-md-3 col-form-label" for="guru_id">Kompetensi Dasar</label>'+
                             '<div class="col-md-9">'+
                                 '<select class="form-control" id=""'+
-                                    'type="text" name="ki_kd_id"'+
+                                    'type="text" name="ki_kd_id[]"'+
                                    ' placeholder="">'+
                                     '<option value disable>Pilih Kompetensi Dasar</option>'+
                                     '@foreach ($komp_dasar as $kd)'+

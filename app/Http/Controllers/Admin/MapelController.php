@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Admin\Kikd;
 use App\Models\Admin\Mapel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class MapelController extends Controller
@@ -57,22 +59,25 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validation($request);
-
-        Mapel::create([
-            'kode_mapel' => $request->kode_mapel,
-            'nama_mapel' => $request->nama_mapel,
-            'guru_id' => $request->guru_id,
-            'jenis_mapel' => $request->jenis_mapel,
-            'rombel_id' => $request->rombel_id,
-            'jurusan_id' => $request->jurusan_id,
-            'ki_kd_id' => $request->ki_kd_id,
-        ]);
-
-        return redirect()->route('mapel.index')->with('toast_success', 'Data berhasil disimpan!');
+        foreach ($request->ki_kd_id as $value){
+            if ($value) {
+                DB::table('mapel')->insert([
+                    'nama_mapel' => $request->nama_mapel,
+                    'guru_id' => $request->guru_id,
+                    'jenis_mapel' => $request->jenis_mapel,
+                    'jurusan_id' => $request->jurusan_id,
+                    'rombel_id' => $request->rombel_id,
+                    'kode_mapel' => $request->kode_mapel,
+                    "created_at" =>  \Carbon\Carbon::now(),
+                    "updated_at" => \Carbon\Carbon::now(),
+                    'ki_kd_id' => $value,
+                ]);
+            }
+        }
+        return redirect()->back()->with('toast_success', 'Data berhasil disimpan!');
     }
-
-
+    
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -115,7 +120,7 @@ class MapelController extends Controller
     {
         $data_mapel = Mapel::find($id);
         $data_mapel->delete();
-        return redirect('mapel')->with('toast_warning', 'Data berhasil dihapus!');
+        return redirect()->back()->with('toast_warning', 'Data berhasil dihapus!');
     }
 
     public function mapel()

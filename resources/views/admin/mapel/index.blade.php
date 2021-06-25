@@ -58,13 +58,8 @@
                                         <td>{{ $mapel->kode_mapel }}</td>
                                         <td>{{ $mapel->jenis_mapel }}</td>
                                         <td>{{ $mapel->nama_mapel }}</td>
-                                        <td><a href="">
-                                                <form action="{{ route('mapel.destroy', [$mapel->id]) }}" method="post">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
-                                                    <button class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('apakah anda yakin ingin menghapus Mata Pelajaran: {{ $mapel->nama_mapel }}')">Hapus</button>
-                                                    <a href="{{route('show_mapel',$mapel->nama_mapel)}}" class="btn btn-info btn-sm">Lihat</a>
+                                        <td>
+                                            <a href="{{route('show_mapel',$mapel->nama_mapel)}}" class="btn btn-info btn-sm">Lihat</a>
                                         </td>
                                         </form>
                                         </td>
