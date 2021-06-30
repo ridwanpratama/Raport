@@ -20,7 +20,7 @@
 
             <div id="baseForm" class="mt-4">
               <input type="date" class="form-control" name="tanggal" id="tanggalSelect">
-              
+
               {{-- <select id="jenisNilaiSelect" class="form-control my-2" required>
                 <option value disable>Pilih Jenis Nilai</option>
                 @foreach ($jenis_nilai as $item)
@@ -61,9 +61,9 @@
                     </td>
                     <td>{{ $item->nis }}</td>
                     <td>{{ $item->rayon->nama_rayon }}</td>
-                    <td><input class="form-control" type="number" name="sakit[]"></td>
-                    <td><input class="form-control" type="number" name="izin[]"></td>
-                    <td><input class="form-control" type="number" name="alpha[]"></td>
+                    <td><input class="form-control" type="number" name="sakit[]" value="0"></td>
+                    <td><input class="form-control" type="number" name="izin[]" value="0"></td>
+                    <td><input class="form-control" type="number" name="alpha[]" value="0"></td>
                   </tr>
                 </tbody>
                 @endforeach
